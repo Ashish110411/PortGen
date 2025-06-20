@@ -1,0 +1,36 @@
+import React from "react";
+import { FiPaperclip } from "react-icons/fi";
+import { Link } from "react-router-dom";
+
+const WorkCard = ({ w, tabId }) => {
+	return (
+		<div className="works-card">
+			<div className="works-container">
+				<div className="top-work">
+					<div className="right">
+						{w.link && (
+							<Link
+								className="work-link"
+								to={w.link}
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								<FiPaperclip />
+							</Link>
+						)}
+					</div>
+				</div>
+				<div className="mid-work">
+					<p className="work-title">{w.title || "Untitled"}</p>
+					<p className="work-desc">{w.description || "No description."}</p>
+				</div>
+				<div className="bottom-work">
+					{Array.isArray(w.tech) &&
+						w.tech.map((tech, i) => <small key={i}>{tech}</small>)}
+				</div>
+			</div>
+		</div>
+	);
+};
+
+export default WorkCard;

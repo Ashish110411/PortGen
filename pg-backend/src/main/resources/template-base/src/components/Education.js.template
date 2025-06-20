@@ -1,0 +1,48 @@
+import React from "react";
+import "../styles/Education.css";
+import { motion } from "framer-motion";
+
+const educationData = {{educationList}};
+
+// Animation effect (same as SkillsJs section)
+const eduEffect = {
+    y: 0,
+    opacity: 1,
+    transition: {
+        duration: 0.4,
+    },
+};
+
+const Education = () => {
+    return (
+        <section className="education-section" id="education">
+            {/* Heading Animation */}
+            <motion.div
+                whileInView={eduEffect}
+                initial={{ y: "-80px", opacity: 0 }}
+                className="heading"
+            >
+                <p className="heading-sub-text">My Academic Journey</p>
+                <p className="heading-text">Education</p>
+            </motion.div>
+
+            <div className="education-container">
+                {educationData.map((edu, index) => (
+                    <motion.div
+                        key={index}
+                        whileInView={eduEffect}
+                        initial={{ y: "-50px", opacity: 0 }}
+                        className="education-card"
+                    >
+                        <h3>{edu.degree}</h3>
+                        <p className="institution">{edu.institution}</p>
+                        <span className="year">{edu.year}</span>
+                        <p className="description">{edu.description}</p>
+                    </motion.div>
+                ))}
+            </div>
+        </section>
+    );
+};
+
+export default Education;

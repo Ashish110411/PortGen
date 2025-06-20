@@ -1,0 +1,55 @@
+import React from "react";
+import "../styles/About.css";
+import { motion } from "framer-motion";
+
+const About = () => {
+    const fadeInLeft = {
+        hidden: { x: "-100%", opacity: 0 },
+        visible: { x: 0, opacity: 1, transition: { type: "spring", duration: 2, bounce: 0.3 } },
+    };
+
+    const fadeInRight = {
+        hidden: { x: "50%", opacity: 0 },
+        visible: { x: 0, opacity: 1, transition: { type: "spring", duration: 2, bounce: 0.3 } },
+    };
+
+    return (
+        <div className="about" id="about">
+            <div className="container">
+                {/* Heading Section */}
+                <motion.div initial="hidden" whileInView="visible" variants={fadeInLeft} viewport={{ once: true }} className="heading">
+                    <p className="heading-sub-text">Who I am</p>
+                    <p className="heading-text">About Me</p>
+                </motion.div>
+
+                <div className="split-about">
+                    {/* Text Content */}
+                    <motion.div initial="hidden" whileInView="visible" variants={fadeInLeft} className="about-content">
+                        <p>
+                            {{aboutParagraph1}}
+                        </p>
+                        <br />
+                        <p>
+                            {{aboutParagraph2}}
+                        </p>
+                        <br />
+                        <p>
+                            {{aboutParagraph3}}
+                        </p>
+                        <br />
+                        <p>
+                            {{aboutParagraph4}}
+                        </p>
+                    </motion.div>
+
+                    {/* Profile Image */}
+                    <motion.div initial="hidden" whileInView="visible" variants={fadeInRight} className="about-img">
+                        <img src="{{profileImage}}" alt="Profile" />
+                    </motion.div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default About;

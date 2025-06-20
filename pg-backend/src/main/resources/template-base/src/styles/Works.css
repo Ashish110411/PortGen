@@ -1,0 +1,177 @@
+.works-box {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 1rem;
+}
+
+.work-link-group {
+	text-decoration: none;
+}
+
+.works-container {
+	width: 100%;
+}
+
+/* Universal Work Link Button (GitHub & Drive) */
+.work-link {
+	font-size: 1.5rem;
+	color: white;
+	text-decoration: none;
+	margin-right: 10px;
+	transition: transform 0.2s ease-in-out;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.work-link:hover {
+	transform: scale(1.5);
+	color: #00c1fb;
+}
+
+/* Styling the works card */
+.works-card {
+	background-color: var(--card-blue-shade);
+	color: var(--nav-grey);
+	border-radius: 5px;
+	position: relative;
+	padding: 1.5rem;
+	width: 300px;
+	max-width: 300px;
+	margin: auto;
+	height: 250px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	justify-content: center;
+}
+
+.works-card:hover {
+	transform: translateY(-7px);
+}
+
+.works-card:hover .work-title {
+	color: var(--nav-blue);
+}
+
+/* Centering the work link icon */
+.top-work {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 1rem;
+	margin-top: -25px;
+}
+
+/* Centering the title and description */
+.mid-work {
+	margin-bottom: 1rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-top: 25px;
+}
+
+.work-title {
+	font-size: 1.5rem;
+	font-weight: 700;
+	word-spacing: 5px;
+	text-align: center;
+	margin-bottom: 0.5rem;
+}
+
+.work-desc {
+	font-size: 1rem;
+	text-align: center;
+}
+
+/* Centering the tech stack */
+.bottom-work {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 5px;
+	justify-content: center;
+	align-items: center;
+}
+
+.bottom-work small {
+	margin: 0 0.5rem;
+	font-size: 0.9rem;
+}
+
+/* New styles for tabs */
+.tabs {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 2rem;
+}
+
+.tab {
+	padding: 0.5rem 1rem;
+	margin: 0 2rem;
+	background-color: var(--card-blue-shade);
+	color: var(--nav-grey);
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	font-size: 1rem;
+	outline: none;
+}
+
+.tab:hover {
+	background-color: var(--nav-blue);
+	color: black;
+}
+
+.tab.active {
+	background-color: var(--nav-blue);
+	color: black;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 750px) {
+	.tabs {
+		flex-wrap: wrap;
+	}
+	.tab {
+		margin: 0.5rem;
+	}
+}
+
+@media screen and (max-width: 550px) {
+	.work-title {
+		font-size: 1.2rem;
+	}
+	.work-desc {
+		font-size: 0.9rem;
+	}
+	.work-link {
+		font-size: 1.8rem;
+	}
+	.bottom-work small {
+		font-size: 0.8rem;
+	}
+}
+
+@media screen and (max-width: 320px) {
+	.works-card {
+		width: 250px;
+		max-width: 300px;
+		margin: 0 auto;
+		height: 250px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		cursor: pointer;
+		transition: all 0.3s ease;
+	}
+}

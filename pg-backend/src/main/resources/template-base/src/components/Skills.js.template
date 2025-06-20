@@ -1,0 +1,48 @@
+import React from "react";
+import "../styles/Skills.css";
+import { motion } from "framer-motion";
+
+// Skills data injected from backend
+const SkillsData = {{skillsData}};
+
+const Skills = () => {
+	const skillEffect = {
+		y: 0,
+		opacity: 1,
+		transition: { duration: 1.4 },
+	};
+
+	return (
+		<div className="skills" id="skills">
+			<div className="container">
+				{/* Heading Animation */}
+				<motion.div
+					whileInView={skillEffect}
+					initial={{ y: "-80px", opacity: 0 }}
+					className="heading"
+				>
+					<p className="heading-sub-text">What I work with</p>
+					<p className="heading-text">My Skills</p>
+				</motion.div>
+
+				{/* Skills Grid */}
+				<motion.div
+					whileInView={skillEffect}
+					className="skills-box"
+					initial={{ y: "-80px", opacity: 0 }}
+				>
+					{SkillsData.map((skill, idx) => (
+						<div className="skill-card" key={idx}>
+							<div className="skill-icon">
+								<img src={skill.icon} alt={skill.name} />
+							</div>
+							<small className="skill-desc">{skill.name}</small>
+						</div>
+					))}
+				</motion.div>
+			</div>
+		</div>
+	);
+};
+
+export default Skills;

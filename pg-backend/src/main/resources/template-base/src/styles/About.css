@@ -1,0 +1,99 @@
+.heading {
+    font-family: "Poppins", sans-serif;
+    margin-bottom: 3rem;
+    text-align: center; /* Centers heading */
+
+}
+
+
+.heading-sub-text {
+    color: var(--soft-white);
+}
+
+.heading-text {
+    color: var(--soft-white);
+    font-size: 2.5rem;
+}
+
+.about-content {
+    font-family: "Poppins", sans-serif;
+    line-height: 1.7;
+    font-size: 1rem;
+    max-width: 600px; /* Restricts overly long lines */
+    text-align: left;
+    /*back*/
+}
+
+/* MainJs Layout */
+.split-about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem; /* Increased spacing */
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+}
+
+/* Image Styling */
+.about-img {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+}
+
+.about-img img {
+    width: 400px; /* Adjusted size for better proportion */
+    height: 400px;
+    border-radius: 50%;
+    filter: brightness(100%);
+    cursor: pointer;
+    transition: all 0.4s ease;
+    object-fit: cover;
+    object-position: center;
+    margin-bottom: 1rem;
+    border: 3px solid var(--soft-white);
+}
+
+/* Hover Effect */
+.about-img img:hover {
+    transform: scale(1.05);
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 1000px) {
+    .split-about {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .about-content {
+        max-width: 90%;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .about-img img {
+        width: 250px;
+        height: 250px;
+    }
+
+    .heading-sub-text {
+        font-size: 90%;
+    }
+
+    .heading-text {
+        font-size: 2rem;
+    }
+
+    .about-content {
+        font-size: 0.9rem;
+        padding: 0 1rem;
+    }
+}

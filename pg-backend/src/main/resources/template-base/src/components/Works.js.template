@@ -1,0 +1,56 @@
+import React, { useState } from "react";
+import "../styles/Works.css";
+import { motion } from "framer-motion";
+import { tabData } from "../data/WorkData";
+import WorkCard from "./WorkCard";
+
+const Works = () => {
+	const [activeTab, setActiveTab] = useState(null);
+
+	const fade = {
+		opacity: 1,
+		transition: { duration: 1.4 },
+	};
+
+	return (
+		<div className="works" id="works">
+			<div className="container">
+				<motion.div
+					initial={{ opacity: 0 }}
+					whileInView={fade}
+					viewport={{ once: true }}
+					className="heading"
+				>
+					<p className="heading-sub-text">I build real value</p>
+					<p className="heading-text">Works</p>
+				</motion.div>
+
+				{/* Tabs */}
+				<div className="tabs">
+					{tabData.map((tab) => (
+						<button
+							key={tab.id}
+							className={`tab ${activeTab === tab.id ? "active" : ""}`}
+							onClick={() => setActiveTab((prev) => (prev === tab.id ? null : tab.id))}
+						>
+							{tab.label}
+						</button>
+					))}
+				</div>
+
+				{/* Project Cards */}
+				{activeTab && (
+					<motion.div className="works-box" initial={{ opacity: 0 }} whileInView={fade}>
+						{tabData
+							.find((tab) => tab.id === activeTab)
+							?.data?.map((project, index) => (
+								<WorkCard key={index} w={project} tabId={activeTab} />
+							))}
+					</motion.div>
+				)}
+			</div>
+		</div>
+	);
+};
+
+export default Works;
