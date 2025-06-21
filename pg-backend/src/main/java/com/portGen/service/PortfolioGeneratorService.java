@@ -1,6 +1,7 @@
 package com.portGen.service;
 
 import com.portGen.model.PortfolioRequest;
+import com.portGen.model.ProjectGroup;
 import com.portGen.model.Skill;
 import com.portGen.util.TemplateProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
 import java.nio.file.*;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class PortfolioGeneratorService {
@@ -19,6 +23,8 @@ public class PortfolioGeneratorService {
 
     public Path generateSite(PortfolioRequest request, MultipartFile image, MultipartFile resume) throws IOException {
         Path tempDir = Files.createTempDirectory("portfolio");
+        List<com.portGen.model.ProjectGroup> mergedProjects = mergeDuplicateProjectGroups(request.getProjects());
+        request.setProjects(mergedProjects);
 
         // Copy base template project
         Path templateBase = Paths.get("src/main/resources/template-base");
@@ -86,4 +92,24 @@ public class PortfolioGeneratorService {
             }
         });
     }
+    private List<com.portGen.model.ProjectGroup> mergeDuplicateProjectGroups(List<com.portGen.model.ProjectGroup> originalList) {
+        Map<String, ProjectGroup> mergedMap = new LinkedHashMap<>();
+
+        for (com.portGen.model.ProjectGroup group : originalList) {
+            String id = group.getId();
+            if (!mergedMap.containsKey(id)) {
+                // First occurrence
+                mergedMap.put(id, new com.portGen.model.ProjectGroup());
+                mergedMap.get(id).setId(id);
+                mergedMap.get(id).setLabel(group.getLabel());
+                mergedMap.get(id).setData(new ArrayList<>(group.getData()));
+            } else {
+                // Merge additional data
+                mergedMap.get(id).getData().addAll(group.getData());
+            }
+        }
+
+        return new ArrayList<>(mergedMap.values());
+    }
+
 }

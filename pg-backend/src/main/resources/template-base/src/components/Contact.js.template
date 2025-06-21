@@ -1,0 +1,61 @@
+import { motion } from "framer-motion";
+import React from "react";
+import "../styles/Contact.css";
+
+const Contact = () => {
+	const fade = {
+		opacity: 1,
+		transition: {
+			duration: 1.5,
+		},
+	};
+
+	const verticalCenter = {
+		opacity: 1,
+		y: 0,
+		transition: {
+			duration: 1.5,
+		},
+	};
+
+	return (
+		<div className='contact centered-contact' id='contact'>
+			<div className='container'>
+				<motion.div
+					className='heading text-center'
+					initial={{ opacity: 0 }}
+					whileInView={fade}
+					viewport={{ once: true }}>
+					<p className='heading-sub-text'>Hire Me</p>
+					<p className='heading-text'>Get in Touch</p>
+				</motion.div>
+
+				<motion.div
+					className='contact-card'
+					initial={{ opacity: 0, y: 40 }}
+					whileInView={verticalCenter}>
+					<p className='contact-message'>
+						I’m interested in freelance opportunities – especially ambitious or large
+						projects. However, if you have other requests or questions, don’t hesitate to
+						connect.
+					</p>
+
+					<div className='contact-hello'>
+						<p className='hello-heading'>Say Hello</p>
+						<a className='hello-links' href="{{whatsappUrl}}" target='_blank' rel='noreferrer'>
+							Whatsapp Me
+						</a>
+						<a className='hello-links' href="mailto:{{email}}" target='_blank' rel='noreferrer'>
+							{{email}}
+						</a>
+						<a className='hello-links' href="mailto:{{altEmail}}" target='_blank' rel='noreferrer'>
+							{{altEmail}}
+						</a>
+					</div>
+				</motion.div>
+			</div>
+		</div>
+	);
+};
+
+export default Contact;
