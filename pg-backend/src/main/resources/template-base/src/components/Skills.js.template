@@ -2,8 +2,11 @@ import React from "react";
 import "../styles/Skills.css";
 import { motion } from "framer-motion";
 
-// Skills data injected from backend
+// Injected data placeholder — replaced by backend
 const SkillsData = {{skillsData}};
+
+// Dynamically resolve image icons from /src/images
+const resolveIcon = (icon) => require(`../images/${icon}`);
 
 const Skills = () => {
 	const skillEffect = {
@@ -15,7 +18,7 @@ const Skills = () => {
 	return (
 		<div className="skills" id="skills">
 			<div className="container">
-				{/* Heading Animation */}
+				{/* Heading */}
 				<motion.div
 					whileInView={skillEffect}
 					initial={{ y: "-80px", opacity: 0 }}
@@ -25,7 +28,7 @@ const Skills = () => {
 					<p className="heading-text">My Skills</p>
 				</motion.div>
 
-				{/* Skills Grid */}
+				{/* Skill Cards */}
 				<motion.div
 					whileInView={skillEffect}
 					className="skills-box"
@@ -34,7 +37,11 @@ const Skills = () => {
 					{SkillsData.map((skill, idx) => (
 						<div className="skill-card" key={idx}>
 							<div className="skill-icon">
-								<img src={skill.icon} alt={skill.name} />
+								<img
+									src={resolveIcon(skill.icon)}
+									alt={skill.name}
+									className="skill-img"
+								/>
 							</div>
 							<small className="skill-desc">{skill.name}</small>
 						</div>

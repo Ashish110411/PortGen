@@ -1,30 +1,40 @@
-/* Side NavbarJs */
+/* === Side Navbar === */
 .navbar {
-	background-color: yellow;
+	background-color: #0f0f17; /* Changed from yellow to dark theme */
 	color: var(--white);
 	position: fixed;
 	top: 0;
 	left: -100%;
 	bottom: 0;
+	width: 260px;
 	opacity: 0;
-	overflow-y: scroll;
-	transition: all 0.5s ease-in-out;
+	overflow-y: auto;
+	transition: all 0.4s ease-in-out;
 	z-index: 99999;
+	box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
 }
 
+/* Active state */
 .navbar.active {
 	left: 0;
 	opacity: 1;
 }
 
+/* Scrollbar styling */
 .navbar::-webkit-scrollbar {
-	scroll-margin: 0;
+	width: 6px;
+}
+
+.navbar::-webkit-scrollbar-thumb {
+	background-color: var(--nav-grey);
+	border-radius: 10px;
 }
 
 .navbar-container {
-	padding: 1rem 1.5rem;
+	padding: 2rem 1.5rem;
 }
 
+/* Top Profile Section */
 .top-details {
 	display: flex;
 	flex-direction: column;
@@ -39,35 +49,40 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	object-fit: cover;
-    object-position: bottom;
-}
-.profile-pic-small {
-	height: 100%;
-	width: 100%;
+	overflow: hidden;
 	border-radius: 50%;
-	margin-bottom: 1rem;
-	border: 5px solid var(--nav-deep-blue);
 }
 
+.profile-pic-small {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: bottom;
+	border-radius: 50%;
+	border: 4px solid var(--nav-blue);
+}
+
+/* Profile Name */
 .profile-name {
 	font-size: 1rem;
 	font-weight: 600;
 	font-family: "Poppins", sans-serif;
 	text-decoration: none;
 	color: var(--white);
-	margin-bottom: 1rem;
+	margin-top: 1rem;
 	cursor: pointer;
+	text-align: center;
 }
 
+/* Social Icons */
 .nav-links {
 	display: flex;
-	flex-direction: row;
-	align-items: center;
+	justify-content: center;
+	gap: 0.6rem;
+	margin-top: 0.8rem;
 }
 
-.nav-links li,
-.mid-details li {
+.nav-links li {
 	list-style: none;
 }
 
@@ -75,26 +90,27 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	cursor: pointer;
 	text-decoration: none;
 	color: var(--white);
-	margin: 0 0.3rem;
-	padding: 0.7rem;
 	background-color: var(--nav-deep-blue);
 	border-radius: 50%;
-	transition: all 0.3s ease-in-out;
+	width: 40px;
+	height: 40px;
+	transition: background-color 0.3s ease;
 }
 
 .nav-link:hover {
 	background-color: var(--nav-blue);
 }
 
+/* Mid Navigation Items */
 .mid-details {
-	padding: 1rem;
+	margin-top: 2rem;
+	padding: 0 1rem;
 }
 
-.flex {
-	display: flex;
+.mid-details li {
+	list-style: none;
 }
 
 .mid-links {
@@ -103,13 +119,14 @@
 	color: var(--nav-grey);
 	cursor: pointer;
 	text-decoration: none;
-	padding: 1rem 0;
-	font-size: 0.9rem;
+	padding: 0.8rem 0;
+	font-size: 0.95rem;
 	transition: all 0.3s ease-in-out;
 }
 
 .mid-links.active {
 	color: var(--nav-blue);
+	font-weight: 500;
 }
 
 .mid-links:hover {
@@ -122,18 +139,21 @@
 
 .mid-icon {
 	margin-right: 1rem;
-	font-size: 1.5rem;
+	font-size: 1.3rem;
 }
 
+/* Footer */
 .copy {
 	display: flex;
-	flex-direction: row;
 	justify-content: center;
 	align-items: center;
+	margin-top: 2rem;
+	padding-bottom: 1rem;
 }
 
 .copyright {
 	color: var(--white);
-	font-size: 65%;
+	font-size: 0.65rem;
 	font-family: "Quicksand", sans-serif;
+	text-align: center;
 }

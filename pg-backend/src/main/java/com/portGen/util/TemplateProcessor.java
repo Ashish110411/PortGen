@@ -240,7 +240,10 @@ public class TemplateProcessor {
                 .replace("{{skillsData}}", toJsonSafe(data.getSkills()))
                 .replace("{{educationList}}", toJsonSafe(data.getEducationList()))
                 .replace("{{selectedComponents}}", toJsonSafe(data.getSelectedComponents()))
-                .replace("{{tabData}}", toJsonSafe(data.getProjects()));
+                .replace("{{tabData}}", toJsonSafe(data.getProjects()))
+                .replace("{{profileImage}}", safe(data.getProfileImage()))
+                .replace("{{profileImageSmall}}", safe(data.getProfileImageSmall()))
+                ;
     }
 
     public void processTemplate(Path inputPath, Path outputPath, PortfolioRequest data) {

@@ -1,177 +1,139 @@
+/* Container for all work cards */
 .works-box {
 	display: flex;
-	flex-direction: row;
-	justify-content: center;
 	flex-wrap: wrap;
-	gap: 1rem;
-}
-
-.work-link-group {
-	text-decoration: none;
-}
-
-.works-container {
-	width: 100%;
-}
-
-/* Universal Work Link Button (GitHub & Drive) */
-.work-link {
-	font-size: 1.5rem;
-	color: white;
-	text-decoration: none;
-	margin-right: 10px;
-	transition: transform 0.2s ease-in-out;
-	display: flex;
-	align-items: center;
 	justify-content: center;
+	gap: 1.5rem;
+	margin-top: 2rem;
 }
 
-.work-link:hover {
-	transform: scale(1.5);
-	color: #00c1fb;
-}
-
-/* Styling the works card */
+/* Each card container */
 .works-card {
 	background-color: var(--card-blue-shade);
 	color: var(--nav-grey);
-	border-radius: 5px;
-	position: relative;
-	padding: 1.5rem;
+	border-radius: 10px;
 	width: 300px;
-	max-width: 300px;
-	margin: auto;
-	height: 250px;
+	height: auto;
+	padding: 1.5rem 1rem;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	justify-content: space-between;
 	text-align: center;
-	cursor: pointer;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 	transition: all 0.3s ease;
-	justify-content: center;
+	cursor: pointer;
 }
 
 .works-card:hover {
-	transform: translateY(-7px);
+	transform: translateY(-6px);
+	background-color: rgba(0, 193, 251, 0.05);
 }
 
-.works-card:hover .work-title {
-	color: var(--nav-blue);
-}
-
-/* Centering the work link icon */
+/* Top icon link */
 .top-work {
 	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+	justify-content: flex-end;
+	width: 100%;
 	margin-bottom: 1rem;
-	margin-top: -25px;
 }
 
-/* Centering the title and description */
+.work-link {
+	color: white;
+	font-size: 1.3rem;
+	text-decoration: none;
+	transition: all 0.2s ease-in-out;
+}
+
+.work-link:hover {
+	transform: scale(1.4);
+	color: #00c1fb;
+}
+
+/* Title + description */
 .mid-work {
 	margin-bottom: 1rem;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	margin-top: 25px;
 }
 
 .work-title {
-	font-size: 1.5rem;
-	font-weight: 700;
-	word-spacing: 5px;
-	text-align: center;
-	margin-bottom: 0.5rem;
+	font-size: 1.4rem;
+	font-weight: 600;
+	margin-bottom: 0.3rem;
+	color: var(--nav-grey);
 }
 
 .work-desc {
 	font-size: 1rem;
-	text-align: center;
+	color: #ccc;
 }
 
-/* Centering the tech stack */
+/* Technologies used */
 .bottom-work {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 5px;
 	justify-content: center;
-	align-items: center;
+	gap: 6px;
 }
 
 .bottom-work small {
-	margin: 0 0.5rem;
-	font-size: 0.9rem;
+	background-color: #1a1a1a;
+	padding: 4px 10px;
+	border-radius: 12px;
+	font-size: 0.8rem;
+	color: #eee;
 }
 
-/* New styles for tabs */
+/* Tabs container */
 .tabs {
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: center;
-	margin-bottom: 2rem;
+	gap: 1rem;
+	margin-top: 2rem;
 }
 
+/* Tab styles */
 .tab {
-	padding: 0.5rem 1rem;
-	margin: 0 2rem;
+	padding: 0.6rem 1.2rem;
+	border-radius: 20px;
 	background-color: var(--card-blue-shade);
 	color: var(--nav-grey);
 	border: none;
-	border-radius: 5px;
 	cursor: pointer;
-	transition: all 0.3s ease;
-	font-size: 1rem;
-	outline: none;
+	font-size: 0.95rem;
+	transition: all 0.25s ease;
 }
 
-.tab:hover {
-	background-color: var(--nav-blue);
-	color: black;
-}
-
+.tab:hover,
 .tab.active {
 	background-color: var(--nav-blue);
-	color: black;
+	color: #000;
+	font-weight: 600;
 }
 
-/* Responsive adjustments */
-@media screen and (max-width: 750px) {
-	.tabs {
-		flex-wrap: wrap;
+/* Responsive tweaks */
+@media screen and (max-width: 768px) {
+	.works-card {
+		width: 90%;
 	}
-	.tab {
-		margin: 0.5rem;
-	}
-}
 
-@media screen and (max-width: 550px) {
 	.work-title {
 		font-size: 1.2rem;
 	}
-	.work-desc {
-		font-size: 0.9rem;
-	}
-	.work-link {
-		font-size: 1.8rem;
-	}
-	.bottom-work small {
-		font-size: 0.8rem;
-	}
 }
 
-@media screen and (max-width: 320px) {
-	.works-card {
-		width: 250px;
-		max-width: 300px;
-		margin: 0 auto;
-		height: 250px;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		text-align: center;
-		cursor: pointer;
-		transition: all 0.3s ease;
+@media screen and (max-width: 480px) {
+	.work-title {
+		font-size: 1.1rem;
+	}
+	.work-desc {
+		font-size: 0.95rem;
+	}
+	.bottom-work small {
+		font-size: 0.75rem;
+	}
+	.tab {
+		padding: 0.5rem 1rem;
+		font-size: 0.85rem;
 	}
 }

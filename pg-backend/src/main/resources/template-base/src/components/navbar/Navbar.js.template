@@ -5,8 +5,10 @@ import { BiBookContent, BiServer, BiEnvelope } from "react-icons/bi";
 import { FiUser } from "react-icons/fi";
 import { Link } from "react-scroll";
 import NavLinksJs from "./NavLinks";
-import { motion } from "framer-motion";
-import { AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import profilePicSmall from "../../images/{{profileImageSmall}}";
+
+
 
 const navVariants = {
 	hidden: {
@@ -32,61 +34,71 @@ const Navbar = ({ nav, handleNav }) => {
 		<AnimatePresence>
 			<motion.nav
 				initial={{ width: "0" }}
-				animate={
-					nav ? { width: "300px" } : { width: "0", transition: { delay: 1 } }
-				}
-				className={nav ? "navbar active" : "navbar"}>
+				animate={nav ? { width: "300px" } : { width: "0", transition: { delay: 1 } }}
+				className={nav ? "navbar active" : "navbar"}
+			>
 				<motion.div
-					initial='hidden'
+					initial="hidden"
 					whileInView={nav ? "visible" : "hidden"}
 					variants={navVariants}
-					exit='hidden'
-					className='navbar-container'>
-					<div className='top-details'>
-						<div className='img__cover'>
-							<img src="{{profileImageSmall}}" alt='MainJs' className='profile-pic-small' />
+					exit="hidden"
+					className="navbar-container"
+				>
+					{/* Top Info */}
+					<div className="top-details">
+						<div className="img__cover">
+							<img
+								src={profilePicSmall}
+								alt="Profile"
+								className="profile-pic-small"
+							/>
 						</div>
 						<Link
-							activeClass='active'
+							activeClass="active"
 							spy={true}
 							smooth={true}
 							offset={0}
 							duration={500}
 							onClick={handleNav}
-							to='home'
-							className='profile-name'>
+							to="home"
+							className="profile-name"
+						>
 							{{name}}
 						</Link>
 						<NavLinksJs handleNav={handleNav} />
 					</div>
-					<ul className='mid-details'>
-						<Link to='home' className='mid-links'>
-							<FaHome className='mid-icon' />
-							<li className='mid-link' onClick={handleNav}>Home</li>
+
+					{/* Navigation Links */}
+					<ul className="mid-details">
+						<Link to="home" className="mid-links">
+							<FaHome className="mid-icon" />
+							<li className="mid-link" onClick={handleNav}>Home</li>
 						</Link>
-						<Link to='about' className='mid-links'>
-							<FiUser className='mid-icon' />
-							<li className='mid-link' onClick={handleNav}>AboutJs</li>
+						<Link to="about" className="mid-links">
+							<FiUser className="mid-icon" />
+							<li className="mid-link" onClick={handleNav}>About</li>
 						</Link>
-						<Link to='skills' className='mid-links'>
-							<FaLaptop className='mid-icon' />
-							<li className='mid-link' onClick={handleNav}>SkillsJs</li>
+						<Link to="skills" className="mid-links">
+							<FaLaptop className="mid-icon" />
+							<li className="mid-link" onClick={handleNav}>Skills</li>
 						</Link>
-						<Link to='education' className='mid-links'>
-							<BiServer className='mid-icon' />
-							<li className='mid-link' onClick={handleNav}>EducationJs</li>
+						<Link to="education" className="mid-links">
+							<BiServer className="mid-icon" />
+							<li className="mid-link" onClick={handleNav}>Education</li>
 						</Link>
-						<Link to='works' className='mid-links'>
-							<BiBookContent className='mid-icon' />
-							<li className='mid-link' onClick={handleNav}>WorksJs</li>
+						<Link to="works" className="mid-links">
+							<BiBookContent className="mid-icon" />
+							<li className="mid-link" onClick={handleNav}>Works</li>
 						</Link>
-						<Link to='contact' className='mid-links'>
-							<BiEnvelope className='mid-icon' />
-							<li className='mid-link' onClick={handleNav}>ContactJs</li>
+						<Link to="contact" className="mid-links">
+							<BiEnvelope className="mid-icon" />
+							<li className="mid-link" onClick={handleNav}>Contact</li>
 						</Link>
 					</ul>
-					<div className='copy'>
-						<small className='copyright'>
+
+					{/* Footer */}
+					<div className="copy">
+						<small className="copyright">
 							© Copyright ©2025 <br /> All rights reserved |
 						</small>
 					</div>

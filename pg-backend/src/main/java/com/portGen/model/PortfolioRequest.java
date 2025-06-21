@@ -15,12 +15,15 @@ public class PortfolioRequest {
     private String altEmail;
 
     private List<Education> educationList;
-    private List<ProjectGroup> projects;  // <-- CHANGED
+    private List<ProjectGroup> projects;
     private List<Skill> skills;
     private List<String> roles;
     private List<String> selectedComponents;
 
-    private SocialLinks socialLinks = new SocialLinks(); // default init
+    private SocialLinks socialLinks = new SocialLinks();
+
+    private String profileImage;        // 👈 NEW
+    private String profileImageSmall;   // 👈 NEW
 
     // Getters and Setters
     public String getName() { return name; }
@@ -66,4 +69,10 @@ public class PortfolioRequest {
     public void setSocialLinks(SocialLinks socialLinks) {
         this.socialLinks = socialLinks == null ? new SocialLinks() : socialLinks;
     }
+
+    public String getProfileImage() { return profileImage; }
+    public void setProfileImage(String profileImage) { this.profileImage = profileImage; }
+
+    public String getProfileImageSmall() { return profileImageSmall; }
+    public void setProfileImageSmall(String profileImageSmall) { this.profileImageSmall = profileImageSmall; }
 }
