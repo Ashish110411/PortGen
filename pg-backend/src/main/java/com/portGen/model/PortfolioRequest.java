@@ -14,18 +14,31 @@ public class PortfolioRequest {
     private String email;
     private String altEmail;
 
+    // ========== NEW CONTACT FIELDS ==========
+    private String phone;
+    private String location;
+
     private List<Education> educationList;
+
+    // ========== NEW CERTIFICATIONS FIELD ==========
+    private List<Certification> certifications;
+
     private List<ProjectGroup> projects;
-    private List<Skill> skills;
+    private List<SkillGroup> skills;
+
     private List<String> roles;
     private List<String> selectedComponents;
 
+    // ========== NEW PROFESSIONAL STATS FIELD ==========
+    private List<ProfessionalStat> professionalStats;
+
     private SocialLinks socialLinks = new SocialLinks();
 
-    private String profileImage;        // 👈 NEW
-    private String profileImageSmall;   // 👈 NEW
+    private String profileImage;
+    private String profileImageSmall;
 
-    // Getters and Setters
+    // ========== GETTERS AND SETTERS ==========
+
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
 
@@ -50,20 +63,35 @@ public class PortfolioRequest {
     public String getAltEmail() { return altEmail; }
     public void setAltEmail(String altEmail) { this.altEmail = altEmail; }
 
+    // ========== NEW CONTACT GETTERS/SETTERS ==========
+    public String getPhone() { return phone; }
+    public void setPhone(String phone) { this.phone = phone; }
+
+    public String getLocation() { return location; }
+    public void setLocation(String location) { this.location = location; }
+
     public List<Education> getEducationList() { return educationList; }
     public void setEducationList(List<Education> educationList) { this.educationList = educationList; }
+
+    // ========== NEW CERTIFICATIONS GETTERS/SETTERS ==========
+    public List<Certification> getCertifications() { return certifications; }
+    public void setCertifications(List<Certification> certifications) { this.certifications = certifications; }
 
     public List<ProjectGroup> getProjects() { return projects; }
     public void setProjects(List<ProjectGroup> projects) { this.projects = projects; }
 
-    public List<Skill> getSkills() { return skills; }
-    public void setSkills(List<Skill> skills) { this.skills = skills; }
+    public List<SkillGroup> getSkills() { return skills; }
+    public void setSkills(List<SkillGroup> skills) { this.skills = skills; }
 
     public List<String> getRoles() { return roles; }
     public void setRoles(List<String> roles) { this.roles = roles; }
 
     public List<String> getSelectedComponents() { return selectedComponents; }
     public void setSelectedComponents(List<String> selectedComponents) { this.selectedComponents = selectedComponents; }
+
+    // ========== NEW PROFESSIONAL STATS GETTERS/SETTERS ==========
+    public List<ProfessionalStat> getProfessionalStats() { return professionalStats; }
+    public void setProfessionalStats(List<ProfessionalStat> professionalStats) { this.professionalStats = professionalStats; }
 
     public SocialLinks getSocialLinks() { return socialLinks; }
     public void setSocialLinks(SocialLinks socialLinks) {

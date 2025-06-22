@@ -1,48 +1,106 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/Education.css";
 import { motion } from "framer-motion";
 
-const educationData = {{educationList}};
-
-// Animation effect (same as SkillsJs section)
-const eduEffect = {
-    y: 0,
-    opacity: 1,
-    transition: {
-        duration: 0.4,
-    },
+// Template placeholders for dynamic data
+const educationData = {
+	education: {{educationList}},
+	certifications: {{certifications}}
 };
 
 const Education = () => {
-    return (
-        <section className="education-section" id="education">
-            {/* Heading Animation */}
-            <motion.div
-                whileInView={eduEffect}
-                initial={{ y: "-80px", opacity: 0 }}
-                className="heading"
-            >
-                <p className="heading-sub-text">My Academic Journey</p>
-                <p className="heading-text">Education</p>
-            </motion.div>
+	const [activeTab, setActiveTab] = useState("education");
 
-            <div className="education-container">
-                {educationData.map((edu, index) => (
-                    <motion.div
-                        key={index}
-                        whileInView={eduEffect}
-                        initial={{ y: "-50px", opacity: 0 }}
-                        className="education-card"
-                    >
-                        <h3>{edu.degree}</h3>
-                        <p className="institution">{edu.institution}</p>
-                        <span className="year">{edu.year}</span>
-                        <p className="description">{edu.description}</p>
-                    </motion.div>
-                ))}
-            </div>
-        </section>
-    );
+	const containerVariants = {
+		hidden: { opacity: 0 },
+		visible: {
+			opacity: 1,
+			transition: {
+				staggerChildren: 0.1,
+				delayChildren: 0.1
+			}
+		}
+	};
+
+	const cardVariants = {
+		hidden: { y: 30, opacity: 0 },
+		visible: {
+			y: 0,
+			opacity: 1,
+			transition: { duration: 0.5, ease: "easeOut" }
+		}
+	};
+
+	return (
+		<section className="education-section" id="education">
+			<div className="container">
+				{/* Section Header */}
+				<div className="heading">
+					<span className="heading-sub-text">Academic Journey</span>
+					<h2 className="heading-text">Education & Certifications</h2>
+				</div>
+
+				{/* Tab Buttons */}
+				<div className="tab-buttons">
+					<button
+						className={`tab-btn ${activeTab === "education" ? "active" : ""}`}
+						onClick={() => setActiveTab("education")}
+					>
+						Education
+					</button>
+					<button
+						className={`tab-btn ${activeTab === "certifications" ? "active" : ""}`}
+						onClick={() => setActiveTab("certifications")}
+					>
+						Certifications
+					</button>
+				</div>
+
+				{/* Tab Content */}
+				<motion.div
+					key={activeTab}
+					variants={containerVariants}
+					initial="hidden"
+					animate="visible"
+					className="tab-content"
+				>
+					<div className="education-grid">
+						{activeTab === "education" &&
+							educationData.education.map((edu, index) => (
+								<motion.div
+									key={index}
+									variants={cardVariants}
+									className="education-card"
+									whileHover={{ scale: 1.02, y: -5 }}
+									transition={{ duration: 0.3 }}
+								>
+									<h3 className="card-title">{edu.degree || edu.title}</h3>
+									<p className="card-institution">{edu.institution}</p>
+									<span className="card-year">{edu.year}</span>
+								</motion.div>
+							))
+						}
+						
+						{activeTab === "certifications" &&
+							educationData.certifications.map((cert, index) => (
+								<motion.div
+									key={index}
+									variants={cardVariants}
+									className="education-card"
+									whileHover={{ scale: 1.02, y: -5 }}
+									transition={{ duration: 0.3 }}
+								>
+									<h3 className="card-title">{cert.title || cert.degree}</h3>
+									<p className="card-institution">{cert.institution}</p>
+									<span className="card-year">{cert.year}</span>
+								</motion.div>
+							))
+						}
+					</div>
+				</motion.div>
+			</div>
+		</section>
+	);
 };
 
 export default Education;

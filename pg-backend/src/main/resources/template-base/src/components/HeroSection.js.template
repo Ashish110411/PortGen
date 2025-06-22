@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import "../styles/HeroSection.css";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { BiDownload } from "react-icons/bi";
@@ -8,90 +8,165 @@ import { motion } from "framer-motion";
 import CV from "../data/resume.pdf";
 
 const HeroSection = ({ nav, handleNav }) => {
-	const scrollToTop = () => {
-		scroll.scrollToTop({ smooth: "linear" });
-	};
-
 	const [visible, setVisible] = useState(false);
 	const [text, setText] = useState("");
-	const words = {{roles}};
+	const words = {{roles}}; // e.g. ["Accountant", "Govt Servant", "Finance Advisor"]
 	const [wordIndex, setWordIndex] = useState(0);
 	const [charIndex, setCharIndex] = useState(0);
 	const [isDeleting, setIsDeleting] = useState(false);
 
-	useEffect(() => {
-		window.addEventListener("scroll", toggleVisible);
-		return () => window.removeEventListener("scroll", toggleVisible);
+	const scrollToTop = useCallback(() => {
+		scroll.scrollToTop({ 
+			smooth: "easeInOutQuint",
+			duration: 1000 
+		});
+	}, []);
+
+	const toggleVisible = useCallback(() => {
+		const scrolled = document.documentElement.scrollTop;
+		setVisible(scrolled > 300);
 	}, []);
 
 	useEffect(() => {
+		window.addEventListener("scroll", toggleVisible);
+		return () => window.removeEventListener("scroll", toggleVisible);
+	}, [toggleVisible]);
+
+	useEffect(() => {
+		const typingSpeed = isDeleting ? 50 : 100;
+		const pauseTime = isDeleting ? 50 : (charIndex === words[wordIndex].length ? 2000 : typingSpeed);
+
 		const timeout = setTimeout(() => {
-			if (!isDeleting) {
+			if (!isDeleting && charIndex < words[wordIndex].length) {
 				setText(words[wordIndex].substring(0, charIndex + 1));
-				setCharIndex(charIndex + 1);
-				if (charIndex + 1 === words[wordIndex].length) {
-					setTimeout(() => setIsDeleting(true), 1000);
-				}
-			} else {
+				setCharIndex(prev => prev + 1);
+			} else if (isDeleting && charIndex > 0) {
 				setText(words[wordIndex].substring(0, charIndex - 1));
-				setCharIndex(charIndex - 1);
-				if (charIndex === 0) {
-					setIsDeleting(false);
-					setWordIndex((wordIndex + 1) % words.length);
-				}
+				setCharIndex(prev => prev - 1);
+			} else if (!isDeleting && charIndex === words[wordIndex].length) {
+				setIsDeleting(true);
+			} else if (isDeleting && charIndex === 0) {
+				setIsDeleting(false);
+				setWordIndex(prev => (prev + 1) % words.length);
 			}
-		}, isDeleting ? 50 : 100);
+		}, pauseTime);
+
 		return () => clearTimeout(timeout);
-	}, [charIndex, isDeleting, wordIndex]);
+	}, [charIndex, isDeleting, wordIndex, words]);
 
-	const toggleVisible = () => {
-		const scrolled = document.documentElement.scrollTop;
-		setVisible(scrolled > 300);
-	};
-
-	const heroVariants = {
-		hidden: { opacity: 0, y: "-50%" },
-		visible: { opacity: 1, y: 0, transition: { duration: 1.4 } },
-	};
-
-	const contactVariants = {
-		hidden: { opacity: 0, x: "-50%" },
-		visible: { opacity: 1, x: 0, transition: { duration: 1.4 } },
-	};
-
-	const menuVariants = {
+	const containerVariants = {
 		hidden: { opacity: 0 },
 		visible: {
 			opacity: 1,
-			scale: [1, 1.2, 1.5, 1.2, 1],
-			rotate: [0, 0, 360, 360, 360],
-			borderRadius: ["50%", "50%", "50%", "50%", "50%"],
-			transition: { duration: 1 },
+			transition: {
+				staggerChildren: 0.3,
+				delayChildren: 0.2
+			}
+		}
+	};
+
+	const itemVariants = {
+		hidden: { opacity: 0, y: 30 },
+		visible: {
+			opacity: 1,
+			y: 0,
+			transition: {
+				duration: 0.8,
+				ease: "easeOut"
+			}
+		}
+	};
+
+	const buttonVariants = {
+		hidden: { opacity: 0, scale: 0.8 },
+		visible: {
+			opacity: 1,
+			scale: 1,
+			transition: {
+				duration: 0.6,
+				ease: "easeOut",
+				delay: 1
+			}
 		},
+		hover: {
+			scale: 1.05,
+			transition: { duration: 0.2 }
+		},
+		tap: {
+			scale: 0.95
+		}
+	};
+
+	const iconVariants = {
+		hidden: { opacity: 0, rotate: -180 },
+		visible: {
+			opacity: 1,
+			rotate: 0,
+			transition: {
+				duration: 0.6,
+				ease: "easeOut"
+			}
+		},
+		hover: {
+			rotate: 180,
+			scale: 1.1,
+			transition: { duration: 0.3 }
+		}
 	};
 
 	return (
 		<div className='hero-section' name='home' id='home'>
 			<div className='hero-overlay'></div>
-			<motion.div variants={menuVariants} initial='hidden' whileInView='visible' onClick={handleNav} className='menu-icon'>
+			
+			<motion.div 
+				variants={iconVariants} 
+				initial='hidden' 
+				animate='visible'
+				whileHover='hover'
+				onClick={handleNav} 
+				className='menu-icon'
+			>
 				{nav ? <FaTimes /> : <FaBars />}
 			</motion.div>
-			<motion.div variants={heroVariants} initial='hidden' whileInView='visible' className={visible ? "to-top-icon show" : "to-top-icon hide"} onClick={scrollToTop}>
+
+			<motion.div 
+				variants={iconVariants}
+				initial='hidden'
+				animate={visible ? 'visible' : 'hidden'}
+				whileHover='hover'
+				className={`to-top-icon ${visible ? 'show' : ''}`}
+				onClick={scrollToTop}
+			>
 				<AiOutlineArrowUp />
 			</motion.div>
-			<motion.div variants={heroVariants} initial='hidden' whileInView='visible' className='hero-content'>
-				<p className='hero-intro'>
+
+			<motion.div 
+				variants={containerVariants}
+				initial='hidden'
+				animate='visible'
+				className='hero-content'
+			>
+				<motion.p variants={itemVariants} className='hero-intro'>
 					<span>{{name}}</span>
-				</p>
-				<p className='hero-desc'>
+				</motion.p>
+				
+				<motion.p variants={itemVariants} className='hero-desc'>
 					I'm a <span className='hero-desc-sub'>{text}</span>
-				</p>
+				</motion.p>
 			</motion.div>
-			<motion.span variants={contactVariants} initial='hidden' whileInView='visible'>
-				<a href={CV} download='Resume' className='hero-contact'>
-					Download CV <BiDownload className='cv-icon' />
-				</a>
-			</motion.span>
+
+			<motion.a
+				href={CV}
+				download='{{name}}_Resume'
+				className='hero-contact'
+				variants={buttonVariants}
+				initial='hidden'
+				animate='visible'
+				whileHover='hover'
+				whileTap='tap'
+			>
+				Download CV <BiDownload className='cv-icon' />
+			</motion.a>
 		</div>
 	);
 };

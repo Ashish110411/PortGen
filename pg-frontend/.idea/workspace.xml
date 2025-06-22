@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="82ed381d-30b1-4829-93b4-cd225d4e39df" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/global.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/java/com/portGen/model/PortfolioRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../pg-backend/src/main/java/com/portGen/model/PortfolioRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/java/com/portGen/service/PortfolioGeneratorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../pg-backend/src/main/java/com/portGen/service/PortfolioGeneratorService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/java/com/portGen/util/TemplateProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/../pg-backend/src/main/java/com/portGen/util/TemplateProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/template-base/src/components/Skills.js.template" beforeDir="false" afterPath="$PROJECT_DIR$/../pg-backend/src/main/resources/template-base/src/components/Skills.js.template" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PortfolioForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PortfolioForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ProjectInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ProjectInput.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/global.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="2yp0dIEJAdQxPj737uOgpnUevT0" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\Jetbrains\\WebStorm\\WebStorm 2024.3.2.1\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Coding\PortGen\pg-frontend\src\components" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-WS-251.25410.117" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="82ed381d-30b1-4829-93b4-cd225d4e39df" name="Changes" comment="" />
+      <created>1750516293005</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1750516293005</updated>
+      <workItem from="1750516294435" duration="1225000" />
+      <workItem from="1750526570753" duration="7464000" />
+      <workItem from="1750573306198" duration="428000" />
+      <workItem from="1750574463749" duration="16721000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

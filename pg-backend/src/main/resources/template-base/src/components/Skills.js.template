@@ -1,54 +1,228 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/Skills.css";
 import { motion } from "framer-motion";
 
-// Injected data placeholder — replaced by backend
+// Skills data - template variable from backend
 const SkillsData = {{skillsData}};
 
-// Dynamically resolve image icons from /src/images
-const resolveIcon = (icon) => require(`../images/${icon}`);
+// Fallback icon resolver
+const resolveIcon = (icon) => {
+	try {
+		return require(`../images/${icon}`);
+	} catch (error) {
+		// Create a simple SVG placeholder for missing icons
+		return `data:image/svg+xml;base64,${btoa(`
+			<svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<rect width="72" height="72" rx="12" fill="url(#gradient)" />
+				<path d="M36 20L46 30H42V44H30V30H26L36 20Z" fill="white" opacity="0.8"/>
+				<defs>
+					<linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+						<stop offset="0%" style="stop-color:#4F46E5"/>
+						<stop offset="100%" style="stop-color:#7C3AED"/>
+					</linearGradient>
+				</defs>
+			</svg>
+		`)}`;
+	}
+};
 
 const Skills = () => {
-	const skillEffect = {
-		y: 0,
-		opacity: 1,
-		transition: { duration: 1.4 },
+	const [hoveredSkill, setHoveredSkill] = useState(null);
+
+	const containerVariants = {
+		hidden: { opacity: 0 },
+		visible: {
+			opacity: 1,
+			transition: {
+				staggerChildren: 0.2,
+				delayChildren: 0.1
+			}
+		}
+	};
+
+	const headingVariants = {
+		hidden: { 
+			y: -50, 
+			opacity: 0 
+		},
+		visible: {
+			y: 0,
+			opacity: 1,
+			transition: { 
+				duration: 0.8, 
+				ease: "easeOut" 
+			}
+		}
+	};
+
+	const categoryVariants = {
+		hidden: { 
+			y: 50, 
+			opacity: 0 
+		},
+		visible: {
+			y: 0,
+			opacity: 1,
+			transition: { 
+				duration: 0.6, 
+				ease: "easeOut" 
+			}
+		}
+	};
+
+	const skillVariants = {
+		hidden: { 
+			scale: 0.8, 
+			opacity: 0 
+		},
+		visible: {
+			scale: 1,
+			opacity: 1,
+			transition: { 
+				duration: 0.5, 
+				ease: "easeOut" 
+			}
+		}
 	};
 
 	return (
-		<div className="skills" id="skills">
+		<section className="skills" id="skills">
 			<div className="container">
-				{/* Heading */}
 				<motion.div
-					whileInView={skillEffect}
-					initial={{ y: "-80px", opacity: 0 }}
-					className="heading"
+					variants={containerVariants}
+					initial="hidden"
+					whileInView="visible"
+					viewport={{ once: true, amount: 0.3 }}
+					className="skills-wrapper"
 				>
-					<p className="heading-sub-text">What I work with</p>
-					<p className="heading-text">My Skills</p>
-				</motion.div>
+					{/* Section Header */}
+					<motion.div variants={headingVariants} className="heading">
+						<span className="heading-sub-text">Professional Expertise</span>
+						<h2 className="heading-text">My Skills & Competencies</h2>
+						<div className="heading-divider"></div>
+					</motion.div>
 
-				{/* Skill Cards */}
-				<motion.div
-					whileInView={skillEffect}
-					className="skills-box"
-					initial={{ y: "-80px", opacity: 0 }}
-				>
-					{SkillsData.map((skill, idx) => (
-						<div className="skill-card" key={idx}>
-							<div className="skill-icon">
-								<img
-									src={resolveIcon(skill.icon)}
-									alt={skill.name}
-									className="skill-img"
-								/>
-							</div>
-							<small className="skill-desc">{skill.name}</small>
+					{/* Skills Categories */}
+					<div className="skills-categories">
+						{SkillsData.map((category, categoryIndex) => (
+							<motion.div
+								key={categoryIndex}
+								variants={categoryVariants}
+								className="skill-category-block"
+							>
+								<div className="category-header">
+									<h3 className="category-title">{category.category}</h3>
+									<div className="category-icon">
+										<span className="category-number">{categoryIndex + 1}</span>
+									</div>
+								</div>
+
+								<div className="skills-grid">
+									{category.skills.map((skill, skillIndex) => (
+										<motion.div
+											key={skillIndex}
+											variants={skillVariants}
+											className="skill-card"
+											onMouseEnter={() => setHoveredSkill(`${categoryIndex}-${skillIndex}`)}
+											onMouseLeave={() => setHoveredSkill(null)}
+											whileHover={{ 
+												scale: 1.05,
+												transition: { duration: 0.2 }
+											}}
+											whileTap={{ scale: 0.95 }}
+										>
+											<div className="skill-content">
+												<div className="skill-icon-wrapper">
+													<img
+														src={resolveIcon(skill.icon)}
+														alt={skill.name}
+														className="skill-img"
+													/>
+													<div className="skill-glow"></div>
+												</div>
+												
+												<div className="skill-info">
+													<h4 className="skill-name">{skill.name}</h4>
+													<div className="skill-level-container">
+														<div className="skill-level-bar">
+															<motion.div
+																className="skill-level-fill"
+																initial={{ width: 0 }}
+																whileInView={{ width: `${skill.level}%` }}
+																transition={{ duration: 1, delay: skillIndex * 0.1 }}
+																viewport={{ once: true }}
+															></motion.div>
+														</div>
+														<span className="skill-percentage">{skill.level}%</span>
+													</div>
+												</div>
+											</div>
+
+											{/* Hover overlay */}
+											<div className={`skill-overlay ${hoveredSkill === `${categoryIndex}-${skillIndex}` ? 'active' : ''}`}>
+												<div className="overlay-content">
+													<span className="overlay-text">Expert Level</span>
+													<div className="overlay-stars">
+														{[...Array(5)].map((_, i) => (
+															<span key={i} className={`star ${i < Math.floor(skill.level / 20) ? 'filled' : ''}`}>★</span>
+														))}
+													</div>
+												</div>
+											</div>
+										</motion.div>
+									))}
+								</div>
+
+								{categoryIndex < SkillsData.length - 1 && (
+									<div className="category-divider">
+										<div className="divider-line"></div>
+									</div>
+								)}
+							</motion.div>
+						))}
+					</div>
+
+					{/* Skills Summary */}
+					<motion.div 
+						variants={categoryVariants}
+						className="skills-summary"
+					>
+						<div className="summary-stats">
+							{Array.isArray({{professionalStats}}) ? (
+								<>
+									{ {{professionalStats}}.map((stat, idx) => (
+										<div className="stat-item" key={idx}>
+											<span className="stat-number">{stat.number}</span>
+											<span className="stat-label">{stat.label}</span>
+										</div>
+									))}
+								</>
+							) : (
+								<>
+									{/* Fallback (if no professionalStats) */}
+									<div className="stat-item">
+										<span className="stat-number">15+</span>
+										<span className="stat-label">Years Experience</span>
+									</div>
+									<div className="stat-item">
+										<span className="stat-number">24</span>
+										<span className="stat-label">Core Skills</span>
+									</div>
+									<div className="stat-item">
+										<span className="stat-number">4</span>
+										<span className="stat-label">Specializations</span>
+									</div>
+									<div className="stat-item">
+										<span className="stat-number">98%</span>
+										<span className="stat-label">Success Rate</span>
+									</div>
+								</>
+							)}
 						</div>
-					))}
+					</motion.div>
 				</motion.div>
 			</div>
-		</div>
+		</section>
 	);
 };
 

@@ -1,35 +1,106 @@
 import React from "react";
-import { FiPaperclip } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { FiExternalLink, FiCalendar, FiMapPin } from "react-icons/fi";
 
-const WorkCard = ({ w, tabId }) => {
+const WorkCard = ({ w, tabId, index }) => {
+	const cardVariants = {
+		hidden: { 
+			opacity: 0, 
+			y: 30,
+			scale: 0.9
+		},
+		visible: {
+			opacity: 1,
+			y: 0,
+			scale: 1,
+			transition: { 
+				duration: 0.5, 
+				ease: "easeOut",
+				delay: index * 0.1
+			}
+		}
+	};
+
 	return (
-		<div className="works-card">
+		<motion.div 
+			variants={cardVariants}
+			className="works-card"
+			whileHover={{ 
+				y: -8, 
+				scale: 1.02,
+				transition: { duration: 0.3 }
+			}}
+			whileTap={{ scale: 0.98 }}
+		>
 			<div className="works-container">
-				<div className="top-work">
-					<div className="right">
-						{w.link && (
-							<Link
-								className="work-link"
-								to={w.link}
-								target="_blank"
-								rel="noopener noreferrer"
-							>
-								<FiPaperclip />
-							</Link>
+				{/* Card Header */}
+				<div className="card-header">
+					<div className="project-type">
+						<span className={`type-badge ${tabId}`}>
+							{tabId === 'financial' && '💰'}
+							{tabId === 'government' && '🏛️'}
+							{tabId === 'advisory' && '📊'}
+							{tabId === 'achievements' && '🏆'}
+						</span>
+					</div>
+					{w.link && (
+						<a
+							className="work-link"
+							href={w.link}
+							target="_blank"
+							rel="noopener noreferrer"
+							onClick={(e) => e.stopPropagation()}
+						>
+							<FiExternalLink />
+						</a>
+					)}
+				</div>
+
+				{/* Card Content */}
+				<div className="card-content">
+					<h3 className="work-title">{w.title || "Untitled Project"}</h3>
+					<p className="work-desc">{w.description || "No description available."}</p>
+					
+					{/* Project Details */}
+					<div className="project-details">
+						{w.duration && (
+							<div className="detail-item">
+								<FiCalendar className="detail-icon" />
+								<span>{w.duration}</span>
+							</div>
+						)}
+						{w.location && (
+							<div className="detail-item">
+								<FiMapPin className="detail-icon" />
+								<span>{w.location}</span>
+							</div>
+						)}
+						{w.value && (
+							<div className="detail-item">
+								<span className="value-label">Value:</span>
+								<span className="value-amount">{w.value}</span>
+							</div>
 						)}
 					</div>
 				</div>
-				<div className="mid-work">
-					<p className="work-title">{w.title || "Untitled"}</p>
-					<p className="work-desc">{w.description || "No description."}</p>
-				</div>
-				<div className="bottom-work">
-					{Array.isArray(w.tech) &&
-						w.tech.map((tech, i) => <small key={i}>{tech}</small>)}
+
+				{/* Card Footer */}
+				<div className="card-footer">
+					{w.skills && Array.isArray(w.skills) && (
+						<div className="skills-tags">
+							{w.skills.map((skill, i) => (
+								<span key={i} className="skill-tag">{skill}</span>
+							))}
+						</div>
+					)}
+					{w.status && (
+						<div className={`status-badge ${w.status.toLowerCase().replace(' ', '-')}`}>
+							{w.status}
+						</div>
+					)}
 				</div>
 			</div>
-		</div>
+		</motion.div>
 	);
 };
 

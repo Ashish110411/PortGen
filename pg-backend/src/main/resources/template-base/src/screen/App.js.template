@@ -8,36 +8,82 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setTimeout(() => setLoading(false), 3000);
+    setTimeout(() => setLoading(false), 2500);
   }, []);
 
   const loadText = {
-    hidden: { opacity: 0 },
+    hidden: {
+      opacity: 0,
+      scale: 0.8
+    },
     visible: {
       opacity: 1,
-      transition: { duration: 1 },
+      scale: 1,
+      transition: {
+        duration: 1.2,
+        ease: "easeOut"
+      },
     },
   };
 
+  const svgVariants = {
+    hidden: {
+      opacity: 0
+    },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.5
+      }
+    }
+  };
+
+  // Dynamic SVG width based on name length
+  const nameLength = "{{name}}".length;
+  const svgWidth = Math.max(320, nameLength * 15 + 100);
+
   return (
-    loading ? (
-      <div className="loader">
-        <div className="svg-wrapper">
-          <svg height="60" width="320" xmlns="http://www.w3.org/2000/svg">
-            <rect className="shape" height="60" width="320" />
-          </svg>
-          <motion.p variants={loadText} initial='hidden' animate='visible' className="text">
-            {{name}}
-          </motion.p>
-        </div>
-      </div>
-    ) : (
-      <div className="App">
-        <Router>
-          <HomePage />
-        </Router>
-      </div>
-    )
+      loading ? (
+          <div className="loader">
+            <motion.div
+                className="svg-wrapper"
+                variants={svgVariants}
+                initial="hidden"
+                animate="visible"
+            >
+              <svg height="60" width={svgWidth} xmlns="http://www.w3.org/2000/svg">
+                <rect className="shape" height="60" width={svgWidth} />
+              </svg>
+              <motion.div
+                  variants={loadText}
+                  initial='hidden'
+                  animate='visible'
+                  className="text-container"
+              >
+                <p className="text-main">{{name}}</p>
+              </motion.div>
+            </motion.div>
+
+            {/* Loading Progress Indicator */}
+            <motion.div
+                className="loading-progress"
+                initial={{ width: 0 }}
+                animate={{ width: "100%" }}
+                transition={{ duration: 2.5, ease: "easeInOut" }}
+            />
+          </div>
+      ) : (
+          <motion.div
+              className="App"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8 }}
+          >
+            <Router>
+              <HomePage />
+            </Router>
+          </motion.div>
+      )
   );
 }
 

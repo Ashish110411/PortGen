@@ -1,24 +1,90 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { BiEnvelope } from "react-icons/bi";
 import { BsGithub } from "react-icons/bs";
+import { FiGlobe } from "react-icons/fi";
 
 const NavLinks = ({ handleNav }) => {
+    // Social links data from template processor
+    const socialLinks = {
+        instagram: "{{instagram}}",
+        linkedin: "{{linkedin}}",
+        github: "{{github}}",
+        website: "{{website}}",
+        email: "{{email}}"
+    };
+
     return (
         <ul className='nav-links'>
-            <li onClick={handleNav}>
-                <Link to="{{instagramUrl}}" target='_blank' className='nav-link'><FaInstagram /></Link>
-            </li>
-            <li onClick={handleNav}>
-                <Link to="{{linkedinUrl}}" target='_blank' className='nav-link'><FaLinkedin /></Link>
-            </li>
-            <li onClick={handleNav}>
-                <Link to="{{githubUrl}}" target='_blank' className='nav-link'><BsGithub /></Link>
-            </li>
-            <li onClick={handleNav}>
-                <a href="mailto:{{email}}" target='_blank' className='nav-link' rel="noreferrer"><BiEnvelope /></a>
-            </li>
+            {socialLinks.instagram && (
+                <li onClick={handleNav}>
+                    <a
+                        href={socialLinks.instagram}
+                        target='_blank'
+                        rel="noopener noreferrer"
+                        className='nav-link'
+                        title="Instagram"
+                    >
+                        <FaInstagram />
+                    </a>
+                </li>
+            )}
+
+            {socialLinks.linkedin && (
+                <li onClick={handleNav}>
+                    <a
+                        href={socialLinks.linkedin}
+                        target='_blank'
+                        rel="noopener noreferrer"
+                        className='nav-link'
+                        title="LinkedIn"
+                    >
+                        <FaLinkedin />
+                    </a>
+                </li>
+            )}
+
+            {socialLinks.github && (
+                <li onClick={handleNav}>
+                    <a
+                        href={socialLinks.github}
+                        target='_blank'
+                        rel="noopener noreferrer"
+                        className='nav-link'
+                        title="GitHub"
+                    >
+                        <BsGithub />
+                    </a>
+                </li>
+            )}
+
+            {socialLinks.website && (
+                <li onClick={handleNav}>
+                    <a
+                        href={socialLinks.website}
+                        target='_blank'
+                        rel="noopener noreferrer"
+                        className='nav-link'
+                        title="Website"
+                    >
+                        <FiGlobe />
+                    </a>
+                </li>
+            )}
+
+            {socialLinks.email && (
+                <li onClick={handleNav}>
+                    <a
+                        href={`mailto:${socialLinks.email}`}
+                        target='_blank'
+                        rel="noopener noreferrer"
+                        className='nav-link'
+                        title="Email"
+                    >
+                        <BiEnvelope />
+                    </a>
+                </li>
+            )}
         </ul>
     );
 };

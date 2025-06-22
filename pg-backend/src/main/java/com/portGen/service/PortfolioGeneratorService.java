@@ -3,6 +3,7 @@ package com.portGen.service;
 import com.portGen.model.PortfolioRequest;
 import com.portGen.model.ProjectGroup;
 import com.portGen.model.Skill;
+import com.portGen.model.SkillGroup;
 import com.portGen.util.TemplateProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -57,10 +58,20 @@ public class PortfolioGeneratorService {
         Path iconsDir = Paths.get("src/main/resources/static/skill-icons");
         Path targetIcons = tempDir.resolve("src/images/");
         Files.createDirectories(targetIcons);
-        for (Skill skill : request.getSkills()) {
-            Path icon = iconsDir.resolve(skill.getIcon());
-            Files.copy(icon, targetIcons.resolve(skill.getIcon()), StandardCopyOption.REPLACE_EXISTING);
+//        for (Skill skill : request.getSkills()) {
+//            Path icon = iconsDir.resolve(skill.getIcon());
+//            Files.copy(icon, targetIcons.resolve(skill.getIcon()), StandardCopyOption.REPLACE_EXISTING);
+//        }
+        for (SkillGroup group : request.getSkills()) {
+            if (group.getSkills() != null) {
+                for (Skill skill : group.getSkills()) {
+                    Path icon = iconsDir.resolve(skill.getIcon());
+                    Files.copy(icon, targetIcons.resolve(skill.getIcon()), StandardCopyOption.REPLACE_EXISTING);
+                }
+            }
         }
+
+
 
         // Process all .template files with user data
         Files.walk(tempDir)

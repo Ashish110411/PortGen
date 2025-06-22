@@ -1,68 +1,192 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/About.css";
 import { motion } from "framer-motion";
 import profilePic from "../images/{{profileImage}}";
 
-const About = () => {
+const About = ({
+	name = "{{name}}",
+	about = "{{about}}",
+	aboutParagraph1 = "{{aboutParagraph1}}",
+	aboutParagraph2 = "{{aboutParagraph2}}",
+	aboutParagraph3 = "{{aboutParagraph3}}",
+	aboutParagraph4 = "{{aboutParagraph4}}",
+	skillsData = {{skillsData}},
+	professionalStats = {{professionalStats}}
+}) => {
+	const [imageLoaded, setImageLoaded] = useState(false);
+
+	const containerVariants = {
+		hidden: { opacity: 0 },
+		visible: {
+			opacity: 1,
+			transition: {
+				staggerChildren: 0.3,
+				delayChildren: 0.2
+			}
+		}
+	};
+
+	const fadeInUp = {
+		hidden: {
+			y: 60,
+			opacity: 0
+		},
+		visible: {
+			y: 0,
+			opacity: 1,
+			transition: {
+				duration: 0.8,
+				ease: "easeOut"
+			}
+		}
+	};
+
 	const fadeInLeft = {
-		hidden: { x: "-100%", opacity: 0 },
+		hidden: {
+			x: -80,
+			opacity: 0
+		},
 		visible: {
 			x: 0,
 			opacity: 1,
-			transition: { type: "spring", duration: 2, bounce: 0.3 },
-		},
+			transition: {
+				duration: 0.8,
+				ease: "easeOut"
+			}
+		}
 	};
 
 	const fadeInRight = {
-		hidden: { x: "50%", opacity: 0 },
+		hidden: {
+			x: 80,
+			opacity: 0
+		},
 		visible: {
 			x: 0,
 			opacity: 1,
-			transition: { type: "spring", duration: 2, bounce: 0.3 },
-		},
+			transition: {
+				duration: 0.8,
+				ease: "easeOut"
+			}
+		}
 	};
 
+	const imageVariants = {
+		hidden: {
+			scale: 0.8,
+			opacity: 0
+		},
+		visible: {
+			scale: 1,
+			opacity: 1,
+			transition: {
+				duration: 1,
+				ease: "easeOut"
+			}
+		}
+	};
+
+	const skills = skillsData;
+	const stats = professionalStats;
+
 	return (
-		<div className="about" id="about">
+		<section className="about" id="about">
 			<div className="container">
 				<motion.div
+					variants={containerVariants}
 					initial="hidden"
 					whileInView="visible"
-					variants={fadeInLeft}
-					viewport={{ once: true }}
-					className="heading"
+					viewport={{ once: true, amount: 0.3 }}
+					className="about-wrapper"
 				>
-					<p className="heading-sub-text">Who I am</p>
-					<p className="heading-text">About Me</p>
+					{/* Section Header */}
+					<motion.div variants={fadeInUp} className="heading">
+						<span className="heading-sub-text">Get to know me</span>
+						<h2 className="heading-text">About Me</h2>
+						<div className="heading-divider"></div>
+					</motion.div>
+
+					{/* Main Content */}
+					<div className="split-about">
+						<motion.div
+							variants={fadeInLeft}
+							className="about-content"
+						>
+							<div className="content-text">
+								<p className="intro-text">
+									Hello! I'm <span className="highlight">{name}</span>, {about}.
+								</p>
+
+								{aboutParagraph1 && <p>{aboutParagraph1}</p>}
+								{aboutParagraph2 && <p>{aboutParagraph2}</p>}
+								{aboutParagraph3 && <p>{aboutParagraph3}</p>}
+								{aboutParagraph4 && <p>{aboutParagraph4}</p>}
+							</div>
+
+							{/* Skills Section */}
+							<div className="skills-section">
+								<h3>Core Competencies</h3>
+								<div className="skills-grid">
+									{skills.map((skillGroup, groupIndex) =>
+										skillGroup.skills.map((skill, index) => (
+											<motion.div
+												key={skill.name}
+												className="skill-item"
+												initial={{ opacity: 0, scale: 0.8 }}
+												whileInView={{ opacity: 1, scale: 1 }}
+												transition={{ delay: (groupIndex * skillGroup.skills.length + index) * 0.1, duration: 0.5 }}
+												viewport={{ once: true }}
+											>
+												{skill.name}
+											</motion.div>
+										))
+									)}
+								</div>
+							</div>
+						</motion.div>
+
+						<motion.div
+							variants={fadeInRight}
+							className="about-visual"
+						>
+							{/* Profile Image */}
+							<div className="image-container">
+								<motion.div
+									variants={imageVariants}
+									className="about-img"
+								>
+									<img
+										src={profilePic}
+										alt={`${name} - ${about}`}
+										onLoad={() => setImageLoaded(true)}
+										className={imageLoaded ? 'loaded' : ''}
+									/>
+									<div className="image-overlay"></div>
+								</motion.div>
+							</div>
+
+							{/* Stats Section */}
+							<div className="stats-container">
+								{stats.map((stat, index) => (
+									<motion.div
+										key={stat.label}
+										className="stat-item"
+										initial={{ opacity: 0, y: 20 }}
+										whileInView={{ opacity: 1, y: 0 }}
+										transition={{ delay: index * 0.1, duration: 0.6 }}
+										viewport={{ once: true }}
+										whileHover={{ scale: 1.05 }}
+									>
+										<div className="stat-number">{stat.number}</div>
+										<div className="stat-label">{stat.label}</div>
+									</motion.div>
+								))}
+							</div>
+						</motion.div>
+					</div>
 				</motion.div>
-
-				<div className="split-about">
-					<motion.div
-						initial="hidden"
-						whileInView="visible"
-						variants={fadeInLeft}
-						className="about-content"
-					>
-						<p>{{aboutParagraph1}}</p>
-						<br />
-						<p>{{aboutParagraph2}}</p>
-						<br />
-						<p>{{aboutParagraph3}}</p>
-						<br />
-						<p>{{aboutParagraph4}}</p>
-					</motion.div>
-
-					<motion.div
-						initial="hidden"
-						whileInView="visible"
-						variants={fadeInRight}
-						className="about-img"
-					>
-						<img src={profilePic} alt="Profile" />
-					</motion.div>
-				</div>
 			</div>
-		</div>
+		</section>
 	);
 };
 

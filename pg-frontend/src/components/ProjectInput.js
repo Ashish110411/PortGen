@@ -69,87 +69,104 @@ function ProjectInput({ projects, setProjects }) {
     };
 
     return (
-        <div style={{ marginBottom: "20px" }}>
-            <h2>Projects</h2>
-
+        <div className="project-input-container">
             {projects.map((domain, domainIndex) => (
-                <div key={domainIndex} style={{ marginBottom: "15px" }}>
-                    <label>
-                        Domain:{" "}
-                        <select
-                            value={domain.id}
-                            onChange={(e) =>
-                                handleDomainSelectChange(domainIndex, e.target.value)
-                            }
-                            required
-                        >
-                            <option value="" disabled>
-                                Select Domain
-                            </option>
-                            {projectDomains.map(({ id, label }) => (
-                                <option key={id} value={id}>
-                                    {label}
-                                </option>
-                            ))}
-                        </select>
-                    </label>
-
-                    <div style={{ marginTop: "10px" }}>
-                        <h3>Projects</h3>
-                        {domain.data.map((proj, projIndex) => (
-                            <div
-                                key={projIndex}
-                                style={{ marginBottom: "10px", paddingLeft: "10px" }}
+                <div key={domainIndex} className="project-domain">
+                    <div className="domain-header">
+                        <label className="form-label">
+                            Project Domain:
+                            <select
+                                value={domain.id}
+                                onChange={(e) =>
+                                    handleDomainSelectChange(domainIndex, e.target.value)
+                                }
+                                required
+                                className="input-field domain-select"
                             >
-                                <input
-                                    type="text"
-                                    placeholder="Project Title"
-                                    value={proj.title}
-                                    onChange={(e) =>
-                                        handleProjectChange(domainIndex, projIndex, "title", e.target.value)
-                                    }
-                                    required
-                                    style={{ width: "100%", marginBottom: "6px" }}
-                                />
-                                <textarea
-                                    placeholder="Project Description"
-                                    value={proj.description}
-                                    onChange={(e) =>
-                                        handleProjectChange(domainIndex, projIndex, "description", e.target.value)
-                                    }
-                                    required
-                                    style={{ width: "100%", marginBottom: "6px" }}
-                                />
-                                <input
-                                    type="text"
-                                    placeholder="Tech (comma separated)"
-                                    value={proj.tech.join(", ")}
-                                    onChange={(e) =>
-                                        handleTechChange(domainIndex, projIndex, e.target.value)
-                                    }
-                                    style={{ width: "100%", marginBottom: "6px" }}
-                                />
-                                <input
-                                    type="text"
-                                    placeholder="GitHub or Live Link"
-                                    value={proj.link}
-                                    onChange={(e) =>
-                                        handleProjectChange(domainIndex, projIndex, "link", e.target.value)
-                                    }
-                                    required
-                                    style={{ width: "100%", marginBottom: "6px" }}
-                                />
+                                <option value="" disabled>
+                                    Select Domain
+                                </option>
+                                {projectDomains.map(({ id, label }) => (
+                                    <option key={id} value={id}>
+                                        {label}
+                                    </option>
+                                ))}
+                            </select>
+                        </label>
+
+                        <button
+                            type="button"
+                            onClick={() => removeDomain(domainIndex)}
+                            className="remove-btn domain-remove"
+                        >
+                            Remove Domain
+                        </button>
+                    </div>
+
+                    <div className="projects-section">
+                        <h4 className="projects-title">Projects in {domain.label || "this domain"}</h4>
+
+                        {domain.data.map((proj, projIndex) => (
+                            <div key={projIndex} className="project-item">
+                                <div className="project-fields">
+                                    <div className="form-group">
+                                        <input
+                                            type="text"
+                                            placeholder="Project Title"
+                                            value={proj.title}
+                                            onChange={(e) =>
+                                                handleProjectChange(domainIndex, projIndex, "title", e.target.value)
+                                            }
+                                            required
+                                            className="input-field"
+                                        />
+                                    </div>
+
+                                    <div className="form-group">
+                                        <textarea
+                                            placeholder="Project Description"
+                                            value={proj.description}
+                                            onChange={(e) =>
+                                                handleProjectChange(domainIndex, projIndex, "description", e.target.value)
+                                            }
+                                            required
+                                            className="textarea-field"
+                                            rows="3"
+                                        />
+                                    </div>
+
+                                    <div className="form-row">
+                                        <div className="form-group">
+                                            <input
+                                                type="text"
+                                                placeholder="Technologies used (comma separated)"
+                                                value={proj.tech.join(", ")}
+                                                onChange={(e) =>
+                                                    handleTechChange(domainIndex, projIndex, e.target.value)
+                                                }
+                                                className="input-field"
+                                            />
+                                        </div>
+
+                                        <div className="form-group">
+                                            <input
+                                                type="text"
+                                                placeholder="GitHub or Live Link"
+                                                value={proj.link}
+                                                onChange={(e) =>
+                                                    handleProjectChange(domainIndex, projIndex, "link", e.target.value)
+                                                }
+                                                required
+                                                className="input-field"
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <button
                                     type="button"
                                     onClick={() => removeProject(domainIndex, projIndex)}
-                                    style={{
-                                        backgroundColor: "#e53e3e",
-                                        color: "white",
-                                        border: "none",
-                                        padding: "6px 12px",
-                                        borderRadius: "4px",
-                                        cursor: "pointer",
-                                    }}
+                                    className="remove-btn project-remove"
                                 >
                                     Remove Project
                                 </button>
@@ -159,49 +176,18 @@ function ProjectInput({ projects, setProjects }) {
                         <button
                             type="button"
                             onClick={() => addProject(domainIndex)}
-                            style={{
-                                backgroundColor: "#3182ce",
-                                color: "white",
-                                border: "none",
-                                padding: "8px 16px",
-                                borderRadius: "4px",
-                                cursor: "pointer",
-                                marginTop: "6px",
-                            }}
+                            className="add-btn"
                         >
                             + Add Project
                         </button>
                     </div>
-
-                    <button
-                        type="button"
-                        onClick={() => removeDomain(domainIndex)}
-                        style={{
-                            backgroundColor: "#e53e3e",
-                            color: "white",
-                            border: "none",
-                            padding: "8px 16px",
-                            borderRadius: "4px",
-                            cursor: "pointer",
-                            marginTop: "10px",
-                        }}
-                    >
-                        Remove Domain
-                    </button>
                 </div>
             ))}
 
             <button
                 type="button"
                 onClick={addDomain}
-                style={{
-                    backgroundColor: "#3182ce",
-                    color: "white",
-                    border: "none",
-                    padding: "10px 20px",
-                    borderRadius: "4px",
-                    cursor: "pointer",
-                }}
+                className="add-btn domain-add"
             >
                 + Add New Domain
             </button>

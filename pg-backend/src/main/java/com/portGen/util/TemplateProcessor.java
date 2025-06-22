@@ -1,210 +1,3 @@
-//package com.portGen.util;
-//
-//import com.portGen.model.*;
-//import org.springframework.stereotype.Component;
-//
-//import java.io.IOException;
-//import java.nio.file.Files;
-//import java.nio.file.Path;
-//import java.util.List;
-//import java.util.stream.Collectors;
-//
-//@Component
-//public class TemplateProcessor {
-//
-//    public void processTemplate(Path templatePath, Path outputPath, PortfolioRequest request) throws IOException {
-//        String content = Files.readAllLines(templatePath).stream().collect(Collectors.joining("\n"));
-//
-//        // Basic replacements using safe() to avoid NullPointerException
-//        content = content.replace("{{name}}", safe(request.getName()));
-//        content = content.replace("{{about}}", safe(request.getAbout()));
-//        content = content.replace("{{aboutParagraph1}}", safe(request.getAboutParagraph1()));
-//        content = content.replace("{{aboutParagraph2}}", safe(request.getAboutParagraph2()));
-//        content = content.replace("{{aboutParagraph3}}", safe(request.getAboutParagraph3()));
-//        content = content.replace("{{aboutParagraph4}}", safe(request.getAboutParagraph4()));
-//
-////        content = content.replace("{{linkedinUrl}}", safe(request.getSocialLinks().getLinkedin()));
-////        content = content.replace("{{githubUrl}}", safe(request.getSocialLinks().getGithub()));
-////        content = content.replace("{{instagramUrl}}", safe(request.getSocialLinks().getInstagram()));
-////        content = content.replace("{{whatsappUrl}}", safe(request.getSocialLinks().getWhatsapp()));
-////        content = content.replace("{{websiteUrl}}", safe(request.getSocialLinks().getWebsite()));
-//
-//
-//        content = content.replace("{{email}}", safe(request.getEmail()));
-//        content = content.replace("{{altEmail}}", safe(request.getAltEmail()));
-//
-//        content = content.replace("{{educationList}}", generateEducationJs(request.getEducationList()));
-//        content = content.replace("{{skillsData}}", generateSkillsJs(request.getSkills()));
-//        content = content.replace("{{projects}}", generateProjectsJs(request.getProjects()));
-//        content = content.replace("{{roles}}", generateRolesJs(request.getRoles()));
-//        content = content.replace("{{tabData}}", generateTabDataJs(request.getProjects()));
-//        content = content.replace("{{cvPath}}", "./resume.pdf");
-//
-//
-//        Files.write(outputPath, content.getBytes());
-//    }
-//
-//    private String safe(String value) {
-//        return value == null ? "" : value;
-//    }
-//
-//    private String generateEducationJs(List<Education> list) {
-//        if (list == null) return "[]";
-//        return list.stream()
-//                .map(e -> String.format(
-//                        "{ year: \"%s\", degree: \"%s\", institution: \"%s\", description: \"\" }",
-//                        safe(e.getYear()), safe(e.getDegree()), safe(e.getInstitution())
-//                ))
-//                .collect(Collectors.joining(",\n        ", "[\n        ", "\n    ]"));
-//    }
-//
-//    private String generateSkillsJs(List<Skill> skills) {
-//        if (skills == null) return "[]";
-//        return skills.stream()
-//                .map(s -> String.format("{ name: \"%s\", icon: \"%s\" }", safe(s.getName()), safe(s.getIcon())))
-//                .collect(Collectors.joining(",\n        ", "[\n        ", "\n    ]"));
-//    }
-//
-//    private String generateProjectsJs(List<Project> projects) {
-//        if (projects == null) return "[]";
-//        return projects.stream()
-//                .map(p -> String.format("{ title: \"%s\", description: \"%s\", link: \"%s\" }",
-//                        safe(p.getTitle()), safe(p.getDescription()), safe(p.getLink())))
-//                .collect(Collectors.joining(",\n        ", "[\n        ", "\n    ]"));
-//    }
-//
-//    private String generateRolesJs(List<String> roles) {
-//        if (roles == null) return "[]";
-//        return roles.stream().map(this::safe).map(r -> "\"" + r + "\"").collect(Collectors.joining(", ", "[", "]"));
-//    }
-//
-//    private String generateTabDataJs(List<Project> projects) {
-//        if (projects == null) return "[]";
-//        return projects.stream()
-//                .map(p -> String.format("{ label: \"%s\", content: \"%s\" }",
-//                        safe(p.getTitle()), safe(p.getDescription())))
-//                .collect(Collectors.joining(",\n        ", "[\n        ", "\n    ]"));
-//    }
-//
-//}
-//package com.portGen.util;
-//
-//import com.fasterxml.jackson.databind.ObjectMapper;
-//import com.fasterxml.jackson.databind.ObjectWriter;
-//import com.portGen.model.PortfolioRequest;
-//import org.springframework.stereotype.Component;
-//
-//import java.io.IOException;
-//import java.nio.file.Files;
-//import java.nio.file.Path;
-//
-//@Component
-//public class TemplateProcessor {
-//
-//    private final ObjectWriter prettyWriter = new ObjectMapper().writerWithDefaultPrettyPrinter();
-//
-//    public String processTemplate(String templateContent, PortfolioRequest data) {
-//        return templateContent
-//                .replace("{{name}}", safe(data.getName()))
-//                .replace("{{about}}", safe(data.getAbout()))
-//                .replace("{{aboutParagraph1}}", safe(data.getAboutParagraph1()))
-//                .replace("{{aboutParagraph2}}", safe(data.getAboutParagraph2()))
-//                .replace("{{aboutParagraph3}}", safe(data.getAboutParagraph3()))
-//                .replace("{{aboutParagraph4}}", safe(data.getAboutParagraph4()))
-//                .replace("{{email}}", safe(data.getEmail()))
-//                .replace("{{altEmail}}", safe(data.getAltEmail()))
-//                .replace("{{linkedin}}", safe(data.getSocialLinks().getLinkedin()))
-//                .replace("{{github}}", safe(data.getSocialLinks().getGithub()))
-//                .replace("{{website}}", safe(data.getSocialLinks().getWebsite()))
-//                .replace("{{instagram}}", safe(data.getSocialLinks().getInstagram()))
-//                .replace("{{whatsapp}}", safe(data.getSocialLinks().getWhatsapp()))
-//                .replace("{{roles}}", toJsonSafe(data.getRoles()))
-//                .replace("{{skillsData}}", toJsonSafe(data.getSkills()))
-//                .replace("{{educationList}}", toJsonSafe(data.getEducationList()))
-//                .replace("{{selectedComponents}}", toJsonSafe(data.getSelectedComponents()))
-//                .replace("{{tabData}}", toGroupedTabData(data));
-//    }
-//
-//    public void processTemplate(Path inputPath, Path outputPath, PortfolioRequest data) {
-//        try {
-//            String content = Files.readString(inputPath);
-//            String processed = processTemplate(content, data);
-//            Files.writeString(outputPath, processed);
-//        } catch (IOException e) {
-//            throw new RuntimeException("Failed to process template: " + inputPath, e);
-//        }
-//    }
-//
-//    private String safe(String val) {
-//        return val == null ? "" : val;
-//    }
-//
-//    private String toJsonSafe(Object obj) {
-//        try {
-//            return prettyWriter.writeValueAsString(obj);
-//        } catch (Exception e) {
-//            return "[]";
-//        }
-//    }
-//
-//    private String toGroupedTabData(PortfolioRequest request) {
-//        try {
-//            return prettyWriter.writeValueAsString(
-//                    request.getProjects()
-//                            .stream()
-//                            .collect(java.util.stream.Collectors.groupingBy(
-//                                    p -> safe(extractDomainId(p.getId())),
-//                                    java.util.LinkedHashMap::new,
-//                                    java.util.stream.Collectors.toList()
-//                            ))
-//                            .entrySet()
-//                            .stream()
-//                            .map(e -> {
-//                                String domainId = e.getKey();
-//                                String label = toDomainLabel(domainId);
-//                                return new TabData(domainId, label, e.getValue());
-//                            })
-//                            .toList()
-//            );
-//        } catch (Exception e) {
-//            return "[]";
-//        }
-//    }
-//
-//    private String extractDomainId(String title) {
-//        if (title.toLowerCase().contains("ml") || title.toLowerCase().contains("ai")) return "ml";
-//        if (title.toLowerCase().contains("unity") || title.toLowerCase().contains("game")) return "gamedev";
-//        if (title.toLowerCase().contains("android")) return "android";
-//        if (title.toLowerCase().contains("ios") || title.toLowerCase().contains("swift")) return "ios";
-//        if (title.toLowerCase().contains("web") || title.toLowerCase().contains("react")) return "web";
-//        return "misc";
-//    }
-//
-//    private String toDomainLabel(String domainId) {
-//        return switch (domainId) {
-//            case "ml" -> "ML/AI Projects";
-//            case "gamedev" -> "Game Development";
-//            case "android" -> "Android Dev";
-//            case "ios" -> "iOS Dev";
-//            case "web" -> "Web Projects";
-//            case "misc" -> "Miscellaneous";
-//            default -> domainId;
-//        };
-//    }
-//
-//    private static class TabData {
-//        public String id;
-//        public String label;
-//        public Object data;
-//
-//        public TabData(String id, String label, Object data) {
-//            this.id = id;
-//            this.label = label;
-//            this.data = data;
-//        }
-//    }
-//}
-
 package com.portGen.util;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -215,6 +8,10 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.List;
+import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Component
 public class TemplateProcessor {
@@ -222,7 +19,8 @@ public class TemplateProcessor {
     private final ObjectWriter prettyWriter = new ObjectMapper().writerWithDefaultPrettyPrinter();
 
     public String processTemplate(String templateContent, PortfolioRequest data) {
-        return templateContent
+        String processed = templateContent
+                // Basic replacements
                 .replace("{{name}}", safe(data.getName()))
                 .replace("{{about}}", safe(data.getAbout()))
                 .replace("{{aboutParagraph1}}", safe(data.getAboutParagraph1()))
@@ -231,19 +29,175 @@ public class TemplateProcessor {
                 .replace("{{aboutParagraph4}}", safe(data.getAboutParagraph4()))
                 .replace("{{email}}", safe(data.getEmail()))
                 .replace("{{altEmail}}", safe(data.getAltEmail()))
-                .replace("{{instagramUrl}}", safe(data.getSocialLinks().getInstagram()))
-                .replace("{{linkedinUrl}}", safe(data.getSocialLinks().getLinkedin()))
-                .replace("{{githubUrl}}", safe(data.getSocialLinks().getGithub()))
-                .replace("{{websiteUrl}}", safe(data.getSocialLinks().getWebsite()))
-                .replace("{{whatsappUrl}}", safe(data.getSocialLinks().getWhatsapp()))
+                .replace("{{phone}}", safe(data.getPhone()))
+                .replace("{{location}}", safe(data.getLocation()))
+                .replace("{{profileImage}}", safe(data.getProfileImage()))
+                .replace("{{profileImageSmall}}", safe(data.getProfileImageSmall()))
+
+                // Social links
+                .replace("{{socialLinks.instagram}}", safe(data.getSocialLinks().getInstagram()))
+                .replace("{{socialLinks.linkedin}}", safe(data.getSocialLinks().getLinkedin()))
+                .replace("{{socialLinks.github}}", safe(data.getSocialLinks().getGithub()))
+                .replace("{{socialLinks.website}}", safe(data.getSocialLinks().getWebsite()))
+                .replace("{{socialLinks.whatsapp}}", safe(data.getSocialLinks().getWhatsapp()))
+
+                // JSON arrays for direct use in JavaScript
                 .replace("{{roles}}", toJsonSafe(data.getRoles()))
                 .replace("{{skillsData}}", toJsonSafe(data.getSkills()))
                 .replace("{{educationList}}", toJsonSafe(data.getEducationList()))
-                .replace("{{selectedComponents}}", toJsonSafe(data.getSelectedComponents()))
+                .replace("{{certifications}}", toJsonSafe(data.getCertifications()))
+                .replace("{{professionalStats}}", toJsonSafe(data.getProfessionalStats()))
                 .replace("{{tabData}}", toJsonSafe(data.getProjects()))
-                .replace("{{profileImage}}", safe(data.getProfileImage()))
-                .replace("{{profileImageSmall}}", safe(data.getProfileImageSmall()))
-                ;
+                .replace("{{selectedComponents}}", toJsonSafe(data.getSelectedComponents()));
+
+        // Process conditional blocks
+        processed = processConditionals(processed, data);
+
+        // Process loops
+        processed = processLoops(processed, data);
+
+        return processed;
+    }
+
+    private String processConditionals(String content, PortfolioRequest data) {
+        // Handle {{#if field}} ... {{/if}} blocks
+        Pattern ifPattern = Pattern.compile("\\{\\{#if\\s+(\\w+(?:\\.\\w+)*)\\}\\}(.*?)\\{\\{/if\\}\\}", Pattern.DOTALL);
+        Matcher matcher = ifPattern.matcher(content);
+
+        StringBuffer result = new StringBuffer();
+        while (matcher.find()) {
+            String field = matcher.group(1);
+            String block = matcher.group(2);
+
+            boolean shouldInclude = evaluateCondition(field, data);
+            matcher.appendReplacement(result, shouldInclude ? block : "");
+        }
+        matcher.appendTail(result);
+
+        return result.toString();
+    }
+
+    private String processLoops(String content, PortfolioRequest data) {
+        // Handle {{#each array}} ... {{/each}} blocks
+        Pattern eachPattern = Pattern.compile("\\{\\{#each\\s+(\\w+)\\}\\}(.*?)\\{\\{/each\\}\\}", Pattern.DOTALL);
+        Matcher matcher = eachPattern.matcher(content);
+
+        StringBuffer result = new StringBuffer();
+        while (matcher.find()) {
+            String arrayName = matcher.group(1);
+            String template = matcher.group(2);
+
+            String expanded = expandLoop(arrayName, template, data);
+            matcher.appendReplacement(result, expanded);
+        }
+        matcher.appendTail(result);
+
+        return result.toString();
+    }
+
+    private boolean evaluateCondition(String field, PortfolioRequest data) {
+        switch (field) {
+            case "phone": return data.getPhone() != null && !data.getPhone().isEmpty();
+            case "location": return data.getLocation() != null && !data.getLocation().isEmpty();
+            case "about": return data.getAbout() != null && !data.getAbout().isEmpty();
+            case "aboutParagraph1": return data.getAboutParagraph1() != null && !data.getAboutParagraph1().isEmpty();
+            case "aboutParagraph2": return data.getAboutParagraph2() != null && !data.getAboutParagraph2().isEmpty();
+            case "aboutParagraph3": return data.getAboutParagraph3() != null && !data.getAboutParagraph3().isEmpty();
+            case "aboutParagraph4": return data.getAboutParagraph4() != null && !data.getAboutParagraph4().isEmpty();
+            case "altEmail": return data.getAltEmail() != null && !data.getAltEmail().isEmpty();
+            case "socialLinks.whatsapp": return data.getSocialLinks().getWhatsapp() != null && !data.getSocialLinks().getWhatsapp().isEmpty();
+            case "socialLinks.linkedin": return data.getSocialLinks().getLinkedin() != null && !data.getSocialLinks().getLinkedin().isEmpty();
+            case "socialLinks.github": return data.getSocialLinks().getGithub() != null && !data.getSocialLinks().getGithub().isEmpty();
+            case "socialLinks.website": return data.getSocialLinks().getWebsite() != null && !data.getSocialLinks().getWebsite().isEmpty();
+            case "skills": return data.getSkills() != null && !data.getSkills().isEmpty();
+            case "certifications": return data.getCertifications() != null && !data.getCertifications().isEmpty();
+            case "professionalStats": return data.getProfessionalStats() != null && !data.getProfessionalStats().isEmpty();
+            case "projects": return data.getProjects() != null && !data.getProjects().isEmpty();
+            default: return false;
+        }
+    }
+
+    private String expandLoop(String arrayName, String template, PortfolioRequest data) {
+        StringBuilder result = new StringBuilder();
+
+        switch (arrayName) {
+            case "roles":
+                if (data.getRoles() != null) {
+                    for (String role : data.getRoles()) {
+                        result.append(template.replace("{{this}}", safe(role)));
+                    }
+                }
+                break;
+
+            case "skills":
+                if (data.getSkills() != null) {
+                    for (Object skillGroup : data.getSkills()) {
+                        // Handle skills structure - you'll need to adapt this based on your skills model
+                        result.append(processSkillGroup(template, skillGroup));
+                    }
+                }
+                break;
+
+            case "educationList":
+                if (data.getEducationList() != null) {
+                    for (Object edu : data.getEducationList()) {
+                        result.append(processEducation(template, edu));
+                    }
+                }
+                break;
+
+            case "certifications":
+                if (data.getCertifications() != null) {
+                    for (Object cert : data.getCertifications()) {
+                        result.append(processCertification(template, cert));
+                    }
+                }
+                break;
+
+            case "professionalStats":
+                if (data.getProfessionalStats() != null) {
+                    for (Object stat : data.getProfessionalStats()) {
+                        result.append(processStat(template, stat));
+                    }
+                }
+                break;
+
+            case "projects":
+                if (data.getProjects() != null) {
+                    for (Object project : data.getProjects()) {
+                        result.append(processProject(template, project));
+                    }
+                }
+                break;
+        }
+
+        return result.toString();
+    }
+
+    // Helper methods for processing different object types
+    private String processSkillGroup(String template, Object skillGroup) {
+        // Implement based on your skill group structure
+        return template; // Placeholder
+    }
+
+    private String processEducation(String template, Object education) {
+        // Implement based on your education structure
+        return template; // Placeholder
+    }
+
+    private String processCertification(String template, Object certification) {
+        // Implement based on your certification structure
+        return template; // Placeholder
+    }
+
+    private String processStat(String template, Object stat) {
+        // Implement based on your professional stat structure
+        return template; // Placeholder
+    }
+
+    private String processProject(String template, Object project) {
+        // Implement based on your project structure
+        return template; // Placeholder
     }
 
     public void processTemplate(Path inputPath, Path outputPath, PortfolioRequest data) {
