@@ -9,6 +9,7 @@
 	padding: 8rem 0;
 	position: relative;
 	overflow: hidden;
+	transition: background 0.5s cubic-bezier(.4,0,.2,1), color 0.45s cubic-bezier(.4,0,.2,1);
 }
 
 .contact::before {
@@ -20,6 +21,7 @@
 	bottom: 0;
 	background: radial-gradient(circle at 70% 30%, rgba(120, 119, 198, 0.1) 0%, transparent 50%);
 	pointer-events: none;
+	transition: background 0.5s;
 }
 
 .contact .container {
@@ -52,6 +54,8 @@
 	letter-spacing: 2px;
 	margin-bottom: 1rem;
 	display: block;
+	opacity: 0.9;
+	transition: color 0.3s;
 }
 
 .heading-text {
@@ -64,6 +68,7 @@
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 	background-clip: text;
+	transition: font-size 0.33s, color 0.33s;
 }
 
 .heading-divider {
@@ -73,6 +78,7 @@
 	margin: 0 auto;
 	border-radius: 2px;
 	position: relative;
+	transition: background 0.33s;
 }
 
 .heading-divider::after {
@@ -86,6 +92,7 @@
 	background: var(--nav-blue);
 	border-radius: 50%;
 	box-shadow: 0 0 20px rgba(120, 119, 198, 0.5);
+	transition: background 0.3s, box-shadow 0.3s;
 }
 
 /* ===============================
@@ -96,6 +103,7 @@
 	grid-template-columns: 1fr 1.2fr;
 	gap: 4rem;
 	align-items: start;
+	transition: gap 0.4s;
 }
 
 /* ===============================
@@ -108,6 +116,8 @@
 	padding: 2.5rem;
 	backdrop-filter: blur(10px);
 	height: fit-content;
+	box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+	transition: background 0.33s, border 0.33s, box-shadow 0.33s;
 }
 
 .info-header h3 {
@@ -115,6 +125,7 @@
 	font-weight: 600;
 	color: var(--white);
 	margin-bottom: 1rem;
+	transition: color 0.3s;
 }
 
 .info-header p {
@@ -122,6 +133,7 @@
 	color: rgba(255, 255, 255, 0.8);
 	line-height: 1.6;
 	margin-bottom: 2rem;
+	transition: color 0.3s;
 }
 
 .contact-details {
@@ -137,13 +149,16 @@
 	text-decoration: none;
 	color: inherit;
 	margin-bottom: 0.8rem;
-	transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	transition: all 0.32s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 	border: 1px solid transparent;
+	box-shadow: 0 2px 8px rgba(120,119,198,0.07);
 }
 
 .contact-item:hover {
-	background: rgba(120, 119, 198, 0.1);
-	border-color: rgba(120, 119, 198, 0.3);
+	background: rgba(120, 119, 198, 0.11);
+	border-color: rgba(120, 119, 198, 0.33);
+	transform: translateY(-2px) scale(1.02);
+	box-shadow: 0 10px 24px rgba(120,119,198,0.12);
 }
 
 .contact-icon {
@@ -157,6 +172,8 @@
 	font-size: 1.2rem;
 	color: var(--white);
 	flex-shrink: 0;
+	box-shadow: 0 2px 12px rgba(20,157,221,0.07);
+	transition: background 0.32s, color 0.32s;
 }
 
 .contact-text {
@@ -169,12 +186,14 @@
 	color: rgba(255, 255, 255, 0.7);
 	font-weight: 500;
 	margin-bottom: 0.2rem;
+	transition: color 0.2s;
 }
 
 .contact-value {
 	font-size: 1rem;
 	color: var(--white);
 	font-weight: 500;
+	transition: color 0.2s, font-size 0.2s;
 }
 
 .availability-info {
@@ -182,6 +201,7 @@
 	padding: 1.5rem;
 	border-radius: 12px;
 	border: 1px solid rgba(255, 255, 255, 0.1);
+	transition: background 0.33s, border 0.33s;
 }
 
 .availability-info h4 {
@@ -189,12 +209,14 @@
 	color: var(--white);
 	margin-bottom: 0.8rem;
 	font-weight: 600;
+	transition: color 0.2s;
 }
 
 .availability-info p {
 	font-size: 0.9rem;
 	color: rgba(255, 255, 255, 0.8);
 	margin-bottom: 0.4rem;
+	transition: color 0.2s;
 }
 
 /* ===============================
@@ -206,6 +228,8 @@
 	border-radius: 20px;
 	padding: 2.5rem;
 	backdrop-filter: blur(10px);
+	box-shadow: 0 4px 24px rgba(0,0,0,0.11);
+	transition: background 0.33s, border 0.33s, box-shadow 0.33s;
 }
 
 .form-header h3 {
@@ -213,12 +237,14 @@
 	font-weight: 600;
 	color: var(--white);
 	margin-bottom: 0.8rem;
+	transition: color 0.2s;
 }
 
 .form-header p {
 	font-size: 1rem;
 	color: rgba(255, 255, 255, 0.8);
 	margin-bottom: 2rem;
+	transition: color 0.2s;
 }
 
 .contact-form {
@@ -231,6 +257,7 @@
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	gap: 1.5rem;
+	transition: gap 0.3s;
 }
 
 .form-group {
@@ -246,11 +273,13 @@
 	color: var(--white);
 	font-weight: 500;
 	margin-bottom: 0.8rem;
+	transition: color 0.2s;
 }
 
 .label-icon {
 	color: var(--nav-blue);
 	font-size: 1rem;
+	transition: color 0.2s;
 }
 
 .form-group input,
@@ -262,7 +291,7 @@
 	color: var(--white);
 	font-size: 1rem;
 	font-family: "Poppins", sans-serif;
-	transition: all 0.3s ease;
+	transition: all 0.3s;
 	resize: vertical;
 }
 
@@ -270,13 +299,14 @@
 .form-group textarea:focus {
 	outline: none;
 	border-color: var(--nav-blue);
-	background: rgba(120, 119, 198, 0.1);
-	box-shadow: 0 0 0 3px rgba(120, 119, 198, 0.2);
+	background: rgba(120, 119, 198, 0.11);
+	box-shadow: 0 0 0 3px rgba(120, 119, 198, 0.13);
 }
 
 .form-group input::placeholder,
 .form-group textarea::placeholder {
 	color: rgba(255, 255, 255, 0.5);
+	transition: color 0.2s;
 }
 
 /* Submit Button */
@@ -290,11 +320,12 @@
 	font-weight: 600;
 	font-family: "Poppins", sans-serif;
 	cursor: pointer;
-	transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	transition: all 0.32s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 	position: relative;
 	overflow: hidden;
 	margin-top: 1rem;
 	align-self: flex-start;
+	box-shadow: 0 2px 14px rgba(20,157,221,0.07);
 }
 
 .submit-btn::before {
@@ -304,7 +335,7 @@
 	left: -100%;
 	width: 100%;
 	height: 100%;
-	background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+	background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.18), transparent);
 	transition: left 0.6s;
 }
 
@@ -314,8 +345,8 @@
 
 .submit-btn:hover {
 	background: linear-gradient(135deg, var(--nav-blue-shade), var(--nav-blue));
-	transform: translateY(-2px);
-	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+	transform: translateY(-2px) scale(1.03);
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.23);
 }
 
 .submit-btn:disabled {
@@ -343,6 +374,15 @@
 	border-radius: 50%;
 	animation: spin 1s linear infinite;
 	margin-right: 0.5rem;
+}
+
+.contact-item--disabled {
+	background: rgba(255,255,255,0.04);
+	border-color: rgba(120,119,198,0.06);
+	color: #bbb !important;
+	cursor: not-allowed;
+	opacity: 0.65;
+	box-shadow: none !important;
 }
 
 @keyframes spin {
