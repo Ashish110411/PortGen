@@ -5,15 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="82ed381d-30b1-4829-93b4-cd225d4e39df" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/global.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/java/com/portGen/model/PortfolioRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../pg-backend/src/main/java/com/portGen/model/PortfolioRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/java/com/portGen/service/PortfolioGeneratorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../pg-backend/src/main/java/com/portGen/service/PortfolioGeneratorService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/java/com/portGen/model/SocialLinks.java" beforeDir="false" afterPath="$PROJECT_DIR$/../pg-backend/src/main/java/com/portGen/model/SocialLinks.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/java/com/portGen/util/TemplateProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/../pg-backend/src/main/java/com/portGen/util/TemplateProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/template-base/public/index.html.template" beforeDir="false" afterPath="$PROJECT_DIR$/../pg-backend/src/main/resources/template-base/public/index.html.template" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/template-base/src/components/About.js.template" beforeDir="false" afterPath="$PROJECT_DIR$/../pg-backend/src/main/resources/template-base/src/components/About.js.template" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/template-base/src/components/Contact.js.template" beforeDir="false" afterPath="$PROJECT_DIR$/../pg-backend/src/main/resources/template-base/src/components/Contact.js.template" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/template-base/src/components/Education.js.template" beforeDir="false" afterPath="$PROJECT_DIR$/../pg-backend/src/main/resources/template-base/src/components/Education.js.template" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/template-base/src/components/Skills.js.template" beforeDir="false" afterPath="$PROJECT_DIR$/../pg-backend/src/main/resources/template-base/src/components/Skills.js.template" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/template-base/src/components/WorkCard.js.template" beforeDir="false" afterPath="$PROJECT_DIR$/../pg-backend/src/main/resources/template-base/src/components/WorkCard.js.template" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/template-base/src/components/navbar/NavLinks.js.template" beforeDir="false" afterPath="$PROJECT_DIR$/../pg-backend/src/main/resources/template-base/src/components/navbar/NavLinks.js.template" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/template-base/src/components/navbar/Navbar.js.template" beforeDir="false" afterPath="$PROJECT_DIR$/../pg-backend/src/main/resources/template-base/src/components/navbar/Navbar.js.template" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/template-base/src/screen/App.js.template" beforeDir="false" afterPath="$PROJECT_DIR$/../pg-backend/src/main/resources/template-base/src/screen/App.js.template" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/PortfolioForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PortfolioForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ProjectInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ProjectInput.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/global.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +85,9 @@
       <workItem from="1750516294435" duration="1225000" />
       <workItem from="1750526570753" duration="7464000" />
       <workItem from="1750573306198" duration="428000" />
-      <workItem from="1750574463749" duration="16721000" />
+      <workItem from="1750574463749" duration="16836000" />
+      <workItem from="1750618208225" duration="245000" />
+      <workItem from="1750619902932" duration="3193000" />
     </task>
     <servers />
   </component>

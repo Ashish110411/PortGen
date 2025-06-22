@@ -8,8 +8,6 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.List;
-import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -38,7 +36,7 @@ public class TemplateProcessor {
                 .replace("{{socialLinks.instagram}}", safe(data.getSocialLinks().getInstagram()))
                 .replace("{{socialLinks.linkedin}}", safe(data.getSocialLinks().getLinkedin()))
                 .replace("{{socialLinks.github}}", safe(data.getSocialLinks().getGithub()))
-                .replace("{{socialLinks.website}}", safe(data.getSocialLinks().getWebsite()))
+                .replace("{{socialLinks.twitter}}", safe(data.getSocialLinks().getTwitter()))
                 .replace("{{socialLinks.whatsapp}}", safe(data.getSocialLinks().getWhatsapp()))
 
                 // JSON arrays for direct use in JavaScript
@@ -108,7 +106,7 @@ public class TemplateProcessor {
             case "socialLinks.whatsapp": return data.getSocialLinks().getWhatsapp() != null && !data.getSocialLinks().getWhatsapp().isEmpty();
             case "socialLinks.linkedin": return data.getSocialLinks().getLinkedin() != null && !data.getSocialLinks().getLinkedin().isEmpty();
             case "socialLinks.github": return data.getSocialLinks().getGithub() != null && !data.getSocialLinks().getGithub().isEmpty();
-            case "socialLinks.website": return data.getSocialLinks().getWebsite() != null && !data.getSocialLinks().getWebsite().isEmpty();
+            case "socialLinks.twitter": return data.getSocialLinks().getTwitter() != null && !data.getSocialLinks().getTwitter().isEmpty();
             case "skills": return data.getSkills() != null && !data.getSkills().isEmpty();
             case "certifications": return data.getCertifications() != null && !data.getCertifications().isEmpty();
             case "professionalStats": return data.getProfessionalStats() != null && !data.getProfessionalStats().isEmpty();

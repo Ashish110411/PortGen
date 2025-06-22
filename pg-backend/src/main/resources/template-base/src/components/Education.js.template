@@ -71,27 +71,35 @@ const Education = () => {
 									key={index}
 									variants={cardVariants}
 									className="education-card"
-									whileHover={{ scale: 1.02, y: -5 }}
-									transition={{ duration: 0.3 }}
+									whileHover={{ scale: 1.02, y: -4 }}
+									transition={{ duration: 0.28 }}
 								>
-									<h3 className="card-title">{edu.degree || edu.title}</h3>
-									<p className="card-institution">{edu.institution}</p>
+									<h3 className="card-title" title={edu.degree || edu.title}>
+										{edu.degree || edu.title}
+									</h3>
+									<p className="card-institution" title={edu.institution}>
+										{edu.institution}
+									</p>
 									<span className="card-year">{edu.year}</span>
 								</motion.div>
 							))
 						}
-						
+
 						{activeTab === "certifications" &&
 							educationData.certifications.map((cert, index) => (
 								<motion.div
 									key={index}
 									variants={cardVariants}
 									className="education-card"
-									whileHover={{ scale: 1.02, y: -5 }}
-									transition={{ duration: 0.3 }}
+									whileHover={{ scale: 1.02, y: -4 }}
+									transition={{ duration: 0.28 }}
 								>
-									<h3 className="card-title">{cert.title || cert.degree}</h3>
-									<p className="card-institution">{cert.institution}</p>
+									<h3 className="card-title" title={cert.title || cert.degree}>
+										{cert.title || cert.degree}
+									</h3>
+									<p className="card-institution" title={cert.institution}>
+										{cert.institution}
+									</p>
 									<span className="card-year">{cert.year}</span>
 								</motion.div>
 							))

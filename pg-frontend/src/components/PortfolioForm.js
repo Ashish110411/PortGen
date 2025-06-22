@@ -234,7 +234,7 @@ function PortfolioForm() {
         // Normalize WhatsApp link
         let whatsappLink = form.socialLinks.whatsapp.trim();
         if (/^\d{10}$/.test(whatsappLink)) {
-            whatsappLink = "https://wa.me/" + whatsappLink;
+            whatsappLink = "https://wa.me/91" + whatsappLink;
         }
 
         // Group selected skills by category

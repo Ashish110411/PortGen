@@ -1,92 +1,47 @@
 import React from 'react';
-import { FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { FaInstagram, FaLinkedin } from "react-icons/fa";
 import { BiEnvelope } from "react-icons/bi";
 import { BsGithub } from "react-icons/bs";
 import { FiGlobe } from "react-icons/fi";
 
-const NavLinks = ({ handleNav }) => {
-    // Social links data from template processor
-    const socialLinks = {
-        instagram: "{{instagram}}",
-        linkedin: "{{linkedin}}",
-        github: "{{github}}",
-        website: "{{website}}",
-        email: "{{email}}"
-    };
+const socials = [
+    { name: "instagram", icon: <FaInstagram />, label: "Instagram" },
+    { name: "linkedin", icon: <FaLinkedin />, label: "LinkedIn" },
+    { name: "github", icon: <BsGithub />, label: "GitHub" },
+    { name: "email", icon: <BiEnvelope />, label: "Email" },
+];
 
-    return (
-        <ul className='nav-links'>
-            {socialLinks.instagram && (
-                <li onClick={handleNav}>
-                    <a
-                        href={socialLinks.instagram}
-                        target='_blank'
-                        rel="noopener noreferrer"
-                        className='nav-link'
-                        title="Instagram"
-                    >
-                        <FaInstagram />
-                    </a>
+const NavLinks = ({
+    handleNav,
+    socialLinks = {}
+}) => (
+    <ul className='nav-links'>
+        {socials.map(social => {
+            const value = socialLinks[social.name];
+            const isEmail = social.name === "email";
+            const hasValue = value && !value.startsWith("{{");
+            const link = isEmail ? `mailto:${value}` : value;
+            return (
+                <li key={social.name} onClick={hasValue ? handleNav : undefined}>
+                    {hasValue ? (
+                        <a
+                            href={link}
+                            target={isEmail ? undefined : "_blank"}
+                            rel={isEmail ? undefined : "noopener noreferrer"}
+                            className='nav-link'
+                            title={social.label}
+                        >
+                            {social.icon}
+                        </a>
+                    ) : (
+                        <span className='nav-link nav-link--disabled' title={social.label} style={{opacity:0.35, pointerEvents:'none'}}>
+                            {social.icon}
+                        </span>
+                    )}
                 </li>
-            )}
-
-            {socialLinks.linkedin && (
-                <li onClick={handleNav}>
-                    <a
-                        href={socialLinks.linkedin}
-                        target='_blank'
-                        rel="noopener noreferrer"
-                        className='nav-link'
-                        title="LinkedIn"
-                    >
-                        <FaLinkedin />
-                    </a>
-                </li>
-            )}
-
-            {socialLinks.github && (
-                <li onClick={handleNav}>
-                    <a
-                        href={socialLinks.github}
-                        target='_blank'
-                        rel="noopener noreferrer"
-                        className='nav-link'
-                        title="GitHub"
-                    >
-                        <BsGithub />
-                    </a>
-                </li>
-            )}
-
-            {socialLinks.website && (
-                <li onClick={handleNav}>
-                    <a
-                        href={socialLinks.website}
-                        target='_blank'
-                        rel="noopener noreferrer"
-                        className='nav-link'
-                        title="Website"
-                    >
-                        <FiGlobe />
-                    </a>
-                </li>
-            )}
-
-            {socialLinks.email && (
-                <li onClick={handleNav}>
-                    <a
-                        href={`mailto:${socialLinks.email}`}
-                        target='_blank'
-                        rel="noopener noreferrer"
-                        className='nav-link'
-                        title="Email"
-                    >
-                        <BiEnvelope />
-                    </a>
-                </li>
-            )}
-        </ul>
-    );
-};
+            );
+        })}
+    </ul>
+);
 
 export default NavLinks;

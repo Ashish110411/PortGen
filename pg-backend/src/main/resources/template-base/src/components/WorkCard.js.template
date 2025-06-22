@@ -1,32 +1,40 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { FiExternalLink, FiCalendar, FiMapPin } from "react-icons/fi";
+import { FiGithub, FiLink, FiCalendar, FiMapPin } from "react-icons/fi";
 
 const WorkCard = ({ w, tabId, index }) => {
 	const cardVariants = {
-		hidden: { 
-			opacity: 0, 
+		hidden: {
+			opacity: 0,
 			y: 30,
-			scale: 0.9
+			scale: 0.95
 		},
 		visible: {
 			opacity: 1,
 			y: 0,
 			scale: 1,
-			transition: { 
-				duration: 0.5, 
+			transition: {
+				duration: 0.5,
 				ease: "easeOut",
 				delay: index * 0.1
 			}
 		}
 	};
 
+	// Card width/center CSS suggestion:
+	// Add this to your CSS:
+	// .works-card {
+	//   max-width: 380px;
+	//   min-width: 320px;
+	//   margin: 2rem auto;
+	// }
+
 	return (
-		<motion.div 
+		<motion.div
 			variants={cardVariants}
 			className="works-card"
-			whileHover={{ 
-				y: -8, 
+			whileHover={{
+				y: -8,
 				scale: 1.02,
 				transition: { duration: 0.3 }
 			}}
@@ -35,32 +43,45 @@ const WorkCard = ({ w, tabId, index }) => {
 			<div className="works-container">
 				{/* Card Header */}
 				<div className="card-header">
-					<div className="project-type">
-						<span className={`type-badge ${tabId}`}>
-							{tabId === 'financial' && '💰'}
-							{tabId === 'government' && '🏛️'}
-							{tabId === 'advisory' && '📊'}
-							{tabId === 'achievements' && '🏆'}
-						</span>
+					<span className={`type-badge ${tabId}`}>
+						{tabId === 'financial' && '💰'}
+						{tabId === 'government' && '🏛️'}
+						{tabId === 'advisory' && '📊'}
+						{tabId === 'achievements' && '🏆'}
+					</span>
+					<div className="work-links">
+						{w.github && (
+							<a
+								className="work-link"
+								href={w.github}
+								target="_blank"
+								rel="noopener noreferrer"
+								title="View on GitHub"
+								onClick={e => e.stopPropagation()}
+							>
+								<FiGithub />
+							</a>
+						)}
+						{w.link && (
+							<a
+								className="work-link"
+								href={w.link}
+								target="_blank"
+								rel="noopener noreferrer"
+								title="Open project link"
+								onClick={e => e.stopPropagation()}
+							>
+								<FiLink />
+							</a>
+						)}
 					</div>
-					{w.link && (
-						<a
-							className="work-link"
-							href={w.link}
-							target="_blank"
-							rel="noopener noreferrer"
-							onClick={(e) => e.stopPropagation()}
-						>
-							<FiExternalLink />
-						</a>
-					)}
 				</div>
 
 				{/* Card Content */}
 				<div className="card-content">
 					<h3 className="work-title">{w.title || "Untitled Project"}</h3>
 					<p className="work-desc">{w.description || "No description available."}</p>
-					
+
 					{/* Project Details */}
 					<div className="project-details">
 						{w.duration && (
@@ -85,6 +106,12 @@ const WorkCard = ({ w, tabId, index }) => {
 				</div>
 
 				{/* Card Footer */}
+				{w.tech && Array.isArray(w.tech) && w.tech.length > 0 && (
+					<div className="tech-stack">
+						<strong>Tech Stack:</strong>{" "}
+						{w.tech.join(", ")}
+					</div>
+				)}
 				<div className="card-footer">
 					{w.skills && Array.isArray(w.skills) && (
 						<div className="skills-tags">

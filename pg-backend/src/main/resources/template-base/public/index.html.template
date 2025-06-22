@@ -5,10 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
 
-    <!-- Primary Meta Tags -->
     <title>{{name}} | Portfolio</title>
     <meta name="title" content="{{name}}">
-    <meta name="keywords" content="{{name}}, Portfolio, Web Developer, Game Developer, Video Editor, Front-End Developer, Data Science">
     <meta name="description" content="{{description}}">
 
     <!-- Open Graph / Facebook -->
@@ -25,13 +23,8 @@
     <meta property="twitter:description" content="{{description}}">
     <meta property="twitter:image" content="{{profileImageUrl}}">
 
-    <!-- Google Verification -->
-    <meta name="google-site-verification" content="iXiLuNPlMIfmdJ_jK7TAijoK7VkpplkQerNIRQH5vOQ" />
-
     <!-- Favicon -->
     <link rel="shortcut icon" href="./images/favicon2.png" type="image/x-icon" />
-
-    <!-- Bundle Scripts (Your build process will inject these automatically, like main.js) -->
 </head>
 
 <body>
