@@ -29,23 +29,23 @@ const Skills = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.1
+        staggerChildren: 0.1,
+        delayChildren: 0.2
       }
     }
   };
 
   const headingVariants = {
-    hidden: { y: -50, opacity: 0 },
+    hidden: { y: -30, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
-      transition: { duration: 0.8, ease: "easeOut" }
+      transition: { duration: 0.6, ease: "easeOut" }
     }
   };
 
   const categoryVariants = {
-    hidden: { y: 50, opacity: 0 },
+    hidden: { y: 30, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
@@ -54,33 +54,40 @@ const Skills = () => {
   };
 
   const skillVariants = {
-    hidden: { scale: 0.8, opacity: 0 },
+    hidden: { y: 20, opacity: 0, scale: 0.8 },
     visible: {
-      scale: 1,
+      y: 0,
       opacity: 1,
-      transition: { duration: 0.5, ease: "easeOut" }
+      scale: 1,
+      transition: { duration: 0.4, ease: "easeOut" }
     }
   };
 
   return (
     <section className="skills" id="skills">
       <div className="container">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          className="skills-wrapper"
-        >
+        <div className="skills-wrapper">
           {/* Section Header */}
-          <motion.div variants={headingVariants} className="heading">
-            <span className="heading-sub-text">Skill Set</span>
-            <h2 className="heading-text">My Skills & Competencies</h2>
+          <motion.div
+            variants={headingVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            className="heading"
+          >
+            <span className="heading-sub-text">Technical Expertise</span>
+            <h2 className="heading-text">Skills & Technologies</h2>
             <div className="heading-divider"></div>
           </motion.div>
 
           {/* Skills Categories */}
-          <div className="skills-categories">
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            className="skills-categories"
+          >
             {SkillsData.map((category, categoryIndex) => (
               <motion.div
                 key={categoryIndex}
@@ -88,37 +95,50 @@ const Skills = () => {
                 className="skill-category-block"
               >
                 <h3 className="category-title">{category.category}</h3>
+                <div className="category-divider"></div>
                 <div className="skills-grid simple-skill-icons">
                   {category.skills.map((skill, skillIndex) => (
                     <motion.div
                       key={skillIndex}
                       variants={skillVariants}
                       className="simple-skill"
+                      whileHover={{
+                        y: -8,
+                        scale: 1.05,
+                        transition: { duration: 0.3 }
+                      }}
+                      whileTap={{ scale: 0.95 }}
                     >
                       <img
+                        className="skill-img"
                         src={resolveIcon(skill.icon)}
                         alt={skill.name}
-                        className="skill-img"
+                        onError={(e) => {
+                          e.target.style.display = 'none';
+                        }}
+                        loading="lazy"
                       />
-                      <div className="skill-name">{skill.name}</div>
+                      <p className="skill-name">{skill.name}</p>
                     </motion.div>
                   ))}
                 </div>
-                {/* Only add divider between categories, not after last */}
-                {categoryIndex < SkillsData.length - 1 && (
-                  <div className="category-divider"></div>
-                )}
               </motion.div>
             ))}
-          </div>
+          </motion.div>
 
           {/* Total Skills Counter */}
-          <motion.div variants={categoryVariants} className="skills-summary">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="skills-summary"
+          >
             <div className="skills-total">
-              <span>Total Skills: <strong>{totalSkills}</strong></span>
+              Total Skills: {totalSkills}
             </div>
           </motion.div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

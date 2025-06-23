@@ -56,8 +56,6 @@ const skillGroups = {
     ]
 };
 
-
-
 function PortfolioForm() {
     const [form, setForm] = useState({
         // ========== BASIC INFORMATION ==========
@@ -179,8 +177,8 @@ function PortfolioForm() {
     };
 
     // ========== SKILLS HANDLERS ==========
-    const toggleSkill = (groupName, skillName) => {
-        const skillObj = { name: skillName, icon: skillName.toLowerCase() + ".png" };
+    const toggleSkill = (groupName, skillName, skillIcon) => {
+        const skillObj = { name: skillName, icon: skillIcon };
         const skillExists = form.skills.some((s) => s.name === skillName);
         if (skillExists) {
             setForm({
@@ -311,125 +309,136 @@ function PortfolioForm() {
 
                 {/* ========== BASIC INFORMATION SECTION ========== */}
                 <section className="form-section">
-                    <h2 className="section-title">📝 Basic Information</h2>
+                    <h2 className="section-title">Basic Information</h2>
+                    <p className="section-description">Enter your personal details that will appear on your portfolio</p>
 
                     <div className="form-group">
-                        <label className="form-label">Full Name *</label>
+                        <label className="form-label">Full Name (Required)</label>
+                        <p className="field-description">Your complete name as you want it displayed professionally</p>
                         <input
                             type="text"
                             value={form.name}
                             onChange={(e) => setForm({ ...form, name: e.target.value })}
                             required
                             className="input-field"
-                            placeholder="Enter your full name"
+                            placeholder="e.g., John Smith or Dr. Sarah Johnson"
                         />
                     </div>
 
                     <div className="form-group">
-                        <label className="form-label">About (Short Description) *</label>
+                        <label className="form-label">About - Short Description (Required)</label>
+                        <p className="field-description">A brief 1-2 sentence summary of who you are professionally</p>
                         <textarea
                             value={form.about}
                             onChange={(e) => setForm({ ...form, about: e.target.value })}
                             required
                             className="textarea-field"
-                            placeholder="Brief description about yourself"
+                            placeholder="e.g., Experienced Financial Advisor helping clients achieve their investment goals through strategic planning and risk management"
                         />
                     </div>
 
                     <div className="form-group">
-                        <label className="form-label">About Paragraph 1 *</label>
+                        <label className="form-label">About Paragraph 1 (Required)</label>
+                        <p className="field-description">First detailed paragraph about your background and experience</p>
                         <textarea
                             value={form.aboutParagraph1}
                             onChange={(e) => setForm({ ...form, aboutParagraph1: e.target.value })}
                             required
                             className="textarea-field"
-                            placeholder="First paragraph of your detailed about section"
+                            placeholder="Describe your professional journey, years of experience, and key areas of expertise"
                         />
                     </div>
 
                     <div className="form-group">
-                        <label className="form-label">About Paragraph 2 *</label>
+                        <label className="form-label">About Paragraph 2 (Required)</label>
+                        <p className="field-description">Second paragraph focusing on your achievements and specializations</p>
                         <textarea
                             value={form.aboutParagraph2}
                             onChange={(e) => setForm({ ...form, aboutParagraph2: e.target.value })}
                             required
                             className="textarea-field"
-                            placeholder="Second paragraph of your detailed about section"
+                            placeholder="Highlight your key achievements, certifications, and what sets you apart in your field"
                         />
                     </div>
 
                     <div className="form-group">
                         <label className="form-label">About Paragraph 3 (Optional)</label>
+                        <p className="field-description">Additional details about your approach or philosophy</p>
                         <textarea
                             value={form.aboutParagraph3}
                             onChange={(e) => setForm({ ...form, aboutParagraph3: e.target.value })}
                             className="textarea-field"
-                            placeholder="Third paragraph (optional)"
+                            placeholder="Describe your work philosophy, approach to client service, or industry insights"
                         />
                     </div>
 
                     <div className="form-group">
                         <label className="form-label">About Paragraph 4 (Optional)</label>
+                        <p className="field-description">Personal interests or additional professional details</p>
                         <textarea
                             value={form.aboutParagraph4}
                             onChange={(e) => setForm({ ...form, aboutParagraph4: e.target.value })}
                             className="textarea-field"
-                            placeholder="Fourth paragraph (optional)"
+                            placeholder="Share personal interests, volunteer work, or additional professional involvement"
                         />
                     </div>
                 </section>
 
                 {/* ========== CONTACT INFORMATION SECTION ========== */}
                 <section className="form-section">
-                    <h2 className="section-title">📞 Contact Information</h2>
+                    <h2 className="section-title">Contact Information</h2>
+                    <p className="section-description">Provide ways for potential clients or employers to reach you</p>
 
                     <div className="form-row">
                         <div className="form-group">
-                            <label className="form-label">Email Address *</label>
+                            <label className="form-label">Primary Email Address (Required)</label>
+                            <p className="field-description">Your main professional email address</p>
                             <input
                                 type="email"
                                 value={form.email}
                                 onChange={(e) => setForm({ ...form, email: e.target.value })}
                                 required
                                 className="input-field"
-                                placeholder="your.email@example.com"
+                                placeholder="john.smith@email.com"
                             />
                         </div>
 
                         <div className="form-group">
                             <label className="form-label">Alternate Email (Optional)</label>
+                            <p className="field-description">Secondary email if you have one for business purposes</p>
                             <input
                                 type="email"
                                 value={form.altEmail}
                                 onChange={(e) => setForm({ ...form, altEmail: e.target.value })}
                                 className="input-field"
-                                placeholder="alternate@example.com"
+                                placeholder="alternate.email@company.com"
                             />
                         </div>
                     </div>
 
                     <div className="form-row">
                         <div className="form-group">
-                            <label className="form-label">Phone Number *</label>
+                            <label className="form-label">Phone Number (Required)</label>
+                            <p className="field-description">Professional contact number with country code</p>
                             <input
                                 type="text"
                                 value={form.phone}
                                 onChange={(e) => setForm({ ...form, phone: e.target.value })}
                                 required
                                 className="input-field"
-                                placeholder="+91 99710 71642"
                             />
                         </div>
 
                         <div className="form-group">
-                            <label className="form-label">Location *</label>
+                            <label className="form-label">Location (Required)</label>
+                            <p className="field-description">Your current city, state/province, and country</p>
                             <input
                                 type="text"
                                 value={form.location}
                                 onChange={(e) => setForm({ ...form, location: e.target.value })}
                                 required
                                 className="input-field"
-                                placeholder="City, State, Country"
+                                placeholder="Mumbai, Maharashtra, India or New York, NY, USA"
                             />
                         </div>
                     </div>
@@ -437,96 +446,163 @@ function PortfolioForm() {
 
                 {/* ========== SOCIAL LINKS SECTION ========== */}
                 <section className="form-section">
-                    <h2 className="section-title">🌐 Social Links</h2>
+                    <h2 className="section-title">Professional Social Links</h2>
+                    <p className="section-description">Your professional online presence and social media profiles</p>
 
                     <div className="social-links-grid">
-                        {["linkedin", "github", "website", "instagram", "whatsapp"].map((key) => (
-                            <div key={key} className="form-group">
-                                <label className="form-label">{key.charAt(0).toUpperCase() + key.slice(1)} *</label>
-                                <input
-                                    type="text"
-                                    value={form.socialLinks[key]}
-                                    onChange={(e) => updateSocialLink(key, e.target.value)}
-                                    required
-                                    className="input-field"
-                                    placeholder={`Your ${key} profile/link`}
-                                />
-                            </div>
-                        ))}
+                        <div className="form-group">
+                            <label className="form-label">LinkedIn Profile (Required)</label>
+                            <p className="field-description">Your complete LinkedIn profile URL</p>
+                            <input
+                                type="text"
+                                value={form.socialLinks.linkedin}
+                                onChange={(e) => updateSocialLink("linkedin", e.target.value)}
+                                required
+                                className="input-field"
+                                placeholder="https://linkedin.com/in/yourprofile"
+                            />
+                        </div>
+
+                        <div className="form-group">
+                            <label className="form-label">GitHub Profile (Required)</label>
+                            <p className="field-description">Your GitHub username or profile URL for code repositories</p>
+                            <input
+                                type="text"
+                                value={form.socialLinks.github}
+                                onChange={(e) => updateSocialLink("github", e.target.value)}
+                                required
+                                className="input-field"
+                                placeholder="https://github.com/yourusername or just yourusername"
+                            />
+                        </div>
+
+                        <div className="form-group">
+                            <label className="form-label">Personal Website (Required)</label>
+                            <p className="field-description">Your personal or professional website URL</p>
+                            <input
+                                type="text"
+                                value={form.socialLinks.website}
+                                onChange={(e) => updateSocialLink("website", e.target.value)}
+                                required
+                                className="input-field"
+                                placeholder="https://yourwebsite.com"
+                            />
+                        </div>
+
+                        <div className="form-group">
+                            <label className="form-label">Instagram Profile (Required)</label>
+                            <p className="field-description">Your Instagram handle or profile URL</p>
+                            <input
+                                type="text"
+                                value={form.socialLinks.instagram}
+                                onChange={(e) => updateSocialLink("instagram", e.target.value)}
+                                required
+                                className="input-field"
+                                placeholder="https://instagram.com/yourhandle or @yourhandle"
+                            />
+                        </div>
+
+                        <div className="form-group">
+                            <label className="form-label">WhatsApp Contact (Required)</label>
+                            <p className="field-description">Your WhatsApp number (10 digits) or complete WhatsApp link</p>
+                            <input
+                                type="text"
+                                value={form.socialLinks.whatsapp}
+                                onChange={(e) => updateSocialLink("whatsapp", e.target.value)}
+                                required
+                                className="input-field"
+                                placeholder="9971071642 or https://wa.me/919971071642"
+                            />
+                        </div>
                     </div>
                 </section>
 
                 {/* ========== PROFESSIONAL ROLES SECTION ========== */}
                 <section className="form-section">
-                    <h2 className="section-title">💼 Professional Roles</h2>
+                    <h2 className="section-title">Professional Roles</h2>
+                    <p className="section-description">List your current job titles, positions, or professional roles</p>
 
                     {form.roles.map((role, index) => (
                         <div key={index} className="role-row">
-                            <input
-                                type="text"
-                                value={role}
-                                onChange={(e) => updateRoles(index, e.target.value)}
-                                required
-                                className="input-field role-input"
-                                placeholder="e.g., Financial Advisor, Government Servant"
-                            />
+                            <div className="form-group">
+                                <label className="form-label">Professional Role {index + 1}</label>
+                                <p className="field-description">Your job title, position, or professional designation</p>
+                                <input
+                                    type="text"
+                                    value={role}
+                                    onChange={(e) => updateRoles(index, e.target.value)}
+                                    required
+                                    className="input-field role-input"
+                                    placeholder="e.g., Senior Financial Advisor, Government Policy Analyst, Software Developer"
+                                />
+                            </div>
                             {form.roles.length > 1 && (
                                 <button
                                     type="button"
                                     onClick={() => removeRole(index)}
                                     className="remove-btn"
                                 >
-                                    Remove
+                                    Remove Role
                                 </button>
                             )}
                         </div>
                     ))}
                     <button type="button" onClick={addRole} className="add-btn">
-                        + Add Role
+                        Add Another Role
                     </button>
                 </section>
 
                 {/* ========== PROFESSIONAL STATS SECTION ========== */}
                 <section className="form-section">
-                    <h2 className="section-title">📊 Professional Statistics</h2>
+                    <h2 className="section-title">Professional Statistics</h2>
+                    <p className="section-description">Impressive numbers that showcase your experience and achievements</p>
 
                     {form.professionalStats.map((stat, index) => (
                         <div key={index} className="stat-row">
-                            <input
-                                type="text"
-                                value={stat.number}
-                                onChange={(e) => updateProfessionalStats(index, "number", e.target.value)}
-                                className="input-field stat-input"
-                                placeholder="e.g., 15+, 500+, 98%"
-                                required
-                            />
-                            <input
-                                type="text"
-                                value={stat.label}
-                                onChange={(e) => updateProfessionalStats(index, "label", e.target.value)}
-                                className="input-field stat-input"
-                                placeholder="e.g., Years Experience, Projects Completed"
-                                required
-                            />
+                            <div className="form-group">
+                                <label className="form-label">Statistic Number</label>
+                                <p className="field-description">The numerical value (use + for approximations)</p>
+                                <input
+                                    type="text"
+                                    value={stat.number}
+                                    onChange={(e) => updateProfessionalStats(index, "number", e.target.value)}
+                                    className="input-field stat-input"
+                                    placeholder="15+, 500+, 98%, $2M+"
+                                    required
+                                />
+                            </div>
+                            <div className="form-group">
+                                <label className="form-label">Statistic Description</label>
+                                <p className="field-description">What this number represents</p>
+                                <input
+                                    type="text"
+                                    value={stat.label}
+                                    onChange={(e) => updateProfessionalStats(index, "label", e.target.value)}
+                                    className="input-field stat-input"
+                                    placeholder="Years Experience, Projects Completed, Client Satisfaction Rate"
+                                    required
+                                />
+                            </div>
                             {form.professionalStats.length > 1 && (
                                 <button
                                     type="button"
                                     onClick={() => removeProfessionalStat(index)}
                                     className="remove-btn"
                                 >
-                                    Remove
+                                    Remove Statistic
                                 </button>
                             )}
                         </div>
                     ))}
                     <button type="button" onClick={addProfessionalStat} className="add-btn">
-                        + Add Statistic
+                        Add Another Statistic
                     </button>
                 </section>
 
                 {/* ========== COMPONENT SELECTION SECTION ========== */}
                 <section className="form-section">
-                    <h2 className="section-title">🔧 Portfolio Components</h2>
+                    <h2 className="section-title">Portfolio Sections</h2>
+                    <p className="section-description">Choose which sections to include in your generated portfolio website</p>
 
                     <div className="components-grid">
                         {["HeroSection", "About", "Skills", "Education", "Works", "Contact"].map((comp) => (
@@ -544,7 +620,8 @@ function PortfolioForm() {
 
                 {/* ========== SKILLS SECTION ========== */}
                 <section className="form-section">
-                    <h2 className="section-title">💡 Skills & Expertise</h2>
+                    <h2 className="section-title">Skills and Technical Expertise</h2>
+                    <p className="section-description">Select all technologies, tools, and skills you have experience with</p>
 
                     {Object.entries(skillGroups).map(([group, skills]) => (
                         <div key={group} className="skill-group">
@@ -555,9 +632,19 @@ function PortfolioForm() {
                                         <input
                                             type="checkbox"
                                             checked={form.skills.some((s) => s.name === name)}
-                                            onChange={() => toggleSkill(group, name)}
+                                            onChange={() => toggleSkill(group, name, icon)}
                                         />
-                                        <span className="checkbox-text">{name}</span>
+                                        <div className="skill-content">
+                                            <img
+                                                src={icon}
+                                                alt={name}
+                                                className="skill-icon"
+                                                onError={(e) => {
+                                                    e.target.style.display = 'none';
+                                                }}
+                                            />
+                                            <span className="checkbox-text">{name}</span>
+                                        </div>
                                     </label>
                                 ))}
                             </div>
@@ -567,99 +654,127 @@ function PortfolioForm() {
 
                 {/* ========== EDUCATION SECTION ========== */}
                 <section className="form-section">
-                    <h2 className="section-title">🎓 Education</h2>
+                    <h2 className="section-title">Educational Background</h2>
+                    <p className="section-description">List your degrees, diplomas, and formal education</p>
 
                     {form.educationList.map((edu, index) => (
                         <div key={index} className="education-row">
-                            <input
-                                type="text"
-                                placeholder="Institution"
-                                value={edu.institution}
-                                onChange={(e) => updateEducation(index, "institution", e.target.value)}
-                                required
-                                className="input-field edu-input"
-                            />
-                            <input
-                                type="text"
-                                placeholder="Degree"
-                                value={edu.degree}
-                                onChange={(e) => updateEducation(index, "degree", e.target.value)}
-                                required
-                                className="input-field edu-input"
-                            />
-                            <input
-                                type="text"
-                                placeholder="Year"
-                                value={edu.year}
-                                onChange={(e) => updateEducation(index, "year", e.target.value)}
-                                required
-                                className="input-field edu-input"
-                            />
+                            <div className="form-group">
+                                <label className="form-label">Institution Name</label>
+                                <p className="field-description">Name of university, college, or educational institution</p>
+                                <input
+                                    type="text"
+                                    placeholder="Harvard University, IIT Delhi, etc."
+                                    value={edu.institution}
+                                    onChange={(e) => updateEducation(index, "institution", e.target.value)}
+                                    required
+                                    className="input-field edu-input"
+                                />
+                            </div>
+                            <div className="form-group">
+                                <label className="form-label">Degree/Program</label>
+                                <p className="field-description">Type of degree, major, or program completed</p>
+                                <input
+                                    type="text"
+                                    placeholder="MBA Finance, B.Tech Computer Science, etc."
+                                    value={edu.degree}
+                                    onChange={(e) => updateEducation(index, "degree", e.target.value)}
+                                    required
+                                    className="input-field edu-input"
+                                />
+                            </div>
+                            <div className="form-group">
+                                <label className="form-label">Year/Duration</label>
+                                <p className="field-description">Graduation year or duration of study</p>
+                                <input
+                                    type="text"
+                                    placeholder="2020, 2018-2022, etc."
+                                    value={edu.year}
+                                    onChange={(e) => updateEducation(index, "year", e.target.value)}
+                                    required
+                                    className="input-field edu-input"
+                                />
+                            </div>
                             <button
                                 type="button"
                                 onClick={() => removeEducation(index)}
                                 className="remove-btn"
                             >
-                                Remove
+                                Remove Education
                             </button>
                         </div>
                     ))}
                     <button type="button" onClick={addEducation} className="add-btn">
-                        + Add Education
+                        Add Education Entry
                     </button>
                 </section>
 
                 {/* ========== CERTIFICATIONS SECTION ========== */}
                 <section className="form-section">
-                    <h2 className="section-title">🏆 Professional Certifications</h2>
+                    <h2 className="section-title">Professional Certifications</h2>
+                    <p className="section-description">List your professional certifications, licenses, and credentials</p>
 
                     {form.certifications.map((cert, index) => (
                         <div key={index} className="education-row">
-                            <input
-                                type="text"
-                                placeholder="Certification Title"
-                                value={cert.title}
-                                onChange={(e) => updateCertification(index, "title", e.target.value)}
-                                required
-                                className="input-field edu-input"
-                            />
-                            <input
-                                type="text"
-                                placeholder="Issuing Institution"
-                                value={cert.institution}
-                                onChange={(e) => updateCertification(index, "institution", e.target.value)}
-                                required
-                                className="input-field edu-input"
-                            />
-                            <input
-                                type="text"
-                                placeholder="Year"
-                                value={cert.year}
-                                onChange={(e) => updateCertification(index, "year", e.target.value)}
-                                required
-                                className="input-field edu-input"
-                            />
+                            <div className="form-group">
+                                <label className="form-label">Certification Title</label>
+                                <p className="field-description">Full name of the certification or credential</p>
+                                <input
+                                    type="text"
+                                    placeholder="Certified Financial Planner (CFP), AWS Certified Solutions Architect, etc."
+                                    value={cert.title}
+                                    onChange={(e) => updateCertification(index, "title", e.target.value)}
+                                    required
+                                    className="input-field edu-input"
+                                />
+                            </div>
+                            <div className="form-group">
+                                <label className="form-label">Issuing Organization</label>
+                                <p className="field-description">Organization or body that issued the certification</p>
+                                <input
+                                    type="text"
+                                    placeholder="Financial Planning Association, Amazon Web Services, etc."
+                                    value={cert.institution}
+                                    onChange={(e) => updateCertification(index, "institution", e.target.value)}
+                                    required
+                                    className="input-field edu-input"
+                                />
+                            </div>
+                            <div className="form-group">
+                                <label className="form-label">Year Obtained</label>
+                                <p className="field-description">Year you received this certification</p>
+                                <input
+                                    type="text"
+                                    placeholder="2023, 2021, etc."
+                                    value={cert.year}
+                                    onChange={(e) => updateCertification(index, "year", e.target.value)}
+                                    required
+                                    className="input-field edu-input"
+                                />
+                            </div>
                             <button
                                 type="button"
                                 onClick={() => removeCertification(index)}
                                 className="remove-btn"
                             >
-                                Remove
+                                Remove Certification
                             </button>
                         </div>
                     ))}
                     <button type="button" onClick={addCertification} className="add-btn">
-                        + Add Certification
+                        Add Certification
                     </button>
                 </section>
 
                 {/* ========== FILE UPLOADS SECTION ========== */}
                 <section className="form-section">
-                    <h2 className="section-title">📎 File Uploads</h2>
+                    <h2 className="section-title">File Uploads</h2>
+                    <p className="section-description">Upload your profile picture and resume document</p>
 
                     <div className="form-row">
                         <div className="form-group">
                             <label className="form-label">Profile Picture</label>
+                            <p className="field-description">Professional headshot or profile photo (JPG, PNG, GIF)</p>
                             <input
                                 type="file"
                                 name="profilePic"
@@ -670,7 +785,8 @@ function PortfolioForm() {
                         </div>
 
                         <div className="form-group">
-                            <label className="form-label">Resume (PDF/DOCX)</label>
+                            <label className="form-label">Resume Document</label>
+                            <p className="field-description">Your current resume in PDF, DOC, or DOCX format</p>
                             <input
                                 type="file"
                                 name="resume"
@@ -684,14 +800,15 @@ function PortfolioForm() {
 
                 {/* ========== PROJECTS SECTION ========== */}
                 <section className="form-section">
-                    <h2 className="section-title">🚀 Projects & Work</h2>
+                    <h2 className="section-title">Projects and Work Portfolio</h2>
+                    <p className="section-description">Add your professional projects, case studies, and notable work examples</p>
                     <ProjectInput projects={form.projects} setProjects={setProjects} />
                 </section>
 
                 {/* ========== SUBMIT BUTTON ========== */}
                 <div className="form-submit">
                     <button type="submit" className="submit-btn">
-                        🚀 Generate Portfolio
+                        Generate Portfolio Website
                     </button>
                 </div>
             </form>
