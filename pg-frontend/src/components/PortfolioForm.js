@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ProjectInput from "./ProjectInput";
-import "./global.css";
+import "../styles/global.css";
+import PrototypePicker from "./PrototypePicker";
 
 // Enhanced skill groups for finance/government professional
 const skillGroups = {
@@ -56,6 +57,14 @@ const skillGroups = {
     ]
 };
 
+// Define the available style shades
+const STYLE_SHADES = [
+    { value: "purple", label: "Purple" },
+    { value: "green", label: "Green" },
+    { value: "blue", label: "Blue" },
+    // Add more shades here if needed
+];
+
 function PortfolioForm() {
     const [form, setForm] = useState({
         // ========== BASIC INFORMATION ==========
@@ -89,16 +98,6 @@ function PortfolioForm() {
             { number: "", label: "" }
         ],
 
-        // ========== COMPONENT SELECTION ==========
-        selectedComponents: [
-            "HeroSection",
-            "About",
-            "Skills",
-            "Education",
-            "Works",
-            "Contact"
-        ],
-
         // ========== SKILLS ==========
         skills: [],
 
@@ -108,6 +107,9 @@ function PortfolioForm() {
 
         // ========== PROJECTS/WORK ==========
         projects: [],
+
+        // ========== STYLE SHADE ==========
+        styleShade: "purple", // default to purple
     });
 
     const [files, setFiles] = useState({
@@ -161,21 +163,6 @@ function PortfolioForm() {
             professionalStats: form.professionalStats.filter((_, i) => i !== index),
         });
 
-    // ========== COMPONENT SELECTION HANDLERS ==========
-    const toggleComponent = (comp) => {
-        if (form.selectedComponents.includes(comp)) {
-            setForm({
-                ...form,
-                selectedComponents: form.selectedComponents.filter((c) => c !== comp),
-            });
-        } else {
-            setForm({
-                ...form,
-                selectedComponents: [...form.selectedComponents, comp],
-            });
-        }
-    };
-
     // ========== SKILLS HANDLERS ==========
     const toggleSkill = (groupName, skillName, skillIcon) => {
         const skillObj = { name: skillName, icon: skillIcon };
@@ -224,6 +211,11 @@ function PortfolioForm() {
 
     // ========== PROJECTS HANDLER ==========
     const setProjects = (projects) => setForm({ ...form, projects });
+
+    // ========== STYLE SHADE HANDLER ==========
+    const handleStyleShadeChange = (e) => {
+        setForm({ ...form, styleShade: e.target.value });
+    };
 
     // ========== FORM SUBMISSION ==========
     const handleSubmit = async (e) => {
@@ -599,23 +591,14 @@ function PortfolioForm() {
                     </button>
                 </section>
 
-                {/* ========== COMPONENT SELECTION SECTION ========== */}
+                {/* ========== STYLE SHADE SELECTION SECTION ========== */}
                 <section className="form-section">
-                    <h2 className="section-title">Portfolio Sections</h2>
-                    <p className="section-description">Choose which sections to include in your generated portfolio website</p>
-
-                    <div className="components-grid">
-                        {["HeroSection", "About", "Skills", "Education", "Works", "Contact"].map((comp) => (
-                            <label key={comp} className="checkbox-label">
-                                <input
-                                    type="checkbox"
-                                    checked={form.selectedComponents.includes(comp)}
-                                    onChange={() => toggleComponent(comp)}
-                                />
-                                <span className="checkbox-text">{comp}</span>
-                            </label>
-                        ))}
-                    </div>
+                    <h2 className="section-title">Choose Website Style Shade</h2>
+                    <p className="section-description">Pick a color theme for your portfolio site</p>
+                    <PrototypePicker
+                        value={form.styleShade}
+                        onChange={(val) => setForm({ ...form, styleShade: val })}
+                    />
                 </section>
 
                 {/* ========== SKILLS SECTION ========== */}

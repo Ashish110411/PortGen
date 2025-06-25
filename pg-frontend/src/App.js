@@ -23,9 +23,11 @@
 // export default App;
 import React from "react";
 import PortfolioForm from "./components/PortfolioForm";
+import FormSection from "./components/FormSection";
 
 function App() {
-    return <PortfolioForm />;
+    // return <PortfolioForm />;
+    return <FormSection/>;
 }
 
 export default App;

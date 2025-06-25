@@ -5,19 +5,11 @@ function SkillSelector({ selectedSkills, setSelectedSkills }) {
     const isSkillSelected = (skillName) =>
         selectedSkills.some((skill) => skill.name === skillName);
 
-    const handleToggle = (skillName) => {
-        if (isSkillSelected(skillName)) {
-            setSelectedSkills(
-                selectedSkills.filter((skill) => skill.name !== skillName)
-            );
+    const handleToggle = (skill) => {
+        if (isSkillSelected(skill.name)) {
+            setSelectedSkills(selectedSkills.filter((s) => s.name !== skill.name));
         } else {
-            setSelectedSkills([
-                ...selectedSkills,
-                {
-                    name: skillName,
-                    icon: `${skillName.toLowerCase().replace(/ /g, "")}.png`,
-                },
-            ]);
+            setSelectedSkills([...selectedSkills, skill]);
         }
     };
 
@@ -29,13 +21,20 @@ function SkillSelector({ selectedSkills, setSelectedSkills }) {
                     <h3 style={{ fontSize: "18px", marginBottom: "10px" }}>{groupName}</h3>
                     <div className="checkbox-group">
                         {skills.map((skill) => (
-                            <label key={skill}>
+                            <label key={skill.name} style={{ marginRight: "16px" }}>
                                 <input
                                     type="checkbox"
-                                    checked={isSkillSelected(skill)}
+                                    checked={isSkillSelected(skill.name)}
                                     onChange={() => handleToggle(skill)}
                                 />
-                                {" "}{skill}
+                                {" "}
+                                <img
+                                    src={`/all pngs/${skill.icon}`}
+                                    alt={skill.name}
+                                    style={{ width: "20px", height: "20px", verticalAlign: "middle", marginRight: "4px" }}
+                                    onError={e => { e.target.style.display = "none"; }}
+                                />
+                                {skill.name}
                             </label>
                         ))}
                     </div>

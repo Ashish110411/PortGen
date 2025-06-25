@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import SocialLinks from "./SocialLinks";
 import RolesInput from "./RolesInput";
-import ComponentSelector from "./ComponentSelector";
+import PrototypePicker from "./PrototypePicker";
 import SkillSelector from "./SkillSelector";
 import EducationSection from "./EducationSection";
 import ProjectInput from "./ProjectInput";
+import "../styles/global.css";
 
 function FormSection() {
     const [formData, setFormData] = useState({
@@ -22,7 +23,7 @@ function FormSection() {
             whatsapp: ""
         },
         roles: [],
-        selectedComponents: ["HeroSection", "About", "Skills", "Education", "Works"],
+        styleShade: "purple",
         skills: [],
         educationList: [
             { institution: "", degree: "", year: "" }
@@ -53,11 +54,17 @@ function FormSection() {
         }));
     };
 
-
     const setRoles = (newRoles) => {
         setFormData((prev) => ({
             ...prev,
             roles: newRoles
+        }));
+    };
+
+    const handleStyleShadeChange = (shade) => {
+        setFormData((prev) => ({
+            ...prev,
+            styleShade: shade
         }));
     };
 
@@ -96,7 +103,6 @@ function FormSection() {
         }
     };
 
-
     return (
         <form onSubmit={handleSubmit}>
             {/* Basic Info */}
@@ -118,13 +124,16 @@ function FormSection() {
 
             {/* Roles Input */}
             <RolesInput roles={formData.roles} setRoles={setRoles} />
-            {/* Component Selector */}
-            <ComponentSelector
-                selectedComponents={formData.selectedComponents}
-                setSelectedComponents={(val) =>
-                    setFormData((prev) => ({ ...prev, selectedComponents: val }))
-                }
-            />
+
+            {/* Style Shade Picker */}
+            <div className="section">
+                <h2>Choose Website Style Shade</h2>
+                <PrototypePicker
+                    value={formData.styleShade}
+                    onChange={handleStyleShadeChange}
+                />
+            </div>
+
             {/* Skills Selector */}
             <SkillSelector
                 selectedSkills={formData.skills}
@@ -132,6 +141,7 @@ function FormSection() {
                     setFormData((prev) => ({ ...prev, skills }))
                 }
             />
+
             {/* Education Section */}
             <EducationSection
                 educationList={formData.educationList}
@@ -139,11 +149,13 @@ function FormSection() {
                     setFormData((prev) => ({ ...prev, educationList: list }))
                 }
             />
+
             {/* Projects Section */}
             <ProjectInput
                 projects={formData.projects}
                 setProjects={(val) => setFormData((prev) => ({ ...prev, projects: val }))}
-                />
+            />
+
             {/* File Uploads */}
             <div className="section">
                 <h2>File Uploads</h2>

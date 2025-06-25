@@ -28,7 +28,7 @@ function EducationSection({ educationList, setEducationList }) {
                     <input
                         className="input-field"
                         type="text"
-                        placeholder="Institution"
+                        placeholder="University / Institute / School"
                         value={entry.institution}
                         onChange={(e) => handleChange(index, "institution", e.target.value)}
                         required
@@ -36,7 +36,7 @@ function EducationSection({ educationList, setEducationList }) {
                     <input
                         className="input-field"
                         type="text"
-                        placeholder="Degree"
+                        placeholder="Degree / Program / Class 12 / Class 10"
                         value={entry.degree}
                         onChange={(e) => handleChange(index, "degree", e.target.value)}
                         required
@@ -44,7 +44,7 @@ function EducationSection({ educationList, setEducationList }) {
                     <input
                         className="input-field"
                         type="text"
-                        placeholder="Year"
+                        placeholder="Completion Year (tentative or actual)"
                         value={entry.year}
                         onChange={(e) => handleChange(index, "year", e.target.value)}
                         required
