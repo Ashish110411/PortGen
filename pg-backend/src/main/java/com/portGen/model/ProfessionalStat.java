@@ -22,6 +22,6 @@ public class ProfessionalStat {
 
     @Override
     public String toString() {
-        return STR."ProfessionalStat{number='\{number}', label='\{label}'}";
+        return "ProfessionalStat{number='" + number + "', label='" + label + "'}";
     }
 }

@@ -27,6 +27,6 @@ public class Certification {
 
     @Override
     public String toString() {
-        return STR."Certification{title='\{title}', institution='\{institution}', year='\{year}'}";
+        return String.format("Certification{title='%s', institution='%s', year='%s'}", title, institution, year);
     }
 }

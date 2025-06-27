@@ -7,6 +7,24 @@
     <list default="true" id="82ed381d-30b1-4829-93b4-cd225d4e39df" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/java/com/portGen/model/PortfolioRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../pg-backend/src/main/java/com/portGen/model/PortfolioRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/java/com/portGen/service/PortfolioGeneratorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../pg-backend/src/main/java/com/portGen/service/PortfolioGeneratorService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/static/skill-icons/docker.png" beforeDir="false" afterPath="$PROJECT_DIR$/../pg-backend/src/main/resources/static/skill-icons/docker.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/static/skill-icons/git.png" beforeDir="false" afterPath="$PROJECT_DIR$/../pg-backend/src/main/resources/static/skill-icons/git.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/static/skill-icons/hero-bg-2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/static/skill-icons/hero-bg-3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/static/skill-icons/html.png" beforeDir="false" afterPath="$PROJECT_DIR$/../pg-backend/src/main/resources/static/skill-icons/html.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/static/skill-icons/java.png" beforeDir="false" afterPath="$PROJECT_DIR$/../pg-backend/src/main/resources/static/skill-icons/java.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/static/skill-icons/javascript.png" beforeDir="false" afterPath="$PROJECT_DIR$/../pg-backend/src/main/resources/static/skill-icons/javascript.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/static/skill-icons/jetbrains.png" beforeDir="false" afterPath="$PROJECT_DIR$/../pg-backend/src/main/resources/static/skill-icons/jetbrains.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/static/skill-icons/latex.png" beforeDir="false" afterPath="$PROJECT_DIR$/../pg-backend/src/main/resources/static/skill-icons/latex.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/static/skill-icons/matplotlib.png" beforeDir="false" afterPath="$PROJECT_DIR$/../pg-backend/src/main/resources/static/skill-icons/matplotlib.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/static/skill-icons/numpy.png" beforeDir="false" afterPath="$PROJECT_DIR$/../pg-backend/src/main/resources/static/skill-icons/numpy.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/static/skill-icons/opencv.png" beforeDir="false" afterPath="$PROJECT_DIR$/../pg-backend/src/main/resources/static/skill-icons/opencv.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/static/skill-icons/pandas.png" beforeDir="false" afterPath="$PROJECT_DIR$/../pg-backend/src/main/resources/static/skill-icons/pandas.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/static/skill-icons/postgresql.png" beforeDir="false" afterPath="$PROJECT_DIR$/../pg-backend/src/main/resources/static/skill-icons/postgresql.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/static/skill-icons/python.png" beforeDir="false" afterPath="$PROJECT_DIR$/../pg-backend/src/main/resources/static/skill-icons/python.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/template-base/src/components/About.js.template" beforeDir="false" afterPath="$PROJECT_DIR$/../pg-backend/src/main/resources/template-base/src/components/About.js.template" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/template-base/src/components/Skills.js.template" beforeDir="false" afterPath="$PROJECT_DIR$/../pg-backend/src/main/resources/template-base/src/components/Skills.js.template" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/template-base/src/components/navbar/Navbar.js.template" beforeDir="false" afterPath="$PROJECT_DIR$/../pg-backend/src/main/resources/template-base/src/components/navbar/Navbar.js.template" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/template-base/src/styles/About.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/template-base/src/styles/App.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/template-base/src/styles/Contact.css" beforeDir="false" />
@@ -16,16 +34,11 @@
       <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/template-base/src/styles/Skills.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/template-base/src/styles/Works.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/EducationSection.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/EducationSection.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/FormSection.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FormSection.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/PortfolioForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PortfolioForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ProjectInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ProjectInput.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RolesInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RolesInput.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/SkillSelector.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SkillSelector.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/SocialLinks.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SocialLinks.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/global.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/global.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/skillGroups.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/skillGroups.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -55,25 +68,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "D:/Coding/PortGen/pg-frontend/src/components",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "D:\\Jetbrains\\WebStorm\\WebStorm 2024.3.2.1\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Coding/PortGen/pg-frontend/public&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\Jetbrains\\WebStorm\\WebStorm 2024.3.2.1\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Coding\PortGen\pg-frontend\public" />
       <recent name="D:\Coding\PortGen\pg-frontend\src\components" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -103,7 +117,10 @@
       <workItem from="1750619902932" duration="3791000" />
       <workItem from="1750661254766" duration="12162000" />
       <workItem from="1750749707625" duration="2808000" />
-      <workItem from="1750869351023" duration="11399000" />
+      <workItem from="1750869351023" duration="11685000" />
+      <workItem from="1750919335209" duration="14644000" />
+      <workItem from="1750999503848" duration="3009000" />
+      <workItem from="1751043943590" duration="3429000" />
     </task>
     <servers />
   </component>

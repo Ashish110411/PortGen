@@ -22,16 +22,34 @@ public class PortfolioGeneratorService {
     @Autowired
     private TemplateProcessor templateProcessor;
 
+    /**
+     * Generates the portfolio site with the chosen style shade.
+     *
+     * @param request User's portfolio data, including the chosen style shade.
+     * @param image   Profile image file.
+     * @param resume  Resume PDF file.
+     * @return Path to the generated site directory.
+     * @throws IOException
+     */
     public Path generateSite(PortfolioRequest request, MultipartFile image, MultipartFile resume) throws IOException {
         Path tempDir = Files.createTempDirectory("portfolio");
-        List<com.portGen.model.ProjectGroup> mergedProjects = mergeDuplicateProjectGroups(request.getProjects());
+        List<ProjectGroup> mergedProjects = mergeDuplicateProjectGroups(request.getProjects());
         request.setProjects(mergedProjects);
 
-        // Copy base template project
+        // 1. Copy base template project, EXCLUDING the styles folder
         Path templateBase = Paths.get("src/main/resources/template-base");
-        copyDirectory(templateBase, tempDir);
+        copyDirectoryExcluding(templateBase, tempDir, Paths.get("src/styles"));
 
-        // Inject profile image (full size and small version)
+        // 2. Copy only the selected style shade's CSS files into src/styles
+        String shade = request.getStyleShade();
+        if (shade == null || shade.isEmpty()) {
+            shade = "purple"; // default
+        }
+        Path stylesShadeBase = Paths.get("src/main/resources/styles-shades/styles-" + shade);
+        Path targetStyles = tempDir.resolve("src/styles");
+        copyDirectory(stylesShadeBase, targetStyles);
+
+        // 3. Inject profile images
         if (image != null) {
             Path imagesDir = tempDir.resolve("src/images");
             Files.createDirectories(imagesDir);
@@ -42,26 +60,22 @@ public class PortfolioGeneratorService {
             Path profileSmallImgPath = imagesDir.resolve("profile_small.jpg");
             Files.copy(image.getInputStream(), profileSmallImgPath, StandardCopyOption.REPLACE_EXISTING);
 
-            // Set image paths in request so TemplateProcessor can replace them
             request.setProfileImage("profile_me.jpg");
             request.setProfileImageSmall("profile_small.jpg");
         }
 
-        // Inject resume
+        // 4. Inject resume
         if (resume != null) {
             Path resumePath = tempDir.resolve("src/data/resume.pdf");
             Files.createDirectories(resumePath.getParent());
             Files.copy(resume.getInputStream(), resumePath, StandardCopyOption.REPLACE_EXISTING);
         }
 
-        // Copy only selected skill icons
+        // 5. Copy only selected skill icons
         Path iconsDir = Paths.get("src/main/resources/static/skill-icons");
         Path targetIcons = tempDir.resolve("src/images/");
         Files.createDirectories(targetIcons);
-//        for (Skill skill : request.getSkills()) {
-//            Path icon = iconsDir.resolve(skill.getIcon());
-//            Files.copy(icon, targetIcons.resolve(skill.getIcon()), StandardCopyOption.REPLACE_EXISTING);
-//        }
+
         for (SkillGroup group : request.getSkills()) {
             if (group.getSkills() != null) {
                 for (Skill skill : group.getSkills()) {
@@ -71,9 +85,7 @@ public class PortfolioGeneratorService {
             }
         }
 
-
-
-        // Process all .template files with user data
+        // 6. Process all .template files with user data
         Files.walk(tempDir)
                 .filter(path -> path.toString().endsWith(".template"))
                 .forEach(templateFile -> {
@@ -89,6 +101,38 @@ public class PortfolioGeneratorService {
         return tempDir;
     }
 
+    /**
+     * Copies a directory tree, excluding a specified subdirectory (relative to the root).
+     *
+     * @param src           Source directory path.
+     * @param dest          Destination directory path.
+     * @param relativeExclude Subdirectory to exclude (relative to src).
+     * @throws IOException
+     */
+    private void copyDirectoryExcluding(Path src, Path dest, Path relativeExclude) throws IOException {
+        Files.walk(src).forEach(source -> {
+            try {
+                Path rel = src.relativize(source);
+                if (rel.startsWith(relativeExclude)) return; // skip excluded
+                Path destination = dest.resolve(rel);
+                if (Files.isDirectory(source)) {
+                    Files.createDirectories(destination);
+                } else {
+                    Files.copy(source, destination, StandardCopyOption.REPLACE_EXISTING);
+                }
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+    }
+
+    /**
+     * Copies an entire directory tree.
+     *
+     * @param src  Source directory path.
+     * @param dest Destination directory path.
+     * @throws IOException
+     */
     private void copyDirectory(Path src, Path dest) throws IOException {
         Files.walk(src).forEach(source -> {
             try {
@@ -103,17 +147,25 @@ public class PortfolioGeneratorService {
             }
         });
     }
-    private List<com.portGen.model.ProjectGroup> mergeDuplicateProjectGroups(List<com.portGen.model.ProjectGroup> originalList) {
+
+    /**
+     * Merges duplicate project groups by their IDs.
+     *
+     * @param originalList List of project groups (possibly with duplicates).
+     * @return List of merged project groups.
+     */
+    private List<ProjectGroup> mergeDuplicateProjectGroups(List<ProjectGroup> originalList) {
         Map<String, ProjectGroup> mergedMap = new LinkedHashMap<>();
 
-        for (com.portGen.model.ProjectGroup group : originalList) {
+        for (ProjectGroup group : originalList) {
             String id = group.getId();
             if (!mergedMap.containsKey(id)) {
                 // First occurrence
-                mergedMap.put(id, new com.portGen.model.ProjectGroup());
-                mergedMap.get(id).setId(id);
-                mergedMap.get(id).setLabel(group.getLabel());
-                mergedMap.get(id).setData(new ArrayList<>(group.getData()));
+                ProjectGroup newGroup = new ProjectGroup();
+                newGroup.setId(id);
+                newGroup.setLabel(group.getLabel());
+                newGroup.setData(new ArrayList<>(group.getData()));
+                mergedMap.put(id, newGroup);
             } else {
                 // Merge additional data
                 mergedMap.get(id).getData().addAll(group.getData());
@@ -122,5 +174,4 @@ public class PortfolioGeneratorService {
 
         return new ArrayList<>(mergedMap.values());
     }
-
 }

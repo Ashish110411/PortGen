@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../styles/About.css";
 import { motion } from "framer-motion";
-import profilePic from "../images/{{profileImage}}";
+import profilePic from "../images/profile_me.jpg";
 
 const About = ({
 	name = "{{name}}",

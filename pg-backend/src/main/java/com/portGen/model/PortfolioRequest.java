@@ -37,6 +37,9 @@ public class PortfolioRequest {
     private String profileImage;
     private String profileImageSmall;
 
+    // ====== NEW: Selected style shade for custom styles ======
+    private String styleShade; // e.g. "green", "purple", "blue" etc.
+
     // ========== GETTERS AND SETTERS ==========
 
     public String getName() { return name; }
@@ -103,4 +106,8 @@ public class PortfolioRequest {
 
     public String getProfileImageSmall() { return profileImageSmall; }
     public void setProfileImageSmall(String profileImageSmall) { this.profileImageSmall = profileImageSmall; }
+
+    // ====== NEW: style shade getter/setter ======
+    public String getStyleShade() { return styleShade; }
+    public void setStyleShade(String styleShade) { this.styleShade = styleShade; }
 }

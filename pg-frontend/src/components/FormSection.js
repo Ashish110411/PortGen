@@ -5,16 +5,24 @@ import PrototypePicker from "./PrototypePicker";
 import SkillSelector from "./SkillSelector";
 import EducationSection from "./EducationSection";
 import ProjectInput from "./ProjectInput";
+import { skillGroups } from "../utils/skillGroups";
 import "../styles/global.css";
 
 function FormSection() {
     const [formData, setFormData] = useState({
+        // Basic Info
         name: "",
         about: "",
         aboutParagraph1: "",
         aboutParagraph2: "",
         aboutParagraph3: "",
         aboutParagraph4: "",
+        // Contact Info
+        email: "",
+        altEmail: "",
+        phone: "",
+        location: "",
+        // Social Links
         socialLinks: {
             linkedin: "",
             github: "",
@@ -22,21 +30,28 @@ function FormSection() {
             instagram: "",
             whatsapp: ""
         },
+        // Roles
         roles: [],
+        // Professional Stats
+        professionalStats: [{ number: "", label: "" }],
+        // Style Shade
         styleShade: "purple",
+        // Skills (flat array of {name, icon})
         skills: [],
-        educationList: [
-            { institution: "", degree: "", year: "" }
-        ],
+        // Education
+        educationList: [{ institution: "", degree: "", year: "" }],
+        // Certifications
+        certifications: [],
+        // Projects
         projects: []
     });
 
-    const [files, setFiles] = React.useState({
-        profilePic: null,
-        profilePicSmall: null,
+    const [files, setFiles] = useState({
+        profileImage: null,
         resume: null,
     });
 
+    // File Handlers
     const handleFileChange = (e) => {
         const { name, files: fileList } = e.target;
         if (fileList.length > 0) {
@@ -47,6 +62,15 @@ function FormSection() {
         }
     };
 
+    // Contact Info Handlers
+    const updateContact = (field, value) => {
+        setFormData((prev) => ({
+            ...prev,
+            [field]: value,
+        }));
+    };
+
+    // Social Links Handler
     const setSocialLinks = (updatedLinks) => {
         setFormData((prev) => ({
             ...prev,
@@ -54,6 +78,7 @@ function FormSection() {
         }));
     };
 
+    // Roles Handler
     const setRoles = (newRoles) => {
         setFormData((prev) => ({
             ...prev,
@@ -61,6 +86,51 @@ function FormSection() {
         }));
     };
 
+    // Professional Stats Handlers
+    const updateProfessionalStats = (index, field, value) => {
+        const updatedStats = [...formData.professionalStats];
+        updatedStats[index] = { ...updatedStats[index], [field]: value };
+        setFormData((prev) => ({
+            ...prev,
+            professionalStats: updatedStats
+        }));
+    };
+    const addProfessionalStat = () => {
+        setFormData((prev) => ({
+            ...prev,
+            professionalStats: [...prev.professionalStats, { number: "", label: "" }]
+        }));
+    };
+    const removeProfessionalStat = (index) => {
+        setFormData((prev) => ({
+            ...prev,
+            professionalStats: prev.professionalStats.filter((_, i) => i !== index)
+        }));
+    };
+
+    // Certifications Handlers
+    const updateCertification = (index, field, value) => {
+        const updatedCerts = [...formData.certifications];
+        updatedCerts[index] = { ...updatedCerts[index], [field]: value };
+        setFormData((prev) => ({
+            ...prev,
+            certifications: updatedCerts
+        }));
+    };
+    const addCertification = () => {
+        setFormData((prev) => ({
+            ...prev,
+            certifications: [...prev.certifications, { title: "", institution: "", year: "" }]
+        }));
+    };
+    const removeCertification = (index) => {
+        setFormData((prev) => ({
+            ...prev,
+            certifications: prev.certifications.filter((_, i) => i !== index)
+        }));
+    };
+
+    // Style Shade Handler
     const handleStyleShadeChange = (shade) => {
         setFormData((prev) => ({
             ...prev,
@@ -68,32 +138,73 @@ function FormSection() {
         }));
     };
 
+    // Group skills by category (for backend compatibility)
+    function getGroupedSkills(skillsFlatArray) {
+        const groupedSkillsMap = {};
+        for (const [group, skills] of Object.entries(skillGroups)) {
+            groupedSkillsMap[group] = [];
+        }
+        skillsFlatArray.forEach((skill) => {
+            const foundGroup = Object.entries(skillGroups).find(([group, skillList]) =>
+                skillList.some((s) => s.name === skill.name)
+            );
+            const groupName = foundGroup ? foundGroup[0] : "Other";
+            if (!groupedSkillsMap[groupName]) {
+                groupedSkillsMap[groupName] = [];
+            }
+            groupedSkillsMap[groupName].push(skill);
+        });
+        return Object.entries(groupedSkillsMap)
+            .filter(([_, skills]) => skills.length > 0)
+            .map(([category, skills]) => ({
+                category,
+                skills,
+            }));
+    }
+
+    // Submit
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (formData.roles.length === 0) {
-            alert("At least one role is required.");
-            return;
+        // Normalize WhatsApp link
+        let whatsappLink = formData.socialLinks.whatsapp.trim();
+        if (/^\d{10}$/.test(whatsappLink)) {
+            whatsappLink = "https://wa.me/91" + whatsappLink;
         }
 
-        // Build JSON string from formData (except files)
-        const jsonData = JSON.stringify(formData);
+        // Group skills by category as the backend expects!
+        const groupedSkills = getGroupedSkills(formData.skills);
+
+        // Compose data for submission
+        const portfolioData = {
+            ...formData,
+            socialLinks: { ...formData.socialLinks, whatsapp: whatsappLink },
+            skills: groupedSkills
+        };
 
         const formDataToSend = new FormData();
-        formDataToSend.append("data", new Blob([jsonData], { type: "application/json" }));
-
-        if (files.profilePic) formDataToSend.append("profilePic", files.profilePic);
-        if (files.profilePicSmall) formDataToSend.append("profilePicSmall", files.profilePicSmall);
+        formDataToSend.append("data", new Blob([JSON.stringify(portfolioData)], { type: "application/json" }));
+        if (files.profileImage) formDataToSend.append("profileImage", files.profileImage);
         if (files.resume) formDataToSend.append("resume", files.resume);
 
         try {
-            const response = await fetch("http://localhost:8080/api/portfolio", {
+            const response = await fetch("http://localhost:8080/api/portfolio/generate", {
                 method: "POST",
                 body: formDataToSend,
             });
 
             if (response.ok) {
-                alert("Portfolio submitted successfully!");
+                // Download the zip file
+                const blob = await response.blob();
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement("a");
+                a.href = url;
+                a.download = "portfolio.zip";
+                document.body.appendChild(a);
+                a.click();
+                a.remove();
+                window.URL.revokeObjectURL(url);
+                alert("Portfolio submitted successfully! Download should start automatically.");
             } else {
                 alert("Submission failed.");
             }
@@ -104,16 +215,26 @@ function FormSection() {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="portfolio-form">
+            <h1 className="form-title">Portfolio Generator Form</h1>
             {/* Basic Info */}
             <div className="section">
                 <h2>Basic Info</h2>
-                <input className="input-field" type="text" name="name" placeholder="Your Name" required onChange={(e) => setFormData({ ...formData, name: e.target.value })} />
-                <input className="input-field" type="text" name="about" placeholder="Short About" required onChange={(e) => setFormData({ ...formData, about: e.target.value })} />
-                <textarea className="input-field" name="aboutParagraph1" placeholder="About Paragraph 1" required onChange={(e) => setFormData({ ...formData, aboutParagraph1: e.target.value })} />
-                <textarea className="input-field" name="aboutParagraph2" placeholder="About Paragraph 2" required onChange={(e) => setFormData({ ...formData, aboutParagraph2: e.target.value })} />
-                <textarea className="input-field" name="aboutParagraph3" placeholder="About Paragraph 3 (optional)" onChange={(e) => setFormData({ ...formData, aboutParagraph3: e.target.value })} />
-                <textarea className="input-field" name="aboutParagraph4" placeholder="About Paragraph 4 (optional)" onChange={(e) => setFormData({ ...formData, aboutParagraph4: e.target.value })} />
+                <input className="input-field" type="text" name="name" placeholder="Your Name" required value={formData.name} onChange={(e) => updateContact("name", e.target.value)} />
+                <input className="input-field" type="text" name="about" placeholder="Short About" required value={formData.about} onChange={(e) => updateContact("about", e.target.value)} />
+                <textarea className="input-field" name="aboutParagraph1" placeholder="About Paragraph 1" required value={formData.aboutParagraph1} onChange={(e) => updateContact("aboutParagraph1", e.target.value)} />
+                <textarea className="input-field" name="aboutParagraph2" placeholder="About Paragraph 2" required value={formData.aboutParagraph2} onChange={(e) => updateContact("aboutParagraph2", e.target.value)} />
+                <textarea className="input-field" name="aboutParagraph3" placeholder="About Paragraph 3 (optional)" value={formData.aboutParagraph3} onChange={(e) => updateContact("aboutParagraph3", e.target.value)} />
+                <textarea className="input-field" name="aboutParagraph4" placeholder="About Paragraph 4 (optional)" value={formData.aboutParagraph4} onChange={(e) => updateContact("aboutParagraph4", e.target.value)} />
+            </div>
+
+            {/* Contact Info */}
+            <div className="section">
+                <h2>Contact Information</h2>
+                <input className="input-field" type="email" name="email" placeholder="Primary Email (Required)" required value={formData.email} onChange={(e) => updateContact("email", e.target.value)} />
+                <input className="input-field" type="email" name="altEmail" placeholder="Alternate Email (Optional)" value={formData.altEmail} onChange={(e) => updateContact("altEmail", e.target.value)} />
+                <input className="input-field" type="text" name="phone" placeholder="Phone Number (Required)" required value={formData.phone} onChange={(e) => updateContact("phone", e.target.value)} />
+                <input className="input-field" type="text" name="location" placeholder="Location (e.g., City, Country)" required value={formData.location} onChange={(e) => updateContact("location", e.target.value)} />
             </div>
 
             {/* Social Links */}
@@ -124,6 +245,33 @@ function FormSection() {
 
             {/* Roles Input */}
             <RolesInput roles={formData.roles} setRoles={setRoles} />
+
+            {/* Professional Stats */}
+            <div className="section">
+                <h2>Professional Statistics</h2>
+                {formData.professionalStats.map((stat, idx) => (
+                    <div key={idx} className="flex-row">
+                        <input
+                            className="input-field"
+                            type="text"
+                            placeholder="Number (e.g. 10+, 500+, 98%, $2M+)"
+                            value={stat.number}
+                            onChange={e => updateProfessionalStats(idx, "number", e.target.value)}
+                        />
+                        <input
+                            className="input-field"
+                            type="text"
+                            placeholder="Description (e.g. Years Experience, Projects Completed)"
+                            value={stat.label}
+                            onChange={e => updateProfessionalStats(idx, "label", e.target.value)}
+                        />
+                        {formData.professionalStats.length > 1 && (
+                            <button type="button" className="remove-btn" onClick={() => removeProfessionalStat(idx)}>Remove</button>
+                        )}
+                    </div>
+                ))}
+                <button type="button" className="add-btn" onClick={addProfessionalStat}>Add Statistic</button>
+            </div>
 
             {/* Style Shade Picker */}
             <div className="section">
@@ -150,6 +298,38 @@ function FormSection() {
                 }
             />
 
+            {/* Certifications */}
+            <div className="section">
+                <h2>Professional Certifications</h2>
+                {formData.certifications.map((cert, idx) => (
+                    <div key={idx} className="flex-row">
+                        <input
+                            className="input-field"
+                            type="text"
+                            placeholder="Title (e.g., AWS Solutions Architect)"
+                            value={cert.title}
+                            onChange={e => updateCertification(idx, "title", e.target.value)}
+                        />
+                        <input
+                            className="input-field"
+                            type="text"
+                            placeholder="Institution"
+                            value={cert.institution}
+                            onChange={e => updateCertification(idx, "institution", e.target.value)}
+                        />
+                        <input
+                            className="input-field"
+                            type="text"
+                            placeholder="Year"
+                            value={cert.year}
+                            onChange={e => updateCertification(idx, "year", e.target.value)}
+                        />
+                        <button type="button" className="remove-btn" onClick={() => removeCertification(idx)}>Remove</button>
+                    </div>
+                ))}
+                <button type="button" className="add-btn" onClick={addCertification}>Add Certification</button>
+            </div>
+
             {/* Projects Section */}
             <ProjectInput
                 projects={formData.projects}
@@ -164,19 +344,7 @@ function FormSection() {
                     <input
                         className="input-field"
                         type="file"
-                        name="profilePic"
-                        accept="image/*"
-                        onChange={handleFileChange}
-                        required
-                    />
-                </label>
-                <br/>
-                <label>
-                    Small Profile Picture
-                    <input
-                        className="input-field"
-                        type="file"
-                        name="profilePicSmall"
+                        name="profileImage"
                         accept="image/*"
                         onChange={handleFileChange}
                         required
@@ -196,7 +364,7 @@ function FormSection() {
                 </label>
             </div>
 
-            <button className="button" type="submit">Submit</button>
+            <button className="submit-btn" type="submit">Generate Portfolio Website</button>
         </form>
     );
 }

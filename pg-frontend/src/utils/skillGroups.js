@@ -1,31 +1,127 @@
 export const skillGroups = {
+    "Design & Creativity": [
+        { name: "Adobe Photoshop", icon: "adobephotoshop.png" },
+        { name: "Adobe Illustrator", icon: "adobeillustrator.png" },
+        { name: "Adobe After Effects", icon: "adobeaftereffects.png" },
+        { name: "Adobe Animate", icon: "adobeanimate.png" },
+        { name: "Adobe Audition", icon: "adobeaudition.png" },
+        { name: "Adobe InDesign", icon: "adobeindesign.png" },
+        { name: "Adobe Lightroom", icon: "adobelightroom.png" },
+        { name: "Adobe Premiere Pro", icon: "adobepremierepro.png" },
+        { name: "Adobe XD", icon: "adobexd.png" },
+        { name: "Affinity Publisher", icon: "affinitypublisher.png" },
+        { name: "Blender", icon: "blender.png" },
+        { name: "Cinema 4D", icon: "cinema4d.png" },
+        { name: "CorelDRAW", icon: "coreldraw.png" },
+        { name: "Final Cut Pro X", icon: "finalcutprox.png" },
+        { name: "GIMP", icon: "gimp.png" },
+        { name: "Inkscape", icon: "inkscape.png" },
+        { name: "Canva", icon: "canva.png" },
+        { name: "Sketch", icon: "sketch.png" },
+        { name: "Other", icon: "gear.svg", isCustom: true }
+    ],
     "Web Development": [
         { name: "HTML", icon: "html.png" },
         { name: "CSS", icon: "css.png" },
         { name: "JavaScript", icon: "javascript.png" },
+        { name: "TypeScript", icon: "typescript.png" },
         { name: "React", icon: "react.png" },
-        { name: "Node.js", icon: "nodejs.png" }
-    ],
-    "Mobile Development": [
-        { name: "Flutter", icon: "flutter.png" },
-        { name: "React Native", icon: "reactnative.png" }
-    ],
-    "ML/AI": [
-        { name: "TensorFlow", icon: "tensorflow.png" },
-        { name: "PyTorch", icon: "pytorch.png" },
-        { name: "Scikit-learn", icon: "scikitlearn.png" },
-        { name: "Pandas", icon: "pandas.png" }
-    ],
-    // Add more groups and skills as needed:
-    "Design": [
-        { name: "Premiere Pro", icon: "premierepro.png" },
-        { name: "Figma", icon: "figma.png" },
-        { name: "Canva", icon: "canva.png" }
+        { name: "Redux", icon: "redux.png" },
+        { name: "Angular", icon: "angularjs.png" },
+        { name: "Vue.js", icon: "vuejs.png" },
+        { name: "Next.js", icon: "next.js.png" },
+        { name: "Nuxt.js", icon: "nuxtjs.png" },
+        { name: "Node.js", icon: "nodejs.png" },
+        { name: "Express.js", icon: "expressjs.png" },
+        { name: "jQuery", icon: "jquery.png" },
+        { name: "Bootstrap", icon: "bootstrap.png" },
+        { name: "Tailwind CSS", icon: "tailwindcss.png" },
+        { name: "Svelte", icon: "svelte.png" },
+        { name: "Nginx", icon: "nginx.png" },
+        { name: "Vite", icon: "vite.png" },
+        { name: "Material UI", icon: "materialui.png" },
+        { name: "Other", icon: "gear.svg", isCustom: true }
     ],
     "Programming Languages": [
+        { name: "Python", icon: "python.png" },
         { name: "C", icon: "c.png" },
+        { name: "C++", icon: "c++.png" },
         { name: "C#", icon: "csharp.png" },
         { name: "Java", icon: "java.png" },
-        { name: "Python", icon: "python.png" }
+        { name: "Kotlin", icon: "kotlin.png" },
+        { name: "Swift", icon: "swift.png" },
+        { name: "Dart", icon: "dart.png" },
+        { name: "Go", icon: "golang.png" },
+        { name: "Rust", icon: "rustprogramminglanguage.png" },
+        { name: "Lua", icon: "lua.png" },
+        { name: "Haskell", icon: "haskell.png" },
+        { name: "Perl", icon: "perl.png" },
+        { name: "Other", icon: "gear.svg", isCustom: true }
+    ],
+    "Database & ORM": [
+        { name: "MySQL", icon: "mysql.png" },
+        { name: "MariaDB", icon: "mariadb.png" },
+        { name: "PostgreSQL", icon: "postgresql.png" },
+        { name: "MongoDB", icon: "mongodb.png" },
+        { name: "SQLite", icon: "sqlite.png" },
+        { name: "Redis", icon: "redis.png" },
+        { name: "Neo4j", icon: "neo4j.png" },
+        { name: "Elasticsearch", icon: "elasticsearch.png" },
+        { name: "InfluxDB", icon: "influxdb.png" },
+        { name: "Oracle", icon: "oraclelogo.png" },
+        { name: "Prisma ORM", icon: "prismaorm.png" },
+        { name: "Doctrine", icon: "doctrine.png" },
+        { name: "Other", icon: "gear.svg", isCustom: true }
+    ],
+    "Data Science & ML": [
+        { name: "NumPy", icon: "numpy.png" },
+        { name: "Pandas", icon: "pandas.png" },
+        { name: "Matplotlib", icon: "matplotlib.png" },
+        { name: "Seaborn", icon: "seaborn.png" },
+        { name: "OpenCV", icon: "opencv.png" },
+        { name: "Keras", icon: "keras.png" },
+        { name: "PyTorch", icon: "pytorch.png" },
+        { name: "TensorFlow", icon: "tensorflow.png" },
+        { name: "Scikit-learn", icon: "scikitlearn.png" },
+        { name: "Jupyter", icon: "jupyter.png" },
+        { name: "Apache Spark", icon: "apachespark.png" },
+        { name: "Kibana", icon: "kibana.png" },
+        { name: "Tableau", icon: "tableausoftware.png" },
+        { name: "Power BI", icon: "powerbi.png" },
+        { name: "Other", icon: "gear.svg", isCustom: true }
+    ],
+    "DevOps & Cloud": [
+        { name: "Docker", icon: "docker.png" },
+        { name: "Kubernetes", icon: "kubernetes.png" },
+        { name: "AWS", icon: "amazonwebservices.png" },
+        { name: "Azure", icon: "azure.png" },
+        { name: "Terraform", icon: "terraform.png" },
+        { name: "Jenkins", icon: "jenkins.png" },
+        { name: "Ansible", icon: "ansible.png" },
+        { name: "Vagrant", icon: "vagrant.png" },
+        { name: "OpenShift", icon: "openshift.png" },
+        { name: "Grafana", icon: "grafana.png" },
+        { name: "Prometheus", icon: "prometheus.png" },
+        { name: "Nginx", icon: "nginx.png" },
+        { name: "Other", icon: "gear.svg", isCustom: true }
+    ],
+    "Mobile & Cross Platform": [
+        { name: "Flutter", icon: "flutter.png" },
+        { name: "React Native", icon: "reactnative.png" },
+        { name: "Android Studio", icon: "androidstudio.png" },
+        { name: "Xcode", icon: "xcode.png" },
+        { name: "Other", icon: "gear.svg", isCustom: true }
+    ],
+    "Office & Productivity": [
+        { name: "Microsoft Word", icon: "microsoftword.png" },
+        { name: "Microsoft Excel", icon: "microsoftexcel.png" },
+        { name: "Microsoft PowerPoint", icon: "microsoftpowerpoint.png" },
+        { name: "Microsoft Outlook", icon: "microsoftoutlook.png" },
+        { name: "Microsoft OneNote", icon: "microsoftonenote.png" },
+        { name: "Microsoft Access", icon: "microsoftaccess.png" },
+        { name: "Microsoft Publisher", icon: "microsoftpublisher.png" },
+        { name: "Microsoft Project", icon: "microsoftproject.png" },
+        { name: "Office 365", icon: "office365.png" },
+        { name: "Other", icon: "gear.svg", isCustom: true }
     ]
 };

@@ -14,27 +14,27 @@ function SocialLinks({ socialLinks, setSocialLinks }) {
     // Accepts either username or link and normalizes it
     const normalizeValue = (field, value) => {
         if (!value) return "";
-        // LinkedIn
-        if (field === "linkedin") {
-            if (/^https?:\/\//i.test(value)) return value;
-            // If only username, construct URL
-            return `https://linkedin.com/in/${value.replace(/^@/, "")}`;
-        }
-        // GitHub
-        if (field === "github") {
-            if (/^https?:\/\//i.test(value)) return value;
-            return `https://github.com/${value.replace(/^@/, "")}`;
-        }
-        // Instagram
+
+        // For Instagram and Twitter: allow @ but remove it for links
         if (field === "instagram") {
             if (/^https?:\/\//i.test(value)) return value;
             return `https://instagram.com/${value.replace(/^@/, "")}`;
         }
-        // Twitter
         if (field === "twitter") {
             if (/^https?:\/\//i.test(value)) return value;
             return `https://twitter.com/${value.replace(/^@/, "")}`;
         }
+
+        // For LinkedIn and GitHub: never allow @, strip it if found
+        if (field === "linkedin") {
+            if (/^https?:\/\//i.test(value)) return value;
+            return `https://linkedin.com/in/${value.replace(/^@/, "")}`;
+        }
+        if (field === "github") {
+            if (/^https?:\/\//i.test(value)) return value;
+            return `https://github.com/${value.replace(/^@/, "")}`;
+        }
+
         // WhatsApp
         if (field === "whatsapp") {
             if (/^\d{10}$/.test(value)) {
@@ -43,6 +43,7 @@ function SocialLinks({ socialLinks, setSocialLinks }) {
             if (/^https?:\/\//i.test(value)) return value;
             return value;
         }
+
         return value;
     };
 
@@ -54,16 +55,24 @@ function SocialLinks({ socialLinks, setSocialLinks }) {
         });
     };
 
+    // On blur, normalize value and set it
+    const handleBlur = (e) => {
+        const { name, value } = e.target;
+        const normalized = normalizeValue(name, value);
+        setSocialLinks({
+            ...socialLinks,
+            [name]: normalized,
+        });
+    };
+
     const validate = () => {
         const newErrors = {};
-        // LinkedIn and WhatsApp required
         if (!socialLinks.linkedin || socialLinks.linkedin.trim() === "") {
             newErrors.linkedin = "LinkedIn is required";
         }
         if (!socialLinks.whatsapp || socialLinks.whatsapp.trim() === "") {
             newErrors.whatsapp = "WhatsApp is required";
         }
-        // WhatsApp must be either a 10-digit number or a wa.me link
         if (socialLinks.whatsapp && !/^\d{10}$/.test(socialLinks.whatsapp) && !/^https:\/\/wa\.me\//.test(socialLinks.whatsapp)) {
             newErrors.whatsapp = "Enter a 10-digit number or a valid WhatsApp link";
         }
@@ -84,6 +93,7 @@ function SocialLinks({ socialLinks, setSocialLinks }) {
                     name="linkedin"
                     value={socialLinks.linkedin || ""}
                     onChange={handleChange}
+                    onBlur={handleBlur}
                     required
                     placeholder={placeholders.linkedin}
                 />
@@ -97,6 +107,7 @@ function SocialLinks({ socialLinks, setSocialLinks }) {
                     name="github"
                     value={socialLinks.github || ""}
                     onChange={handleChange}
+                    onBlur={handleBlur}
                     placeholder={placeholders.github}
                 />
             </div>
@@ -108,6 +119,7 @@ function SocialLinks({ socialLinks, setSocialLinks }) {
                     name="instagram"
                     value={socialLinks.instagram || ""}
                     onChange={handleChange}
+                    onBlur={handleBlur}
                     placeholder={placeholders.instagram}
                 />
             </div>
@@ -119,6 +131,7 @@ function SocialLinks({ socialLinks, setSocialLinks }) {
                     name="twitter"
                     value={socialLinks.twitter || ""}
                     onChange={handleChange}
+                    onBlur={handleBlur}
                     placeholder={placeholders.twitter}
                 />
             </div>
@@ -132,6 +145,7 @@ function SocialLinks({ socialLinks, setSocialLinks }) {
                     name="whatsapp"
                     value={socialLinks.whatsapp || ""}
                     onChange={handleChange}
+                    onBlur={handleBlur}
                     required
                     placeholder={placeholders.whatsapp}
                 />

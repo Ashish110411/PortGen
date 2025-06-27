@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/Skills.css";
 import { motion } from "framer-motion";
 
@@ -20,7 +20,14 @@ const resolveIcon = (icon) => {
   }
 };
 
+const PAGE_SIZE = 24; // Number of skills to show per category by default
+
 const Skills = () => {
+  // Maintain visibleCount for each category for "Show More" functionality
+  const [visibleCounts, setVisibleCounts] = useState(
+    SkillsData.map(category => Math.min(category.skills.length, PAGE_SIZE))
+  );
+
   // Calculate total number of skills
   const totalSkills = SkillsData.reduce((acc, cat) => acc + (cat.skills?.length || 0), 0);
 
@@ -63,6 +70,28 @@ const Skills = () => {
     }
   };
 
+  // Handler to show more skills in a category
+  const handleShowMore = (categoryIndex) => {
+    setVisibleCounts(prevCounts =>
+      prevCounts.map((count, idx) =>
+        idx === categoryIndex
+          ? Math.min(count + PAGE_SIZE, SkillsData[categoryIndex].skills.length)
+          : count
+      )
+    );
+  };
+
+  // Handler to show less skills in a category
+  const handleShowLess = (categoryIndex) => {
+    setVisibleCounts(prevCounts =>
+      prevCounts.map((count, idx) =>
+        idx === categoryIndex
+          ? PAGE_SIZE
+          : count
+      )
+    );
+  };
+
   return (
     <section className="skills" id="skills">
       <div className="container">
@@ -88,42 +117,72 @@ const Skills = () => {
             viewport={{ once: true, amount: 0.2 }}
             className="skills-categories"
           >
-            {SkillsData.map((category, categoryIndex) => (
-              <motion.div
-                key={categoryIndex}
-                variants={categoryVariants}
-                className="skill-category-block"
-              >
-                <h3 className="category-title">{category.category}</h3>
-                <div className="category-divider"></div>
-                <div className="skills-grid simple-skill-icons">
-                  {category.skills.map((skill, skillIndex) => (
-                    <motion.div
-                      key={skillIndex}
-                      variants={skillVariants}
-                      className="simple-skill"
-                      whileHover={{
-                        y: -8,
-                        scale: 1.05,
-                        transition: { duration: 0.3 }
-                      }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <img
-                        className="skill-img"
-                        src={resolveIcon(skill.icon)}
-                        alt={skill.name}
-                        onError={(e) => {
-                          e.target.style.display = 'none';
+            {SkillsData.map((category, categoryIndex) => {
+              const visibleCount = visibleCounts[categoryIndex] || PAGE_SIZE;
+              const skillsToShow = category.skills.slice(0, visibleCount);
+              const hasMore = visibleCount < category.skills.length;
+              const hasLess = visibleCount > PAGE_SIZE;
+
+              return (
+                <motion.div
+                  key={categoryIndex}
+                  variants={categoryVariants}
+                  className="skill-category-block"
+                >
+                  <h3 className="category-title">{category.category}</h3>
+                  <div className="category-divider"></div>
+                  <div className="skills-grid simple-skill-icons">
+                    {skillsToShow.map((skill, skillIndex) => (
+                      <motion.div
+                        key={skillIndex}
+                        variants={skillVariants}
+                        className="simple-skill"
+                        whileHover={{
+                          y: -8,
+                          scale: 1.05,
+                          transition: { duration: 0.3 }
                         }}
-                        loading="lazy"
-                      />
-                      <p className="skill-name">{skill.name}</p>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <img
+                          className="skill-img"
+                          src={resolveIcon(skill.icon)}
+                          alt={skill.name}
+                          onError={(e) => {
+                            e.target.style.display = 'none';
+                          }}
+                          loading="lazy"
+                        />
+                        <p className="skill-name">{skill.name}</p>
+                      </motion.div>
+                    ))}
+                  </div>
+                  {(hasMore || hasLess) && (
+                    <div style={{ textAlign: "center", marginTop: "1rem" }}>
+                      {hasMore && (
+                        <button
+                          className="show-more-btn"
+                          onClick={() => handleShowMore(categoryIndex)}
+                          type="button"
+                        >
+                          Show More
+                        </button>
+                      )}
+                      {hasLess && (
+                        <button
+                          className="show-less-btn"
+                          onClick={() => handleShowLess(categoryIndex)}
+                          type="button"
+                          style={{ marginLeft: 12 }}
+                        >
+                          Show Less
+                        </button>
+                      )}
+                    </div>
+                  )}
+                </motion.div>
+              );
+            })}
           </motion.div>
 
           {/* Total Skills Counter */}

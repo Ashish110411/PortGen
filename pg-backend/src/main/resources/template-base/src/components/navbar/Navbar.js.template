@@ -5,7 +5,7 @@ import { BiBookContent, BiServer, BiEnvelope } from "react-icons/bi";
 import { FiUser } from "react-icons/fi";
 import { motion, AnimatePresence } from "framer-motion";
 import NavLinksJs from "./NavLinks";
-import profilePicSmall from "../../images/{{profileImageSmall}}";
+import profilePicSmall from "../../images/profile_small.jpg";
 
 const navigationItems = [
     { to: "home", icon: FaHome, label: "Home" },
