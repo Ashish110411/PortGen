@@ -11,31 +11,24 @@ function SocialLinks({ socialLinks, setSocialLinks }) {
         whatsapp: "9876543210 or https://wa.me/919876543210",
     };
 
-    // Accepts either username or link and normalizes it
     const normalizeValue = (field, value) => {
         if (!value) return "";
 
-        // For Instagram and Twitter: allow @ but remove it for links
-        if (field === "instagram") {
+        if (field === "instagram" || field === "twitter") {
+            const username = value.replace(/^@/, "");
             if (/^https?:\/\//i.test(value)) return value;
-            return `https://instagram.com/${value.replace(/^@/, "")}`;
+            return `https://${field}.com/${username}`;
         }
-        if (field === "twitter") {
-            if (/^https?:\/\//i.test(value)) return value;
-            return `https://twitter.com/${value.replace(/^@/, "")}`;
-        }
-
-        // For LinkedIn and GitHub: never allow @, strip it if found
         if (field === "linkedin") {
+            const username = value.replace(/^@/, "");
             if (/^https?:\/\//i.test(value)) return value;
-            return `https://linkedin.com/in/${value.replace(/^@/, "")}`;
+            return `https://linkedin.com/in/${username}`;
         }
         if (field === "github") {
+            const username = value.replace(/^@/, "");
             if (/^https?:\/\//i.test(value)) return value;
-            return `https://github.com/${value.replace(/^@/, "")}`;
+            return `https://github.com/${username}`;
         }
-
-        // WhatsApp
         if (field === "whatsapp") {
             if (/^\d{10}$/.test(value)) {
                 return `https://wa.me/91${value}`;
@@ -43,7 +36,6 @@ function SocialLinks({ socialLinks, setSocialLinks }) {
             if (/^https?:\/\//i.test(value)) return value;
             return value;
         }
-
         return value;
     };
 
@@ -55,7 +47,6 @@ function SocialLinks({ socialLinks, setSocialLinks }) {
         });
     };
 
-    // On blur, normalize value and set it
     const handleBlur = (e) => {
         const { name, value } = e.target;
         const normalized = normalizeValue(name, value);

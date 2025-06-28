@@ -5,17 +5,14 @@ public class Certification {
     private String institution;
     private String year;
 
-    // Default constructor
     public Certification() {}
 
-    // Constructor with parameters
     public Certification(String title, String institution, String year) {
         this.title = title;
         this.institution = institution;
         this.year = year;
     }
 
-    // Getters and Setters
     public String getTitle() { return title; }
     public void setTitle(String title) { this.title = title; }
 

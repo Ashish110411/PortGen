@@ -13,7 +13,6 @@ public class ProfessionalStat {
         this.label = label;
     }
 
-    // Getters and Setters
     public String getNumber() { return number; }
     public void setNumber(String number) { this.number = number; }
 

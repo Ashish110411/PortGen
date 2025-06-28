@@ -138,7 +138,7 @@
 }
 
 .hero-contact:hover {
-	color: var(--white);
+	color: #000000;
 	transform: translateY(-2px);
 	box-shadow: 0 12px 40px rgba(0,0,0,0.3);
 }
@@ -168,7 +168,7 @@
 
 .menu-icon:hover {
 	background: #33e58a;
-	color: white;
+	color: #000000;
 	transform: scale(1.1) rotate(180deg);
 	box-shadow: 0 8px 25px rgba(0,0,0,0.3);
 }
@@ -212,7 +212,7 @@
 
 .to-top-icon:hover {
 	background: #33e58a;
-	color: white;
+	color: #000000;
 	transform: scale(1.1);
 	box-shadow: 0 8px 25px rgba(0,0,0,0.3);
 }

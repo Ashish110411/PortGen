@@ -18,7 +18,6 @@ public class TemplateProcessor {
 
     public String processTemplate(String templateContent, PortfolioRequest data) {
         String processed = templateContent
-                // Basic replacements
                 .replace("{{name}}", safe(data.getName()))
                 .replace("{{about}}", safe(data.getAbout()))
                 .replace("{{aboutParagraph1}}", safe(data.getAboutParagraph1()))
@@ -32,14 +31,12 @@ public class TemplateProcessor {
                 .replace("{{profileImage}}", safe(data.getProfileImage()))
                 .replace("{{profileImageSmall}}", safe(data.getProfileImageSmall()))
 
-                // Social links
                 .replace("{{socialLinks.instagram}}", safe(data.getSocialLinks().getInstagram()))
                 .replace("{{socialLinks.linkedin}}", safe(data.getSocialLinks().getLinkedin()))
                 .replace("{{socialLinks.github}}", safe(data.getSocialLinks().getGithub()))
                 .replace("{{socialLinks.twitter}}", safe(data.getSocialLinks().getTwitter()))
                 .replace("{{socialLinks.whatsapp}}", safe(data.getSocialLinks().getWhatsapp()))
 
-                // JSON arrays for direct use in JavaScript
                 .replace("{{roles}}", toJsonSafe(data.getRoles()))
                 .replace("{{skillsData}}", toJsonSafe(data.getSkills()))
                 .replace("{{educationList}}", toJsonSafe(data.getEducationList()))
@@ -48,17 +45,14 @@ public class TemplateProcessor {
                 .replace("{{tabData}}", toJsonSafe(data.getProjects()))
                 .replace("{{selectedComponents}}", toJsonSafe(data.getSelectedComponents()));
 
-        // Process conditional blocks
         processed = processConditionals(processed, data);
 
-        // Process loops
         processed = processLoops(processed, data);
 
         return processed;
     }
 
     private String processConditionals(String content, PortfolioRequest data) {
-        // Handle {{#if field}} ... {{/if}} blocks
         Pattern ifPattern = Pattern.compile("\\{\\{#if\\s+(\\w+(?:\\.\\w+)*)\\}\\}(.*?)\\{\\{/if\\}\\}", Pattern.DOTALL);
         Matcher matcher = ifPattern.matcher(content);
 
@@ -76,7 +70,6 @@ public class TemplateProcessor {
     }
 
     private String processLoops(String content, PortfolioRequest data) {
-        // Handle {{#each array}} ... {{/each}} blocks
         Pattern eachPattern = Pattern.compile("\\{\\{#each\\s+(\\w+)\\}\\}(.*?)\\{\\{/each\\}\\}", Pattern.DOTALL);
         Matcher matcher = eachPattern.matcher(content);
 
@@ -130,7 +123,6 @@ public class TemplateProcessor {
             case "skills":
                 if (data.getSkills() != null) {
                     for (Object skillGroup : data.getSkills()) {
-                        // Handle skills structure - you'll need to adapt this based on your skills model
                         result.append(processSkillGroup(template, skillGroup));
                     }
                 }
@@ -172,29 +164,23 @@ public class TemplateProcessor {
         return result.toString();
     }
 
-    // Helper methods for processing different object types
     private String processSkillGroup(String template, Object skillGroup) {
-        // Implement based on your skill group structure
         return template; // Placeholder
     }
 
     private String processEducation(String template, Object education) {
-        // Implement based on your education structure
         return template; // Placeholder
     }
 
     private String processCertification(String template, Object certification) {
-        // Implement based on your certification structure
         return template; // Placeholder
     }
 
     private String processStat(String template, Object stat) {
-        // Implement based on your professional stat structure
         return template; // Placeholder
     }
 
     private String processProject(String template, Object project) {
-        // Implement based on your project structure
         return template; // Placeholder
     }
 

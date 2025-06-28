@@ -199,7 +199,7 @@
 
 .nav-link:hover {
 	background: linear-gradient(135deg, #33e58a, #229d5a);
-	color: #ffffff;
+	color: #000000;
 	transform: translateY(-3px) scale(1.1);
 	box-shadow: 0 8px 25px rgba(51, 229, 138, 0.4);
 	border-color: #33e58a;
@@ -253,7 +253,7 @@
 }
 
 .mid-links.active {
-	color: #ffffff;
+	color: #000000;
 	background: linear-gradient(135deg, #33e58a, #229d5a);
 	font-weight: 600;
 	transform: translateX(5px);
@@ -262,7 +262,7 @@
 }
 
 .mid-links.active .mid-icon {
-	color: #ffffff;
+	color: #000000;
 	transform: scale(1.1);
 }
 

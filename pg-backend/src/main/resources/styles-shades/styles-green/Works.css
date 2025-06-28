@@ -127,7 +127,7 @@
 .tab.active {
 	background: linear-gradient(135deg, #33e58a, #229d5a);
 	border-color: #33e58a;
-	color: #ffffff;
+	color: #000000;
 	box-shadow: 0 8px 32px rgba(51, 229, 138, 0.4);
 	transform: translateY(-2px);
 }
@@ -309,7 +309,7 @@
 
 .works-link:hover {
 	background-color: #33e58a;
-	color: #ffffff;
+	color: #000000;
 	transform: translateY(-2px);
 	border-color: #33e58a;
 	box-shadow: 0 4px 12px rgba(51, 229, 138, 0.3);

@@ -5,42 +5,26 @@ import java.util.List;
 public class PortfolioRequest {
     private String name;
     private String about;
-
     private String aboutParagraph1;
     private String aboutParagraph2;
     private String aboutParagraph3;
     private String aboutParagraph4;
-
     private String email;
     private String altEmail;
-
-    // ========== NEW CONTACT FIELDS ==========
     private String phone;
     private String location;
-
     private List<Education> educationList;
-
-    // ========== NEW CERTIFICATIONS FIELD ==========
     private List<Certification> certifications;
-
     private List<ProjectGroup> projects;
     private List<SkillGroup> skills;
-
     private List<String> roles;
     private List<String> selectedComponents;
-
-    // ========== NEW PROFESSIONAL STATS FIELD ==========
     private List<ProfessionalStat> professionalStats;
-
     private SocialLinks socialLinks = new SocialLinks();
-
     private String profileImage;
     private String profileImageSmall;
+    private String styleShade;
 
-    // ====== NEW: Selected style shade for custom styles ======
-    private String styleShade; // e.g. "green", "purple", "blue" etc.
-
-    // ========== GETTERS AND SETTERS ==========
 
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
@@ -66,7 +50,6 @@ public class PortfolioRequest {
     public String getAltEmail() { return altEmail; }
     public void setAltEmail(String altEmail) { this.altEmail = altEmail; }
 
-    // ========== NEW CONTACT GETTERS/SETTERS ==========
     public String getPhone() { return phone; }
     public void setPhone(String phone) { this.phone = phone; }
 
@@ -76,7 +59,6 @@ public class PortfolioRequest {
     public List<Education> getEducationList() { return educationList; }
     public void setEducationList(List<Education> educationList) { this.educationList = educationList; }
 
-    // ========== NEW CERTIFICATIONS GETTERS/SETTERS ==========
     public List<Certification> getCertifications() { return certifications; }
     public void setCertifications(List<Certification> certifications) { this.certifications = certifications; }
 
@@ -92,14 +74,11 @@ public class PortfolioRequest {
     public List<String> getSelectedComponents() { return selectedComponents; }
     public void setSelectedComponents(List<String> selectedComponents) { this.selectedComponents = selectedComponents; }
 
-    // ========== NEW PROFESSIONAL STATS GETTERS/SETTERS ==========
     public List<ProfessionalStat> getProfessionalStats() { return professionalStats; }
     public void setProfessionalStats(List<ProfessionalStat> professionalStats) { this.professionalStats = professionalStats; }
 
     public SocialLinks getSocialLinks() { return socialLinks; }
-    public void setSocialLinks(SocialLinks socialLinks) {
-        this.socialLinks = socialLinks == null ? new SocialLinks() : socialLinks;
-    }
+    public void setSocialLinks(SocialLinks socialLinks) { this.socialLinks = socialLinks == null ? new SocialLinks() : socialLinks; }
 
     public String getProfileImage() { return profileImage; }
     public void setProfileImage(String profileImage) { this.profileImage = profileImage; }
@@ -107,7 +86,6 @@ public class PortfolioRequest {
     public String getProfileImageSmall() { return profileImageSmall; }
     public void setProfileImageSmall(String profileImageSmall) { this.profileImageSmall = profileImageSmall; }
 
-    // ====== NEW: style shade getter/setter ======
     public String getStyleShade() { return styleShade; }
     public void setStyleShade(String styleShade) { this.styleShade = styleShade; }
 }

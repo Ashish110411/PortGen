@@ -44,7 +44,7 @@ function RolesInput({ roles, setRoles }) {
                         }
                     }}
                 />
-                <button type="button" className="button" onClick={addRole}>
+                <button type="button" className="add-btn" onClick={addRole}>
                     Add
                 </button>
             </div>

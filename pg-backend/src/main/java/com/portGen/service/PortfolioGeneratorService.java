@@ -36,11 +36,9 @@ public class PortfolioGeneratorService {
         List<ProjectGroup> mergedProjects = mergeDuplicateProjectGroups(request.getProjects());
         request.setProjects(mergedProjects);
 
-        // 1. Copy base template project, EXCLUDING the styles folder
         Path templateBase = Paths.get("src/main/resources/template-base");
         copyDirectoryExcluding(templateBase, tempDir, Paths.get("src/styles"));
 
-        // 2. Copy only the selected style shade's CSS files into src/styles
         String shade = request.getStyleShade();
         if (shade == null || shade.isEmpty()) {
             shade = "purple"; // default
@@ -49,7 +47,6 @@ public class PortfolioGeneratorService {
         Path targetStyles = tempDir.resolve("src/styles");
         copyDirectory(stylesShadeBase, targetStyles);
 
-        // 3. Inject profile images
         if (image != null) {
             Path imagesDir = tempDir.resolve("src/images");
             Files.createDirectories(imagesDir);
@@ -64,14 +61,12 @@ public class PortfolioGeneratorService {
             request.setProfileImageSmall("profile_small.jpg");
         }
 
-        // 4. Inject resume
         if (resume != null) {
             Path resumePath = tempDir.resolve("src/data/resume.pdf");
             Files.createDirectories(resumePath.getParent());
             Files.copy(resume.getInputStream(), resumePath, StandardCopyOption.REPLACE_EXISTING);
         }
 
-        // 5. Copy only selected skill icons
         Path iconsDir = Paths.get("src/main/resources/static/skill-icons");
         Path targetIcons = tempDir.resolve("src/images/");
         Files.createDirectories(targetIcons);
@@ -85,7 +80,6 @@ public class PortfolioGeneratorService {
             }
         }
 
-        // 6. Process all .template files with user data
         Files.walk(tempDir)
                 .filter(path -> path.toString().endsWith(".template"))
                 .forEach(templateFile -> {
@@ -160,14 +154,12 @@ public class PortfolioGeneratorService {
         for (ProjectGroup group : originalList) {
             String id = group.getId();
             if (!mergedMap.containsKey(id)) {
-                // First occurrence
                 ProjectGroup newGroup = new ProjectGroup();
                 newGroup.setId(id);
                 newGroup.setLabel(group.getLabel());
                 newGroup.setData(new ArrayList<>(group.getData()));
                 mergedMap.put(id, newGroup);
             } else {
-                // Merge additional data
                 mergedMap.get(id).getData().addAll(group.getData());
             }
         }

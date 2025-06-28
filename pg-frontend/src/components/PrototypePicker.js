@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "../styles/PrototypePicker.css";
 
-// Creative color names and image mappings
 const COLOR_PROTOTYPES = [
     {
         value: "green",
@@ -91,7 +90,6 @@ function PrototypePicker({ value, onChange }) {
                 ))}
             </div>
 
-            {/* Modal / lightbox for full screenshot */}
             {modalImg && (
                 <div className="prototype-modal" onClick={() => setModalImg(null)}>
                     <span className="prototype-close">&times;</span>
