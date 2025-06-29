@@ -125,7 +125,8 @@ export const skillGroups = {
         { name: "OpenShift", icon: "openshift.png" },
         { name: "Prometheus", icon: "prometheus.png" },
         { name: "Terraform", icon: "terraform.png" },
-        { name: "Vagrant", icon: "vagrant.png" }
+        { name: "Vagrant", icon: "vagrant.png" },
+        { name: "Apache Kafka", icon: "apachekafka.png" }
     ],
     "Mobile & Cross Platform": [
         { name: "Android Studio", icon: "androidstudio.png" },

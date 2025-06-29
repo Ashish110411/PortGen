@@ -5,53 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="82ed381d-30b1-4829-93b4-cd225d4e39df" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/java/com/portGen/model/Certification.java" beforeDir="false" afterPath="$PROJECT_DIR$/../pg-backend/src/main/java/com/portGen/model/Certification.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/java/com/portGen/model/PortfolioRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../pg-backend/src/main/java/com/portGen/model/PortfolioRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/java/com/portGen/model/ProfessionalStat.java" beforeDir="false" afterPath="$PROJECT_DIR$/../pg-backend/src/main/java/com/portGen/model/ProfessionalStat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/java/com/portGen/service/PortfolioGeneratorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../pg-backend/src/main/java/com/portGen/service/PortfolioGeneratorService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/java/com/portGen/util/TemplateProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/../pg-backend/src/main/java/com/portGen/util/TemplateProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/static/skill-icons/UC-1572af29-1b80-4280-b126-bb7786d51c26.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/static/skill-icons/aftereffects.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/static/skill-icons/audition.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/static/skill-icons/blender3d.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/static/skill-icons/cprogramming.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/static/skill-icons/css3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/static/skill-icons/golang.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/static/skill-icons/google.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/static/skill-icons/matrix.png" beforeDir="false" afterPath="$PROJECT_DIR$/../pg-backend/src/main/resources/static/skill-icons/matrix.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/static/skill-icons/mongodb.png" beforeDir="false" afterPath="$PROJECT_DIR$/../pg-backend/src/main/resources/static/skill-icons/mongodb.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/static/skill-icons/mysql2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/static/skill-icons/mysqllogo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/static/skill-icons/netbeans'.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/static/skill-icons/office365.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/static/skill-icons/php.png" beforeDir="false" afterPath="$PROJECT_DIR$/../pg-backend/src/main/resources/static/skill-icons/php.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/static/skill-icons/premierepro.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/static/skill-icons/profile_me.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/static/skill-icons/profile_me_small.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/static/skill-icons/recoiljs.png" beforeDir="false" afterPath="$PROJECT_DIR$/../pg-backend/src/main/resources/static/skill-icons/recoiljs.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/static/skill-icons/snapseed.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/static/skill-icons/splunk.png" beforeDir="false" afterPath="$PROJECT_DIR$/../pg-backend/src/main/resources/static/skill-icons/splunk.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/static/skill-icons/tomcat.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/static/skill-icons/uipath.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/static/skill-icons/unrealengine.png" beforeDir="false" afterPath="$PROJECT_DIR$/../pg-backend/src/main/resources/static/skill-icons/unrealengine.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/static/skill-icons/whatsapp.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/styles-shades/styles-green/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/../pg-backend/src/main/resources/styles-shades/styles-green/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/styles-shades/styles-green/Education.css" beforeDir="false" afterPath="$PROJECT_DIR$/../pg-backend/src/main/resources/styles-shades/styles-green/Education.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/styles-shades/styles-green/HeroSection.css" beforeDir="false" afterPath="$PROJECT_DIR$/../pg-backend/src/main/resources/styles-shades/styles-green/HeroSection.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/styles-shades/styles-green/Navbar.css" beforeDir="false" afterPath="$PROJECT_DIR$/../pg-backend/src/main/resources/styles-shades/styles-green/Navbar.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/styles-shades/styles-green/Works.css" beforeDir="false" afterPath="$PROJECT_DIR$/../pg-backend/src/main/resources/styles-shades/styles-green/Works.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/styles-shades/styles-teal/Skills.css" beforeDir="false" afterPath="$PROJECT_DIR$/../pg-backend/src/main/resources/styles-shades/styles-teal/Skills.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pg-backend/src/main/resources/template-base/src/components/Skills.js.template" beforeDir="false" afterPath="$PROJECT_DIR$/../pg-backend/src/main/resources/template-base/src/components/Skills.js.template" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pg-backend/src/main/resources/static/skill-icons/apachekafka.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ComponentSelector.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/FormSection.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FormSection.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PortfolioForm.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/ProjectInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ProjectInput.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/PrototypePicker.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PrototypePicker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RolesInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RolesInput.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/SkillSelector.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SkillSelector.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SocialLinks.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SocialLinks.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/App.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/PrototypePicker.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/PrototypePicker.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/global.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/skillGroups.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/skillGroups.js" afterDir="false" />
     </list>
@@ -65,6 +25,7 @@
       <list>
         <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="Dockerfile" />
       </list>
     </option>
   </component>
@@ -135,7 +96,9 @@
       <workItem from="1750919335209" duration="14644000" />
       <workItem from="1750999503848" duration="3009000" />
       <workItem from="1751043943590" duration="14651000" />
-      <workItem from="1751086073407" duration="1758000" />
+      <workItem from="1751086073407" duration="2703000" />
+      <workItem from="1751174702420" duration="7133000" />
+      <workItem from="1751190418952" duration="4627000" />
     </task>
     <servers />
   </component>

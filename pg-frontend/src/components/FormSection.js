@@ -41,7 +41,6 @@ function FormSection() {
         resume: null,
     });
 
-    // NEW: Track stat error for required validation
     const [statError, setStatError] = useState("");
 
     const handleFileChange = (e) => {
@@ -148,7 +147,6 @@ function FormSection() {
     }
 
     const validateStats = () => {
-        // At least one statistic, and neither field empty
         if (
             formData.professionalStats.length === 0 ||
             formData.professionalStats[0].number.trim() === "" ||
@@ -164,14 +162,11 @@ function FormSection() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Validate stats
         if (!validateStats()) {
-            // Scroll to the stats section
             document.getElementById("professional-stats-section")?.scrollIntoView({ behavior: "smooth" });
             return;
         }
 
-        // Normalize WhatsApp link
         let whatsappLink = formData.socialLinks.whatsapp.trim();
         if (/^\d{10}$/.test(whatsappLink)) {
             whatsappLink = "https://wa.me/91" + whatsappLink;
@@ -229,19 +224,6 @@ function FormSection() {
                 <textarea className="input-field" name="aboutParagraph4" placeholder="About Paragraph 4 (optional)" value={formData.aboutParagraph4} onChange={(e) => updateContact("aboutParagraph4", e.target.value)} />
             </div>
 
-            <div className="section">
-                <h2>Contact Information</h2>
-                <input className="input-field" type="email" name="email" placeholder="Primary Email (Required)" required value={formData.email} onChange={(e) => updateContact("email", e.target.value)} />
-                <input className="input-field" type="email" name="altEmail" placeholder="Alternate Email (Optional)" value={formData.altEmail} onChange={(e) => updateContact("altEmail", e.target.value)} />
-                <input className="input-field" type="text" name="phone" placeholder="Phone Number (Required)" required value={formData.phone} onChange={(e) => updateContact("phone", e.target.value)} />
-                <input className="input-field" type="text" name="location" placeholder="Location (e.g., City, Country)" required value={formData.location} onChange={(e) => updateContact("location", e.target.value)} />
-            </div>
-
-            <SocialLinks
-                socialLinks={formData.socialLinks}
-                setSocialLinks={setSocialLinks}
-            />
-
             <RolesInput roles={formData.roles} setRoles={setRoles} />
 
             <div className="section" id="professional-stats-section">
@@ -277,11 +259,42 @@ function FormSection() {
             </div>
 
             <div className="section">
-                <h2>Choose Website Style Shade</h2>
-                <PrototypePicker
-                    value={formData.styleShade}
-                    onChange={handleStyleShadeChange}
-                />
+                <h2>Contact Information</h2>
+                <input className="input-field" type="email" name="email" placeholder="Primary Email (Required)" required value={formData.email} onChange={(e) => updateContact("email", e.target.value)} />
+                <input className="input-field" type="email" name="altEmail" placeholder="Alternate Email (Optional)" value={formData.altEmail} onChange={(e) => updateContact("altEmail", e.target.value)} />
+                <input className="input-field" type="text" name="phone" placeholder="Phone Number (Required)" required value={formData.phone} onChange={(e) => updateContact("phone", e.target.value)} />
+                <input className="input-field" type="text" name="location" placeholder="Location (e.g., City, Country)" required value={formData.location} onChange={(e) => updateContact("location", e.target.value)} />
+            </div>
+
+            <SocialLinks
+                socialLinks={formData.socialLinks}
+                setSocialLinks={setSocialLinks}
+            />
+            <div className="section">
+                <h2>File Uploads</h2>
+                <label>
+                    Profile Picture
+                    <input
+                        className="input-field"
+                        type="file"
+                        name="profileImage"
+                        accept="image/*"
+                        onChange={handleFileChange}
+                        required
+                    />
+                </label>
+                <br/>
+                <label>
+                    Resume
+                    <input
+                        className="input-field"
+                        type="file"
+                        name="resume"
+                        accept=".pdf,.doc,.docx"
+                        onChange={handleFileChange}
+                        required
+                    />
+                </label>
             </div>
 
             <SkillSelector
@@ -335,31 +348,13 @@ function FormSection() {
             />
 
             <div className="section">
-                <h2>File Uploads</h2>
-                <label>
-                    Profile Picture
-                    <input
-                        className="input-field"
-                        type="file"
-                        name="profileImage"
-                        accept="image/*"
-                        onChange={handleFileChange}
-                        required
-                    />
-                </label>
-                <br/>
-                <label>
-                    Resume
-                    <input
-                        className="input-field"
-                        type="file"
-                        name="resume"
-                        accept=".pdf,.doc,.docx"
-                        onChange={handleFileChange}
-                        required
-                    />
-                </label>
+                <h2>Choose Website Style Shade</h2>
+                <PrototypePicker
+                    value={formData.styleShade}
+                    onChange={handleStyleShadeChange}
+                />
             </div>
+
             <button className="submit-btn" type="submit">Generate Portfolio Website</button>
         </form>
     );

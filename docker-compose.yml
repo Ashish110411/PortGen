@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  pg-backend:
+    build: 
+      context: ./pg-backend
+      dockerfile: Dockerfile
+    container_name: portgen-backend
+    ports:
+      - "8080:8080"
+    networks:
+      - portgen-network
+
+  pg-frontend:
+    build:
+      context: ./pg-frontend
+      dockerfile: Dockerfile
+    container_name: portgen-frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - pg-backend
+    networks:
+      - portgen-network
+
+networks:
+  portgen-network:
+    driver: bridge

@@ -9,14 +9,7 @@ function SkillChip({ skill, selected, onClick }) {
             onClick={onClick}
             tabIndex={0}
         >
-            <img
-                src={skill.icon === "gear.svg" ? `/gear.svg` : `/all pngs/${skill.icon}`}
-                alt={skill.name}
-                className="skill-chip-icon"
-                onError={e => { e.target.style.display = "none"; }}
-            />
             {skill.name}
-            {selected}
         </button>
     );
 }
