@@ -2,7 +2,7 @@
 
 This portfolio website was generated using **PortGen - Dynamic Portfolio Generator**. It's a fully functional React application that showcases your professional profile, skills, projects, and experience.
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 portfolio/
@@ -48,7 +48,7 @@ portfolio/
 └── README.md                       # This file
 ```
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -75,15 +75,15 @@ portfolio/
 
 5. **Open your browser** and navigate to:
    ```
-   http://localhost:3000
+   http://localhost:3001
    ```
 
 The portfolio website will automatically reload when you make changes to the code.
 
-## 📝 Available Scripts
+## Available Scripts
 
 ### `npm start`
-Runs the app in development mode at [http://localhost:3000](http://localhost:3000).
+Runs the app in development mode at [http://localhost:3001](http://localhost:3001).
 - Hot reload enabled for live editing
 - Console shows lint errors and warnings
 
@@ -95,10 +95,10 @@ Creates an optimized production build in the `build/` folder.
 ### `npm test`
 Launches the test runner in interactive watch mode.
 
-## 🎨 Customization Guide
+## Customization Guide
 
 ### 1. **Personal Information**
-Edit `src/data/WorkData.js` to update:
+Edit `src/components/HeroSection.js`, `src/components/Contact.js` and `src/components/NavBar.js` to update:
 - Personal details (name, title, bio)
 - Contact information
 - Social media links
@@ -113,9 +113,9 @@ Replace `src/data/resume.pdf` with your own resume file (keep the same filename)
 Replace `public/images/favicon.png` with your own favicon (recommended size: 32x32px or 16x16px).
 
 ### 4. **Images & Assets**
-- **Background images**: Add/replace files in `src/images/bg/`
-- **Skill icons**: Add/replace files in `src/images/icons/`
-- **Profile pictures**: Add your images to `src/images/`
+- **Background images**: Add/replace files in `src/images`
+- **Skill icons**: Add/replace files in `src/images`
+- **Profile pictures**: Add your images to `src/images`
 
 Update image paths in components and `WorkData.js` accordingly.
 
@@ -138,71 +138,31 @@ To add new sections:
 
 ### 7. **Modifying Existing Components**
 
-#### **Hero Section** (`src/components/HeroSection.js`)
+#### **Hero Section**
 - Update introduction text
 - Modify call-to-action buttons
 - Change background or animations
 
-#### **About Section** (`src/components/About.js`)
+#### **About Section**
 - Edit biography and description
 - Update profile image
 - Modify layout and content
 
-#### **Skills Section** (`src/components/Skills.js`)
+#### **Skills Section**
 - Add/remove skill categories
 - Update skill icons and names
 - Modify proficiency indicators
 
-#### **Projects Section** (`src/components/Works.js` & `WorkCard.js`)
+#### **Projects Section**
 - Update project information in `WorkData.js`
 - Modify project card layout in `WorkCard.js`
 - Add/remove project filtering options
 
-#### **Navigation** (`src/components/navbar/`)
-- Update navigation links in `NavLinks.js`
-- Modify navbar styling and behavior in `Navbar.js`
+#### **Navigation**
+- Update navigation link types in `NavLinks.js`
+- Modify navbar links, styling and behavior in `Navbar.js`
 
-## 🎯 Data Configuration
-
-The main configuration file is `src/data/WorkData.js`. This file contains:
-
-```javascript
-// Example structure
-export const personalData = {
-  name: "Your Name",
-  title: "Your Professional Title",
-  bio: "Your professional biography...",
-  email: "your.email@example.com",
-  phone: "+1234567890",
-  // ... more fields
-};
-
-export const skillsData = [
-  {
-    category: "Frontend",
-    skills: [
-      { name: "React", icon: "react.png" },
-      { name: "JavaScript", icon: "js.png" },
-      // ... more skills
-    ]
-  },
-  // ... more categories
-];
-
-export const projectsData = [
-  {
-    title: "Project Name",
-    description: "Project description...",
-    technologies: ["React", "Node.js"],
-    liveUrl: "https://project-demo.com",
-    githubUrl: "https://github.com/username/project",
-    image: "project-image.png"
-  },
-  // ... more projects
-];
-```
-
-## 🌐 Deployment
+## Deployment
 
 ### Option 1: Netlify (Recommended)
 1. Run `npm run build`
@@ -231,7 +191,7 @@ export const projectsData = [
 2. Upload the contents of the `build/` folder to your web server
 3. Configure your server to serve `index.html` for all routes
 
-## 🛠️ Troubleshooting
+## Troubleshooting
 
 ### Common Issues:
 
@@ -256,33 +216,19 @@ export const projectsData = [
    - Check CSS file imports
    - Verify class names match between JS and CSS files
 
-## 📱 Responsive Design
+## Responsive Design
 
 This portfolio is fully responsive and optimized for:
-- 📱 Mobile devices (320px and up)
-- 📱 Tablets (768px and up)
-- 💻 Desktops (1024px and up)
-- 🖥️ Large screens (1440px and up)
+- Mobile devices (320px and up)
+- Tablets (768px and up)
+- Desktops (1024px and up)
+- Large screens (1440px and up)
 
-## 🎨 Color Scheme Customization
-
-The portfolio uses CSS custom properties for easy color customization. Edit these in `src/styles/App.css`:
-
-```css
-:root {
-  --primary-color: #your-color;
-  --secondary-color: #your-color;
-  --accent-color: #your-color;
-  --text-color: #your-color;
-  --background-color: #your-color;
-}
-```
-
-## 📄 License
+## License
 
 This generated portfolio is yours to use, modify, and deploy as you wish. Feel free to customize it to match your personal brand and requirements.
 
-## 🆘 Support
+## Support
 
 If you need help customizing your portfolio:
 - Check the component files for inline comments
@@ -295,4 +241,4 @@ If you need help customizing your portfolio:
 **Generated on**: June 29, 2025  
 **Template Version**: 1.0.0
 
-🎉 **Congratulations on your new portfolio website!** Make it uniquely yours by customizing the content, colors, and layout to reflect your personal brand.
+**Congratulations on your new portfolio website!** Make it uniquely yours by customizing the content, colors, and layout to reflect your personal brand.
