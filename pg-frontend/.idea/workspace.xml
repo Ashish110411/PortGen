@@ -5,15 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="82ed381d-30b1-4829-93b4-cd225d4e39df" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../pg-backend/src/main/resources/static/skill-icons/apachekafka.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/FormSection.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FormSection.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/PortfolioForm.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ProjectInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ProjectInput.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SkillSelector.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SkillSelector.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/global.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/skillGroups.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/skillGroups.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +90,7 @@
       <workItem from="1751043943590" duration="14651000" />
       <workItem from="1751086073407" duration="2703000" />
       <workItem from="1751174702420" duration="7133000" />
-      <workItem from="1751190418952" duration="4627000" />
+      <workItem from="1751190418952" duration="6765000" />
     </task>
     <servers />
   </component>
