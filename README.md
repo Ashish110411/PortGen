@@ -272,7 +272,7 @@ The system provides a RESTful API for portfolio generation:
 **Response:** ZIP file containing complete React portfolio application
 
 ### Generated Portfolio Structure
-For the complete generated portfolio details, see the [template-base README](./pg-backend/src/main/resources/template-base/README.md)
+For the complete generated portfolio details, see the [Generated README](./pg-backend/src/main/resources/template-base/README.md)
 
 ## Form Features
 
