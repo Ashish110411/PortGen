@@ -111,7 +111,8 @@ export const skillGroups = {
         { name: "Scikit-learn", icon: "scikitlearn.png" },
         { name: "Seaborn", icon: "seaborn.png" },
         { name: "Tableau", icon: "tableausoftware.png" },
-        { name: "TensorFlow", icon: "tensorflow.png" }
+        { name: "TensorFlow", icon: "tensorflow.png" },
+        { name: "Power BI", icon: "powerbi.png" }
     ],
     "DevOps & Cloud": [
         { name: "Amazon Web Services", icon: "amazonwebservices.png" },
