@@ -272,31 +272,7 @@ The system provides a RESTful API for portfolio generation:
 **Response:** ZIP file containing complete React portfolio application
 
 ### Generated Portfolio Structure
-
-After form submission, the generated ZIP contains:
-
-```
-portfolio/
-├── public/                        # Static assets
-│   ├── index.html
-│   ├── favicon.ico
-│   └── manifest.json
-├── src/
-│   ├── components/               # Portfolio components
-│   │   ├── Hero/                # Hero section
-│   │   ├── About/               # About section
-│   │   ├── Skills/              # Skills showcase
-│   │   ├── Projects/            # Projects gallery
-│   │   └── Education/           # Education timeline
-│   ├── styles/                  # Compiled stylesheets
-│   ├── images/                  # Optimized images and icons
-│   ├── data/                    # Generated data files
-│   │   ├── WorkData.js          # Portfolio data
-│   │   └── resume.pdf           # User's resume
-│   └── App.js                   # Main portfolio app
-├── package.json                 # Dependencies and scripts
-└── README.md                    # Setup instructions
-```
+For the complete generated portfolio details, see the [Generated README](./pg-backend/src/main/resources/template-base/README.md)
 
 ## Form Features
 
