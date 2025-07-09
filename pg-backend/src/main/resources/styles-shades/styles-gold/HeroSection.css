@@ -45,19 +45,19 @@
 }
 
 .hero-intro {
-	font-size: 7.5rem;
+	font-size: 6rem;
 	margin-bottom: 0.5rem;
 	color: white;
 	display: flex;
 	flex-direction: column;
-	font-weight: 700;
+	font-weight: 600;
 	text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 	letter-spacing: -2px;
 	transition: font-size 0.4s, color 0.3s, text-shadow 0.3s;
 }
 
 .hero-desc {
-	font-size: 1.8rem;
+	font-size: 1.5rem;
 	font-family: "Poppins", sans-serif;
 	font-weight: 300;
 	color: #fff;
@@ -69,8 +69,8 @@
 }
 
 .hero-desc-sub {
-	font-weight: 500;
-	color: #fbbf24;
+	font-weight: 400;
+	color: var(--nav-blue);
 	position: relative;
 	display: inline-block;
 	transition: color 0.3s;
@@ -78,19 +78,19 @@
 
 .hero-desc-sub::after {
 	content: '|';
-	color: #fbbf24;
+	color: var(--nav-blue);
 	animation: blink 1s infinite;
 	margin-left: 2px;
 }
 
 .hero-contact {
 	text-decoration: none;
-	color: #fbbf24;
-	font-size: 1rem;
-	font-weight: 500;
+	color: var(--nav-blue);
+	font-size: 0.9rem;
+	font-weight: 400;
 	letter-spacing: 2px;
 	padding: 1.2rem 2.5rem;
-	border: 2px solid #fbbf24;
+	border: 2px solid var(--nav-blue);
 	background-color: transparent;
 	border-radius: 50px;
 	overflow: hidden;
@@ -120,7 +120,7 @@
 }
 
 .hero-contact::after {
-	background: linear-gradient(135deg, #fbbf24, #b45309);
+	background: linear-gradient(135deg, var(--nav-blue), var(--nav-blue-shade));
 	content: "";
 	display: block;
 	height: 100%;
@@ -157,17 +157,17 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	border: 2px solid #fbbf24;
+	border: 2px solid var(--nav-blue);
 	border-radius: 50%;
 	transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 	z-index: 50;
 	background: rgba(255,255,255,0.1);
 	backdrop-filter: blur(10px);
-	color: #fbbf24;
+	color: var(--nav-blue);
 }
 
 .menu-icon:hover {
-	background: #fbbf24;
+	background: var(--nav-blue);
 	color: #000000;
 	transform: scale(1.1) rotate(180deg);
 	box-shadow: 0 8px 25px rgba(0,0,0,0.3);
@@ -193,12 +193,12 @@
 	right: 1.5rem;
 	cursor: pointer;
 	font-size: 1.4rem;
-	border: 2px solid #fbbf24;
+	border: 2px solid var(--nav-blue);
 	transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 	z-index: 50;
 	background: rgba(255,255,255,0.1);
 	backdrop-filter: blur(10px);
-	color: #fbbf24;
+	color: var(--nav-blue);
 	opacity: 0;
 	visibility: hidden;
 	transform: translateY(20px);
@@ -211,7 +211,7 @@
 }
 
 .to-top-icon:hover {
-	background: #fbbf24;
+	background: var(--nav-blue);
 	color: #000000;
 	transform: scale(1.1);
 	box-shadow: 0 8px 25px rgba(0,0,0,0.3);
@@ -280,7 +280,7 @@
 	}
 
 	.hero-intro {
-		font-size: 5rem;
+		font-size: 4.2rem;
 	}
 
 	.menu-icon {
@@ -291,11 +291,11 @@
 
 @media screen and (max-width: 650px) {
 	.hero-intro {
-		font-size: 4rem;
+		font-size: 3.4rem;
 	}
 
 	.hero-desc {
-		font-size: 1.4rem;
+		font-size: 1.2rem;
 	}
 }
 
@@ -305,16 +305,16 @@
 	}
 
 	.hero-intro {
-		font-size: 2.8rem;
+		font-size: 2.4rem;
 		letter-spacing: -1px;
 	}
 
 	.hero-desc {
-		font-size: 1.2rem;
+		font-size: 1rem;
 	}
 
 	.hero-contact {
-		font-size: 0.9rem;
+		font-size: 0.8rem;
 		padding: 1rem 2rem;
 		letter-spacing: 1px;
 	}
@@ -342,15 +342,15 @@
 
 @media screen and (max-width: 400px) {
 	.hero-intro {
-		font-size: 2.2rem;
+		font-size: 1.9rem;
 	}
 
 	.hero-desc {
-		font-size: 1rem;
+		font-size: 0.9rem;
 	}
 
 	.hero-contact {
-		font-size: 0.8rem;
+		font-size: 0.7rem;
 		padding: 0.8rem 1.5rem;
 	}
 }

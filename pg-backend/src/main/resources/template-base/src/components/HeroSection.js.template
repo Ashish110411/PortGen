@@ -98,7 +98,7 @@ const HeroSection = ({ nav, handleNav }) => {
 	};
 
 	const iconVariants = {
-		hidden: { opacity: 0, rotate: -180 },
+		hidden: { opacity: 0, rotate: -360 },
 		visible: {
 			opacity: 1,
 			rotate: 0,
@@ -108,7 +108,7 @@ const HeroSection = ({ nav, handleNav }) => {
 			}
 		},
 		hover: {
-			rotate: 180,
+			rotate: 360,
 			scale: 1.1,
 			transition: { duration: 0.3 }
 		}

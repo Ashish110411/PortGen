@@ -116,8 +116,8 @@
 }
 
 .profile-name {
-	font-size: 1.2rem;
-	font-weight: 600;
+	font-size: 1rem;
+	font-weight: 500;
 	font-family: "Poppins", sans-serif;
 	background: none;
 	border: none;
@@ -224,9 +224,9 @@
 	background: none;
 	border: none;
 	padding: 1rem 1.5rem;
-	font-size: 1rem;
+	font-size: 0.9rem;
 	font-family: "Poppins", sans-serif;
-	font-weight: 500;
+	font-weight: 400;
 	transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 	border-radius: 12px;
 	margin-bottom: 0.5rem;
@@ -255,7 +255,7 @@
 .mid-links.active {
 	color: #000000;
 	background: linear-gradient(135deg, #33e58a, #229d5a);
-	font-weight: 600;
+	font-weight: 500;
 	transform: translateX(5px);
 	box-shadow: 0 8px 25px rgba(51, 229, 138, 0.3);
 	border-color: #33e58a;
@@ -285,7 +285,7 @@
 
 .mid-icon {
 	margin-right: 1.2rem;
-	font-size: 1.4rem;
+	font-size: 1.2rem;
 	transition: all 0.3s ease;
 	color: inherit;
 }
@@ -293,7 +293,6 @@
 .mid-link {
 	font-weight: inherit;
 	transition: all 0.3s ease;
-	color: inherit;
 }
 
 /* Footer */
@@ -308,7 +307,7 @@
 
 .copyright {
 	color: #8b949e;
-	font-size: 0.75rem;
+	font-size: 0.7rem;
 	font-family: "Quicksand", sans-serif;
 	text-align: center;
 	line-height: 1.5;
@@ -373,7 +372,7 @@
 	}
 
 	.profile-name {
-		font-size: 1.1rem;
+		font-size: 0.95rem;
 	}
 
 	.nav-link {
@@ -384,11 +383,11 @@
 
 	.mid-links {
 		padding: 0.8rem 1.2rem;
-		font-size: 0.95rem;
+		font-size: 0.85rem;
 	}
 
 	.mid-icon {
-		font-size: 1.2rem;
+		font-size: 1.1rem;
 		margin-right: 1rem;
 	}
 }
@@ -408,7 +407,7 @@
 	}
 
 	.profile-name {
-		font-size: 1rem;
+		font-size: 0.9rem;
 		margin-top: 1rem;
 	}
 
@@ -425,10 +424,10 @@
 
 	.mid-links {
 		padding: 0.7rem 1rem;
-		font-size: 0.9rem;
+		font-size: 0.8rem;
 	}
 
 	.copyright {
-		font-size: 0.7rem;
+		font-size: 0.65rem;
 	}
 }

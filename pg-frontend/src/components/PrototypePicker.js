@@ -49,6 +49,22 @@ const COLOR_PROTOTYPES = [
         loadingImg: "blue_loading.png",
         webImg: "blue_webp.png",
         description: "Trusted. Classic. Reliable."
+    },
+    {
+        value: "chartreuse",
+        label: "Electric Chartreuse",
+        theme: "chartreuse",
+        loadingImg: "chartreuse_loading.png",
+        webImg: "chartreuse_webp.png",
+        description: "Vibrant. Energetic. Innovative."
+    },
+    {
+        value: "orange",
+        label: "Blazing Sunset",
+        theme: "orange",
+        loadingImg: "orange_loading.png",
+        webImg: "orange_webp.png",
+        description: "Bold. Dynamic. Creative."
     }
 ];
 

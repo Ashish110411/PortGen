@@ -35,9 +35,9 @@
 }
 
 .heading-sub-text {
-    color: #b983ff;
-    font-size: 1.2rem;
-    font-weight: 600;
+    color: #8b5cf6;
+    font-size: 1rem;
+    font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 3px;
     margin-bottom: 16px;
@@ -46,12 +46,12 @@
 }
 
 .heading-text {
-    font-size: 4rem;
-    font-weight: 800;
+    font-size: 3.2rem;
+    font-weight: 600;
     color: #f0f6fc;
     margin-bottom: 24px;
     line-height: 1.1;
-    background: linear-gradient(135deg, #f0f6fc 0%, #b983ff 50%, #7f33ff 100%);
+    background: linear-gradient(135deg, #f0f6fc 0%, #8b5cf6 50%, #7c3aed 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -60,7 +60,7 @@
 .heading-divider {
     width: 120px;
     height: 6px;
-    background: linear-gradient(90deg, #b983ff, #7f33ff, #b983ff);
+    background: linear-gradient(90deg, #8b5cf6, #7c3aed, #8b5cf6);
     margin: 0 auto;
     border-radius: 3px;
     position: relative;
@@ -74,9 +74,9 @@
     transform: translate(-50%, -50%);
     width: 12px;
     height: 12px;
-    background: #b983ff;
+    background: #8b5cf6;
     border-radius: 50%;
-    box-shadow: 0 0 20px rgba(185, 131, 255, 0.6);
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.6);
 }
 
 /* ===============================
@@ -103,8 +103,8 @@
 }
 
 .intro-text {
-    font-size: 1.3rem;
-    font-weight: 500;
+    font-size: 1.1rem;
+    font-weight: 400;
     line-height: 1.8;
     margin-bottom: 24px;
     color: #f0f6fc;
@@ -112,8 +112,8 @@
 }
 
 .highlight {
-    color: #b983ff;
-    font-weight: 600;
+    color: #8b5cf6;
+    font-weight: 500;
     position: relative;
     transition: color 0.3s;
 }
@@ -125,12 +125,12 @@
     left: 0;
     width: 100%;
     height: 2px;
-    background: linear-gradient(90deg, #b983ff, transparent);
+    background: linear-gradient(90deg, #8b5cf6, transparent);
     opacity: 0.7;
 }
 
 .content-text p {
-    font-size: 1.1rem;
+    font-size: 0.95rem;
     line-height: 1.8;
     color: #8b949e;
     margin-bottom: 20px;
@@ -141,8 +141,8 @@
 
 /* Skills Section */
 .skills-section h3 {
-    font-size: 1.4rem;
-    font-weight: 700;
+    font-size: 1.2rem;
+    font-weight: 500;
     color: #f0f6fc;
     margin-bottom: 20px;
     position: relative;
@@ -157,7 +157,7 @@
     transform: translateY(-50%);
     width: 4px;
     height: 24px;
-    background: linear-gradient(180deg, #b983ff, #7f33ff);
+    background: linear-gradient(180deg, #8b5cf6, #7c3aed);
     border-radius: 2px;
 }
 
@@ -172,7 +172,7 @@
     padding: 16px 20px;
     border-radius: 12px;
     text-align: center;
-    font-weight: 500;
+    font-weight: 400;
     color: #f0f6fc;
     border: 1px solid #30363d;
     transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -188,7 +188,7 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(185, 131, 255, 0.1), transparent);
+    background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.1), transparent);
     transition: left 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -197,11 +197,11 @@
 }
 
 .skill-item:hover {
-    background: rgba(185, 131, 255, 0.15);
-    border-color: #b983ff;
+    background: rgba(139, 92, 246, 0.15);
+    border-color: #8b5cf6;
     transform: translateY(-4px) scale(1.02);
-    box-shadow: 0 8px 32px rgba(185, 131, 255, 0.2);
-    color: #b983ff;
+    box-shadow: 0 8px 32px rgba(139, 92, 246, 0.2);
+    color: #8b5cf6;
 }
 
 /* ===============================
@@ -235,7 +235,7 @@
     left: -20px;
     right: -20px;
     bottom: -20px;
-    background: linear-gradient(45deg, #b983ff, transparent, #7f33ff);
+    background: linear-gradient(45deg, #8b5cf6, transparent, #7c3aed);
     border-radius: 50%;
     z-index: -1;
     animation: rotate 12s linear infinite;
@@ -265,8 +265,8 @@
 .about-img img:hover {
     transform: scale(1.05);
     filter: brightness(1) contrast(1.2);
-    box-shadow: 0 25px 80px rgba(185, 131, 255, 0.3);
-    border-color: #b983ff;
+    box-shadow: 0 25px 80px rgba(139, 92, 246, 0.3);
+    border-color: #8b5cf6;
 }
 
 .image-overlay {
@@ -275,7 +275,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(185, 131, 255, 0.2) 0%, transparent 100%);
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, transparent 100%);
     border-radius: 50%;
     opacity: 0;
     transition: opacity 0.35s;
@@ -314,7 +314,7 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(185, 131, 255, 0.1), transparent);
+    background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.1), transparent);
     transition: left 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -323,25 +323,25 @@
 }
 
 .stat-item:hover {
-    background: rgba(185, 131, 255, 0.15);
-    border-color: #b983ff;
+    background: rgba(139, 92, 246, 0.15);
+    border-color: #8b5cf6;
     transform: translateY(-6px) scale(1.02);
-    box-shadow: 0 12px 40px rgba(185, 131, 255, 0.2);
+    box-shadow: 0 12px 40px rgba(139, 92, 246, 0.2);
 }
 
 .stat-number {
-    font-size: 2.2rem;
-    font-weight: 800;
-    color: #b983ff;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #8b5cf6;
     margin-bottom: 8px;
     line-height: 1;
     transition: all 0.3s ease;
 }
 
 .stat-label {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     color: #8b949e;
-    font-weight: 500;
+    font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 1px;
     transition: all 0.3s ease;
@@ -393,7 +393,7 @@
 
 @media screen and (max-width: 1024px) {
     .heading-text {
-        font-size: 3.5rem;
+        font-size: 2.8rem;
     }
 
     .about-img img {
@@ -408,11 +408,11 @@
     }
 
     .heading-text {
-        font-size: 2.8rem;
+        font-size: 2.4rem;
     }
 
     .heading-sub-text {
-        font-size: 1rem;
+        font-size: 0.9rem;
         letter-spacing: 2px;
     }
 
@@ -436,15 +436,15 @@
     }
 
     .stat-number {
-        font-size: 1.8rem;
+        font-size: 1.5rem;
     }
 
     .intro-text {
-        font-size: 1.2rem;
+        font-size: 1rem;
     }
 
     .content-text p {
-        font-size: 1rem;
+        font-size: 0.9rem;
     }
 }
 
@@ -458,11 +458,11 @@
     }
 
     .heading-text {
-        font-size: 2.2rem;
+        font-size: 2rem;
     }
 
     .heading-sub-text {
-        font-size: 0.9rem;
+        font-size: 0.8rem;
         letter-spacing: 1.5px;
     }
 
@@ -472,11 +472,11 @@
     }
 
     .intro-text {
-        font-size: 1.1rem;
+        font-size: 0.95rem;
     }
 
     .content-text p {
-        font-size: 0.95rem;
+        font-size: 0.85rem;
     }
 
     .skills-grid {
@@ -485,7 +485,7 @@
     }
 
     .skills-section h3 {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
     }
 
     .stats-container {
@@ -498,17 +498,17 @@
     }
 
     .stat-number {
-        font-size: 1.6rem;
+        font-size: 1.3rem;
     }
 
     .stat-label {
-        font-size: 0.8rem;
+        font-size: 0.75rem;
     }
 }
 
 @media screen and (max-width: 380px) {
     .heading-text {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
     }
 
     .about-img img {
@@ -517,6 +517,6 @@
     }
 
     .stat-number {
-        font-size: 1.4rem;
+        font-size: 1.1rem;
     }
 }

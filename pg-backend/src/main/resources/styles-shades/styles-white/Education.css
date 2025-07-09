@@ -30,9 +30,9 @@
 }
 
 .heading-sub-text {
-    color: #ffffff;
-    font-size: 1.3rem;
-    font-weight: 600;
+    color: #f0f6fc;
+    font-size: 1rem;
+    font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 3px;
     margin-bottom: 15px;
@@ -41,12 +41,12 @@
 }
 
 .heading-text {
-    font-size: 4rem;
-    font-weight: 800;
+    font-size: 3.2rem;
+    font-weight: 600;
     color: #f0f6fc;
     margin-bottom: 25px;
     line-height: 1.1;
-    background: linear-gradient(135deg, #f0f6fc 0%, #ffffff 60%, #f0f6fc 100%);
+    background: linear-gradient(135deg, #f0f6fc 0%, #ffffff 50%, #e6edf3 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -55,7 +55,7 @@
 .heading-divider {
     width: 120px;
     height: 5px;
-    background: linear-gradient(90deg, #ffffff, #f0f6fc);
+    background: linear-gradient(90deg, #f0f6fc, #ffffff);
     margin: 0 auto;
     border-radius: 3px;
     position: relative;
@@ -69,9 +69,9 @@
     transform: translate(-50%, -50%);
     width: 12px;
     height: 12px;
-    background: #ffffff;
+    background: #f0f6fc;
     border-radius: 50%;
-    box-shadow: 0 0 20px rgba(255,255,255,0.33);
+    box-shadow: 0 0 20px rgba(240, 246, 252, 0.6);
 }
 
 /* ===============================
@@ -105,8 +105,8 @@
     border: 2px solid transparent;
     border-radius: 20px;
     color: #8b949e;
-    font-weight: 600;
-    font-size: 1.1rem;
+    font-weight: 500;
+    font-size: 0.95rem;
     cursor: pointer;
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     white-space: nowrap;
@@ -131,34 +131,34 @@
 }
 
 .tab-btn:hover {
-    border-color: #ffffff;
+    border-color: #f0f6fc;
     color: #f0f6fc;
-    background: rgba(255,255,255,0.09);
+    background: rgba(240, 246, 252, 0.1);
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(255,255,255,0.14);
+    box-shadow: 0 8px 25px rgba(240, 246, 252, 0.2);
 }
 
 .tab-btn.active {
-    background: linear-gradient(135deg, #ffffff, #f0f6fc);
-    border-color: #ffffff;
-    color: #000000;
-    box-shadow: 0 8px 32px rgba(255,255,255,0.18);
+    background: linear-gradient(135deg, #f0f6fc, #ffffff);
+    border-color: #f0f6fc;
+    color: #0d1117;
+    box-shadow: 0 8px 32px rgba(240, 246, 252, 0.4);
     transform: translateY(-2px);
 }
 
 .tab-btn.active:hover {
-    background: linear-gradient(135deg, #f0f6fc, #ffffff);
+    background: linear-gradient(135deg, #ffffff, #f0f6fc);
     transform: translateY(-3px);
-    box-shadow: 0 12px 40px rgba(255,255,255,0.21);
+    box-shadow: 0 12px 40px rgba(240, 246, 252, 0.5);
 }
 
 .tab-btn-icon {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
 }
 
 .tab-btn-label {
-    font-size: 1rem;
-    font-weight: 600;
+    font-size: 0.9rem;
+    font-weight: 500;
 }
 
 /* ===============================
@@ -200,8 +200,8 @@
 }
 
 .education-card:hover {
-    border-color: #ffffff;
-    box-shadow: 0 8px 32px rgba(255,255,255,0.13);
+    border-color: #f0f6fc;
+    box-shadow: 0 8px 32px rgba(240, 246, 252, 0.15);
 }
 
 .education-container {
@@ -222,16 +222,18 @@
 .education-type-badge {
     padding: 6px 12px;
     border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: 600;
+    font-size: 0.8rem;
+    font-weight: 500;
     color: #ffffff;
     display: inline-block;
 }
 
 .education-type-badge.education {
     background: linear-gradient(135deg, #2ea043, #238636);
-    color: #000000;
 }
+
+.education-type-badge.workExperience{
+    background: linear-gradient(135deg, #d73a49, #cf222e);}
 
 .education-type-badge.certifications {
     background: linear-gradient(135deg, #fb8500, #fd7e14);
@@ -248,18 +250,19 @@
 }
 
 .education-title {
-    font-size: 1.5rem;
-    font-weight: 700;
+    font-size: 1.3rem;
+    font-weight: 500;
     line-height: 1.3;
     margin: 0;
     text-align: center;
-    background: linear-gradient(135deg, #ffffff 0%, #f0f6fc 30%, #ffffff 70%, #f0f6fc 100%);
+    /* Enhanced attractive gradient styling */
+    background: linear-gradient(135deg, #f0f6fc 0%, #ffffff 30%, #e6edf3 70%, #f0f6fc 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     background-size: 200% 200%;
     animation: gradientShift 3s ease-in-out infinite;
-    text-shadow: 0 0 30px rgba(255,255,255,0.14);
+    text-shadow: 0 0 30px rgba(240, 246, 252, 0.3);
     transition: all 0.3s ease;
     position: relative;
 }
@@ -272,7 +275,7 @@
     transform: translateX(-50%);
     width: 0;
     height: 2px;
-    background: linear-gradient(90deg, #ffffff, #f0f6fc);
+    background: linear-gradient(90deg, #f0f6fc, #ffffff);
     transition: width 0.3s ease;
     border-radius: 1px;
 }
@@ -283,9 +286,10 @@
 
 .education-card:hover .education-title {
     transform: translateY(-1px);
-    filter: drop-shadow(0 4px 8px rgba(255,255,255,0.16));
+    filter: drop-shadow(0 4px 8px rgba(240, 246, 252, 0.4));
 }
 
+/* Gradient animation for title */
 @keyframes gradientShift {
     0%, 100% {
         background-position: 0% 50%;
@@ -296,9 +300,9 @@
 }
 
 .education-institution {
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: #8b949e;
-    font-weight: 500;
+    font-weight: 400;
     text-align: center;
     transition: all 0.3s ease;
 }
@@ -320,7 +324,7 @@
 .education-desc {
     color: #8b949e;
     line-height: 1.8;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     margin: 0;
     text-align: justify;
     white-space: pre-line;
@@ -334,7 +338,7 @@
     top: 0;
     width: 3px;
     height: 100%;
-    background: linear-gradient(180deg, #ffffff, transparent);
+    background: linear-gradient(180deg, #f0f6fc, transparent);
     border-radius: 2px;
     opacity: 0.6;
 }
@@ -348,12 +352,12 @@
 .education-desc p:not(:first-child) {
     margin-top: 16px;
     padding-top: 12px;
-    border-top: 1px dashed rgba(255,255,255,0.14);
+    border-top: 1px dashed rgba(240, 246, 252, 0.2);
 }
 
 .education-desc p:not(:first-child)::before {
     content: '▸';
-    color: #ffffff;
+    color: #f0f6fc;
     font-weight: bold;
     position: absolute;
     left: -16px;
@@ -380,7 +384,7 @@
     left: 0;
     width: 40px;
     height: 1px;
-    background: linear-gradient(90deg, #ffffff, transparent);
+    background: linear-gradient(90deg, #f0f6fc, transparent);
 }
 
 .detail-item {
@@ -388,7 +392,7 @@
     align-items: center;
     gap: 10px;
     color: #8b949e;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     width: 100%;
     padding: 4px 0;
     transition: color 0.3s ease;
@@ -399,19 +403,19 @@
 }
 
 .detail-icon {
-    color: #ffffff;
-    font-size: 1rem;
+    color: #f0f6fc;
+    font-size: 0.9rem;
     flex-shrink: 0;
 }
 
 .value-label {
-    font-weight: 600;
+    font-weight: 500;
     color: #f0f6fc;
 }
 
 .value-amount {
     color: #2ea043;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 /* Card Footer */
@@ -427,8 +431,8 @@
 }
 
 .education-subjects-label {
-    font-size: 0.85rem;
-    font-weight: 600;
+    font-size: 0.8rem;
+    font-weight: 500;
     color: #f0f6fc;
     margin-bottom: 10px;
     text-transform: uppercase;
@@ -444,7 +448,7 @@
     transform: translateX(-50%);
     width: 30px;
     height: 1px;
-    background: linear-gradient(90deg, transparent, #ffffff, transparent);
+    background: linear-gradient(90deg, transparent, #f0f6fc, transparent);
 }
 
 .education-tags {
@@ -457,11 +461,11 @@
 .education-tag {
     padding: 6px 12px;
     background: linear-gradient(135deg, #30363d, #21262d);
-    border: 1px solid #ffffff;
+    border: 1px solid #f0f6fc;
     border-radius: 12px;
-    color: #ffffff;
-    font-size: 0.8rem;
-    font-weight: 500;
+    color: #f0f6fc;
+    font-size: 0.75rem;
+    font-weight: 400;
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
@@ -474,7 +478,7 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
+    background: linear-gradient(90deg, transparent, rgba(240, 246, 252, 0.1), transparent);
     transition: left 0.5s ease;
 }
 
@@ -483,10 +487,10 @@
 }
 
 .education-tag:hover {
-    background: linear-gradient(135deg, #ffffff, #f0f6fc);
-    color: #000000;
+    background: linear-gradient(135deg, #f0f6fc, #ffffff);
+    color: #0d1117;
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(255,255,255,0.18);
+    box-shadow: 0 4px 12px rgba(240, 246, 252, 0.3);
 }
 
 /* Footer Bottom - Enhanced */
@@ -501,12 +505,12 @@
 
 .education-year {
     padding: 8px 20px;
-    background: linear-gradient(135deg, #ffffff, #f0f6fc);
+    background: linear-gradient(135deg, #f0f6fc, #ffffff);
     border-radius: 12px;
-    font-size: 0.9rem;
-    font-weight: 600;
+    font-size: 0.85rem;
+    font-weight: 500;
     white-space: nowrap;
-    color: #161b22;
+    color: #0d1117;
     position: relative;
     overflow: hidden;
     transition: all 0.3s ease;
@@ -528,17 +532,17 @@
 }
 
 .education-year:hover {
-    background: linear-gradient(135deg, #f0f6fc, #ffffff);
+    background: linear-gradient(135deg, #ffffff, #f0f6fc);
     transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 8px 25px rgba(255,255,255,0.21);
+    box-shadow: 0 8px 25px rgba(240, 246, 252, 0.4);
 }
 
 /* Status Badge Styles */
 .status-badge {
     padding: 6px 14px;
     border-radius: 12px;
-    font-size: 0.8rem;
-    font-weight: 600;
+    font-size: 0.75rem;
+    font-weight: 500;
     white-space: nowrap;
     position: relative;
     overflow: hidden;
@@ -606,11 +610,11 @@
     }
 
     .heading-text {
-        font-size: 3.5rem;
+        font-size: 2.8rem;
     }
 
     .education-title {
-        font-size: 1.4rem;
+        font-size: 1.2rem;
     }
 }
 
@@ -620,11 +624,11 @@
     }
 
     .heading-text {
-        font-size: 2.8rem;
+        font-size: 2.4rem;
     }
 
     .heading-sub-text {
-        font-size: 1.1rem;
+        font-size: 0.9rem;
         letter-spacing: 2px;
     }
 
@@ -639,6 +643,7 @@
         min-height: auto;
     }
 
+    /* Updated tab styling for mobile - matching Works */
     .tab-buttons {
         gap: 8px;
         flex-direction: column;
@@ -648,26 +653,26 @@
 
     .tab-btn {
         padding: 14px 24px;
-        font-size: 1rem;
+        font-size: 0.9rem;
         width: 100%;
         justify-content: center;
         border-radius: 16px;
     }
 
     .tab-btn-icon {
-        font-size: 1.2rem;
+        font-size: 1rem;
     }
 
     .tab-btn-label {
-        font-size: 1rem;
+        font-size: 0.9rem;
     }
 
     .education-title {
-        font-size: 1.3rem;
+        font-size: 1.1rem;
     }
 
     .education-institution {
-        font-size: 1rem;
+        font-size: 0.9rem;
     }
 
     .footer-bottom {
@@ -687,11 +692,11 @@
     }
 
     .heading-text {
-        font-size: 2.2rem;
+        font-size: 2rem;
     }
 
     .heading-sub-text {
-        font-size: 1rem;
+        font-size: 0.8rem;
         letter-spacing: 1.5px;
     }
 
@@ -699,6 +704,7 @@
         padding: 20px;
     }
 
+    /* Mobile tab styling matching Works exactly */
     .tab-buttons {
         width: 100%;
         max-width: 300px;
@@ -707,24 +713,24 @@
 
     .tab-btn {
         padding: 12px 20px;
-        font-size: 0.95rem;
+        font-size: 0.85rem;
         border-radius: 14px;
     }
 
     .tab-btn-icon {
-        font-size: 1.1rem;
+        font-size: 0.95rem;
     }
 
     .tab-btn-label {
-        font-size: 0.95rem;
+        font-size: 0.85rem;
     }
 
     .education-title {
-        font-size: 1.2rem;
+        font-size: 1rem;
     }
 
     .education-institution {
-        font-size: 0.95rem;
+        font-size: 0.85rem;
     }
 
     .education-tags {
@@ -734,32 +740,32 @@
 
 @media (max-width: 400px) {
     .heading-text {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
     }
 
     .heading-sub-text {
-        font-size: 0.9rem;
+        font-size: 0.75rem;
     }
 
     .tab-btn {
         padding: 10px 16px;
-        font-size: 0.9rem;
+        font-size: 0.8rem;
     }
 
     .tab-btn-icon {
-        font-size: 1rem;
+        font-size: 0.9rem;
     }
 
     .tab-btn-label {
-        font-size: 0.9rem;
+        font-size: 0.8rem;
     }
 
     .education-title {
-        font-size: 1.1rem;
+        font-size: 0.95rem;
     }
 
     .education-institution {
-        font-size: 0.9rem;
+        font-size: 0.8rem;
     }
 }
 
@@ -786,8 +792,8 @@
 }
 
 .card-title {
-    font-size: 1.5rem;
-    font-weight: 700;
+    font-size: 1.3rem;
+    font-weight: 500;
     color: #f0f6fc;
     margin-bottom: auto;
     line-height: 1.3;
@@ -795,7 +801,7 @@
     word-wrap: break-word;
     overflow-wrap: break-word;
     text-align: center;
-    background: linear-gradient(135deg, #ffffff 0%, #f0f6fc 30%, #ffffff 70%, #f0f6fc 100%);
+    background: linear-gradient(135deg, #f0f6fc 0%, #ffffff 30%, #e6edf3 70%, #f0f6fc 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -804,9 +810,9 @@
 }
 
 .card-institution {
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: #8b949e;
-    font-weight: 500;
+    font-weight: 400;
     line-height: 1.4;
     transition: all 0.3s ease;
     margin-top: auto;
@@ -831,7 +837,7 @@
     left: -100%;
     width: 50px;
     height: 100%;
-    background: linear-gradient(90deg, transparent, #ffffff, transparent);
+    background: linear-gradient(90deg, transparent, #f0f6fc, transparent);
     transition: left 0.6s ease;
 }
 
@@ -849,15 +855,15 @@
 }
 
 .card-year {
-    font-size: 1rem;
-    color: #ffffff;
-    font-weight: 600;
+    font-size: 0.9rem;
+    color: #0d1117;
+    font-weight: 500;
     padding: 12px 28px;
-    background: linear-gradient(135deg, #ffffff, #f0f6fc);
+    background: linear-gradient(135deg, #f0f6fc, #ffffff);
     border-radius: 30px;
     border: none;
     transition: all 0.4s ease;
-    box-shadow: 0 4px 15px rgba(255,255,255,0.17);
+    box-shadow: 0 4px 15px rgba(240, 246, 252, 0.3);
     text-align: center;
     min-width: 100px;
     position: relative;
@@ -880,18 +886,18 @@
 }
 
 .card-year:hover {
-    background: linear-gradient(135deg, #f0f6fc, #ffffff);
+    background: linear-gradient(135deg, #ffffff, #f0f6fc);
     transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 8px 25px rgba(255,255,255,0.23);
+    box-shadow: 0 8px 25px rgba(240, 246, 252, 0.4);
 }
 
 .education-card:hover .card-title {
-    background: linear-gradient(135deg, #ffffff 0%, #f0f6fc 50%, #ffffff 100%);
+    background: linear-gradient(135deg, #f0f6fc 0%, #ffffff 50%, #e6edf3 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     transform: translateY(-2px);
-    filter: drop-shadow(0 2px 4px rgba(255,255,255,0.18));
+    filter: drop-shadow(0 2px 4px rgba(240, 246, 252, 0.3));
 }
 
 .education-card:hover .card-institution {
@@ -899,7 +905,7 @@
 }
 
 .education-card:hover .card-divider {
-    background: linear-gradient(90deg, transparent, #ffffff 20%, #ffffff 80%, transparent);
+    background: linear-gradient(90deg, transparent, #f0f6fc 20%, #f0f6fc 80%, transparent);
 }
 
 @media (max-width: 1200px) {

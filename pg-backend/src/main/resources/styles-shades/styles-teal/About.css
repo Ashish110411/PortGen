@@ -36,8 +36,8 @@
 
 .heading-sub-text {
     color: #2dd4bf;
-    font-size: 1.2rem;
-    font-weight: 600;
+    font-size: 1rem;
+    font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 3px;
     margin-bottom: 16px;
@@ -46,8 +46,8 @@
 }
 
 .heading-text {
-    font-size: 4rem;
-    font-weight: 800;
+    font-size: 3.2rem;
+    font-weight: 600;
     color: #f0f6fc;
     margin-bottom: 24px;
     line-height: 1.1;
@@ -103,8 +103,8 @@
 }
 
 .intro-text {
-    font-size: 1.3rem;
-    font-weight: 500;
+    font-size: 1.1rem;
+    font-weight: 400;
     line-height: 1.8;
     margin-bottom: 24px;
     color: #f0f6fc;
@@ -113,7 +113,7 @@
 
 .highlight {
     color: #2dd4bf;
-    font-weight: 600;
+    font-weight: 500;
     position: relative;
     transition: color 0.3s;
 }
@@ -130,7 +130,7 @@
 }
 
 .content-text p {
-    font-size: 1.1rem;
+    font-size: 0.95rem;
     line-height: 1.8;
     color: #8b949e;
     margin-bottom: 20px;
@@ -141,8 +141,8 @@
 
 /* Skills Section */
 .skills-section h3 {
-    font-size: 1.4rem;
-    font-weight: 700;
+    font-size: 1.2rem;
+    font-weight: 500;
     color: #f0f6fc;
     margin-bottom: 20px;
     position: relative;
@@ -172,7 +172,7 @@
     padding: 16px 20px;
     border-radius: 12px;
     text-align: center;
-    font-weight: 500;
+    font-weight: 400;
     color: #f0f6fc;
     border: 1px solid #30363d;
     transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -330,8 +330,8 @@
 }
 
 .stat-number {
-    font-size: 2.2rem;
-    font-weight: 800;
+    font-size: 1.8rem;
+    font-weight: 600;
     color: #2dd4bf;
     margin-bottom: 8px;
     line-height: 1;
@@ -339,9 +339,9 @@
 }
 
 .stat-label {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     color: #8b949e;
-    font-weight: 500;
+    font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 1px;
     transition: all 0.3s ease;
@@ -393,7 +393,7 @@
 
 @media screen and (max-width: 1024px) {
     .heading-text {
-        font-size: 3.5rem;
+        font-size: 2.8rem;
     }
 
     .about-img img {
@@ -408,11 +408,11 @@
     }
 
     .heading-text {
-        font-size: 2.8rem;
+        font-size: 2.4rem;
     }
 
     .heading-sub-text {
-        font-size: 1rem;
+        font-size: 0.9rem;
         letter-spacing: 2px;
     }
 
@@ -436,15 +436,15 @@
     }
 
     .stat-number {
-        font-size: 1.8rem;
+        font-size: 1.5rem;
     }
 
     .intro-text {
-        font-size: 1.2rem;
+        font-size: 1rem;
     }
 
     .content-text p {
-        font-size: 1rem;
+        font-size: 0.9rem;
     }
 }
 
@@ -458,11 +458,11 @@
     }
 
     .heading-text {
-        font-size: 2.2rem;
+        font-size: 2rem;
     }
 
     .heading-sub-text {
-        font-size: 0.9rem;
+        font-size: 0.8rem;
         letter-spacing: 1.5px;
     }
 
@@ -472,11 +472,11 @@
     }
 
     .intro-text {
-        font-size: 1.1rem;
+        font-size: 0.95rem;
     }
 
     .content-text p {
-        font-size: 0.95rem;
+        font-size: 0.85rem;
     }
 
     .skills-grid {
@@ -485,7 +485,7 @@
     }
 
     .skills-section h3 {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
     }
 
     .stats-container {
@@ -498,17 +498,17 @@
     }
 
     .stat-number {
-        font-size: 1.6rem;
+        font-size: 1.3rem;
     }
 
     .stat-label {
-        font-size: 0.8rem;
+        font-size: 0.75rem;
     }
 }
 
 @media screen and (max-width: 380px) {
     .heading-text {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
     }
 
     .about-img img {
@@ -517,6 +517,6 @@
     }
 
     .stat-number {
-        font-size: 1.4rem;
+        font-size: 1.1rem;
     }
 }

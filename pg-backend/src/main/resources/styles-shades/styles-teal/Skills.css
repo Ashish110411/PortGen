@@ -36,8 +36,8 @@
 
 .heading-sub-text {
   color: #2dd4bf;
-  font-size: 1.2rem;
-  font-weight: 600;
+  font-size: 1rem;
+  font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 3px;
   margin-bottom: 16px;
@@ -46,8 +46,8 @@
 }
 
 .heading-text {
-  font-size: 4rem;
-  font-weight: 800;
+  font-size: 3.2rem;
+  font-weight: 600;
   color: #f0f6fc;
   margin-bottom: 24px;
   line-height: 1.1;
@@ -98,8 +98,8 @@
 
 .category-title {
   margin-bottom: 30px;
-  font-size: 1.8rem;
-  font-weight: 700;
+  font-size: 1.5rem;
+  font-weight: 500;
   text-align: center;
   color: #f0f6fc;
   text-transform: uppercase;
@@ -161,11 +161,11 @@
 }
 
 .simple-skill .skill-name {
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: #e6edf3;
   text-align: center;
   margin: 0;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 0.5px;
   transition: all 0.3s ease;
   z-index: 2;
@@ -204,8 +204,8 @@
 
 .simple-skill:hover .skill-name {
   color: #2dd4bf;
-  font-size: 1.1rem;
-  font-weight: 700;
+  font-size: 1rem;
+  font-weight: 600;
   text-shadow: 0 0 10px rgba(45, 212, 191, 0.3);
 }
 
@@ -218,8 +218,8 @@
 }
 
 .skills-total {
-  font-size: 1.2rem;
-  font-weight: 700;
+  font-size: 1rem;
+  font-weight: 500;
   color: #000000;
   background: linear-gradient(135deg, #2dd4bf, #0e7490);
   border: none;
@@ -244,7 +244,7 @@
 =============================== */
 @media (max-width: 1024px) {
   .heading-text {
-    font-size: 3.5rem;
+    font-size: 2.8rem;
   }
 
   .skills-grid.simple-skill-icons {
@@ -258,7 +258,7 @@
   }
 
   .category-title {
-    font-size: 1.6rem;
+    font-size: 1.3rem;
   }
 
   .simple-skill {
@@ -277,11 +277,11 @@
   }
 
   .heading-text {
-    font-size: 2.8rem;
+    font-size: 2.4rem;
   }
 
   .heading-sub-text {
-    font-size: 1rem;
+    font-size: 0.9rem;
     letter-spacing: 2px;
   }
 
@@ -303,7 +303,7 @@
   }
 
   .simple-skill .skill-name {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
 
   .skill-category-block {
@@ -312,7 +312,7 @@
   }
 
   .category-title {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
   }
 }
 
@@ -326,11 +326,11 @@
   }
 
   .heading-text {
-    font-size: 2.2rem;
+    font-size: 2rem;
   }
 
   .heading-sub-text {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     letter-spacing: 1.5px;
   }
 
@@ -352,7 +352,7 @@
   }
 
   .simple-skill .skill-name {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
   }
 
   .skill-category-block {
@@ -361,18 +361,18 @@
   }
 
   .category-title {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 
   .skills-total {
-    font-size: 1rem;
+    font-size: 0.9rem;
     padding: 10px 24px;
   }
 }
 
 @media (max-width: 380px) {
   .heading-text {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
 
   .skills-grid.simple-skill-icons {
@@ -392,7 +392,7 @@
   }
 
   .simple-skill .skill-name {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
   }
 
   .skill-category-block {
@@ -400,6 +400,6 @@
   }
 
   .category-title {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 }
