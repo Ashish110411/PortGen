@@ -40,6 +40,7 @@ public class TemplateProcessor {
                 .replace("{{roles}}", toJsonSafe(data.getRoles()))
                 .replace("{{skillsData}}", toJsonSafe(data.getSkills()))
                 .replace("{{educationList}}", toJsonSafe(data.getEducationList()))
+                .replace("{{workExperience}}", toJsonSafe(data.getWorkExperience()))
                 .replace("{{certifications}}", toJsonSafe(data.getCertifications()))
                 .replace("{{professionalStats}}", toJsonSafe(data.getProfessionalStats()))
                 .replace("{{tabData}}", toJsonSafe(data.getProjects()))
@@ -101,6 +102,8 @@ public class TemplateProcessor {
             case "socialLinks.github": return data.getSocialLinks().getGithub() != null && !data.getSocialLinks().getGithub().isEmpty();
             case "socialLinks.twitter": return data.getSocialLinks().getTwitter() != null && !data.getSocialLinks().getTwitter().isEmpty();
             case "skills": return data.getSkills() != null && !data.getSkills().isEmpty();
+            case "educationList": return data.getEducationList() != null && !data.getEducationList().isEmpty();
+            case "workExperience": return data.getWorkExperience() != null && !data.getWorkExperience().isEmpty();
             case "certifications": return data.getCertifications() != null && !data.getCertifications().isEmpty();
             case "professionalStats": return data.getProfessionalStats() != null && !data.getProfessionalStats().isEmpty();
             case "projects": return data.getProjects() != null && !data.getProjects().isEmpty();
@@ -132,6 +135,14 @@ public class TemplateProcessor {
                 if (data.getEducationList() != null) {
                     for (Object edu : data.getEducationList()) {
                         result.append(processEducation(template, edu));
+                    }
+                }
+                break;
+
+            case "workExperience":
+                if (data.getWorkExperience() != null) {
+                    for (Object work : data.getWorkExperience()) {
+                        result.append(processWorkExperience(template, work));
                     }
                 }
                 break;
@@ -170,6 +181,10 @@ public class TemplateProcessor {
 
     private String processEducation(String template, Object education) {
         return template; // Placeholder
+    }
+
+    private String processWorkExperience(String template, Object workExperience) {
+        return template; // Placeholder - can be expanded to handle individual work experience field replacements
     }
 
     private String processCertification(String template, Object certification) {

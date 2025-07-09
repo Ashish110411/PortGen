@@ -27,8 +27,11 @@ function RolesInput({ roles, setRoles }) {
     return (
         <div className="section">
             <h2>Roles</h2>
-            <p style={{ margin: "0 0 8px 0", color: "#666" }}>
-                Enter your role(s) as you would finish the sentence: <strong>I'm a <u>_____</u></strong>
+            <p className="role-description">
+                Enter your role(s) as you would finish the sentence:
+                <br />
+                <span className="role-prompt">
+            I'm a </span>
             </p>
             <div className="flex-row">
                 <input

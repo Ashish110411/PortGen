@@ -8,7 +8,7 @@ const COLOR_PROTOTYPES = [
         theme: "green",
         loadingImg: "green_loading.png",
         webImg: "green_webp.png",
-        description: "A regal green for trust, growth, and modern finance."
+        description: "Fresh. Bold. Growth-focused."
     },
     {
         value: "teal",
@@ -16,7 +16,7 @@ const COLOR_PROTOTYPES = [
         theme: "teal",
         loadingImg: "teal_loading.png",
         webImg: "teal_webp.png",
-        description: "A noble teal, crisp and professional for digital leaders."
+        description: "Crisp. Modern. Tech-forward."
     },
     {
         value: "purple",
@@ -24,7 +24,7 @@ const COLOR_PROTOTYPES = [
         theme: "purple",
         loadingImg: "purple_loading.png",
         webImg: "purple_webp.png",
-        description: "A bold purple, symbolizing creativity and wisdom."
+        description: "Creative. Mystical. Visionary."
     },
     {
         value: "white",
@@ -32,7 +32,7 @@ const COLOR_PROTOTYPES = [
         theme: "white",
         loadingImg: "white_loading.png",
         webImg: "white_webp.png",
-        description: "A radiant white for clarity, prestige, and minimalism."
+        description: "Clean. Pure. Minimalist."
     },
     {
         value: "gold",
@@ -40,7 +40,7 @@ const COLOR_PROTOTYPES = [
         theme: "gold",
         loadingImg: "gold_loading.png",
         webImg: "gold_webp.png",
-        description: "A luxurious gold for high achievers and visionaries."
+        description: "Luxe. Premium. Elite."
     },
     {
         value: "blue",
@@ -48,7 +48,7 @@ const COLOR_PROTOTYPES = [
         theme: "blue",
         loadingImg: "blue_loading.png",
         webImg: "blue_webp.png",
-        description: "A classic blue for trust, innovation, and excellence."
+        description: "Trusted. Classic. Reliable."
     }
 ];
 

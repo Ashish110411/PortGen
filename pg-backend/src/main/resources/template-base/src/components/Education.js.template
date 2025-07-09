@@ -1,16 +1,29 @@
 import React, { useState } from "react";
 import "../styles/Education.css";
 import { motion } from "framer-motion";
-import { FiBookOpen, FiAward, FiCalendar, FiMapPin, FiStar } from "react-icons/fi";
+import { FiBookOpen, FiAward, FiCalendar, FiMapPin, FiStar, FiBriefcase } from "react-icons/fi";
 
 // Template placeholders for dynamic data
 const educationData = {
 	education: {{educationList}},
+	workExperience: {{workExperience}},
 	certifications: {{certifications}}
 };
 
 const Education = () => {
-	const [activeTab, setActiveTab] = useState("education");
+	// Check if work experience and certifications have data
+	const hasWorkExperience = educationData.workExperience && educationData.workExperience.length > 0;
+	const hasCertifications = educationData.certifications && educationData.certifications.length > 0;
+
+	// Set default active tab based on available data
+	const getDefaultTab = () => {
+		if (educationData.education && educationData.education.length > 0) return "education";
+		if (hasWorkExperience) return "workExperience";
+		if (hasCertifications) return "certifications";
+		return "education";
+	};
+
+	const [activeTab, setActiveTab] = useState(getDefaultTab());
 
 	const containerVariants = {
 		hidden: { opacity: 0 },
@@ -96,20 +109,22 @@ const Education = () => {
 			whileTap={{ scale: 0.98 }}
 		>
 			<div className="education-container">
-				{/* Education-specific Card Header */}
+				{/* Card Header */}
 				<div className="education-card-header">
 					<span className={`education-type-badge ${type}`}>
-						{type === 'education' ? ' Education' : ' Certification'}
+						{type === 'education' ? ' Education' :
+						 type === 'workExperience' ? ' Work Experience' :
+						 ' Certification'}
 					</span>
 				</div>
 
 				{/* Title and Institution Row */}
 				<div className="education-title-row">
 					<h3 className="education-title">
-						{item.degree || item.title}
+						{item.degree || item.title || item.position}
 					</h3>
 					<p className="education-institution">
-						{item.institution}
+						{item.institution || item.company}
 					</p>
 				</div>
 
@@ -123,7 +138,7 @@ const Education = () => {
 						</div>
 					)}
 
-					{/* Education Details */}
+					{/* Details */}
 					{(item.duration || item.location || item.gpa || item.grade) && (
 						<div className="education-details">
 							{item.duration && (
@@ -204,6 +219,27 @@ const Education = () => {
 		</motion.div>
 	);
 
+	// Dynamic section title based on available tabs
+	const getSectionTitle = () => {
+		if (hasWorkExperience && hasCertifications) {
+			return "Education, Experience & Certifications";
+		} else if (hasWorkExperience) {
+			return "Education & Experience";
+		} else if (hasCertifications) {
+			return "Education & Certifications";
+		} else {
+			return "Education";
+		}
+	};
+
+	const getSubTitle = () => {
+		if (hasWorkExperience || hasCertifications) {
+			return "Professional Journey";
+		} else {
+			return "Academic Journey";
+		}
+	};
+
 	return (
 		<section className="education-section" id="education">
 			<div className="container">
@@ -213,34 +249,51 @@ const Education = () => {
 					whileInView="visible"
 					viewport={{ once: true, amount: 0.3 }}
 				>
-					{/* Section Header - Matching Works */}
+					{/* Section Header */}
 					<motion.div variants={headingVariants} className="heading">
-						<span className="heading-sub-text">Academic Journey</span>
-						<h2 className="heading-text">Education & Certifications</h2>
+						<span className="heading-sub-text">{getSubTitle()}</span>
+						<h2 className="heading-text">{getSectionTitle()}</h2>
 						<div className="heading-divider"></div>
 					</motion.div>
 
-					{/* Tab Buttons - Matching Works */}
-					<motion.div variants={tabVariants} className="tabs-container">
-						<div className="tab-buttons">
-							<button
-								className={`tab-btn ${activeTab === "education" ? "active" : ""}`}
-								onClick={() => setActiveTab("education")}
-							>
-								<FiBookOpen className="tab-btn-icon" />
-								<span className="tab-btn-label">Education</span>
-							</button>
-							<button
-								className={`tab-btn ${activeTab === "certifications" ? "active" : ""}`}
-								onClick={() => setActiveTab("certifications")}
-							>
-								<FiAward className="tab-btn-icon" />
-								<span className="tab-btn-label">Certifications</span>
-							</button>
-						</div>
-					</motion.div>
+					{/* Tab Buttons - Only show if there are multiple tabs */}
+					{((educationData.education && educationData.education.length > 0) +
+					  (hasWorkExperience ? 1 : 0) +
+					  (hasCertifications ? 1 : 0)) > 1 && (
+						<motion.div variants={tabVariants} className="tabs-container">
+							<div className="tab-buttons">
+								{educationData.education && educationData.education.length > 0 && (
+									<button
+										className={`tab-btn ${activeTab === "education" ? "active" : ""}`}
+										onClick={() => setActiveTab("education")}
+									>
+										<FiBookOpen className="tab-btn-icon" />
+										<span className="tab-btn-label">Education</span>
+									</button>
+								)}
+								{hasWorkExperience && (
+									<button
+										className={`tab-btn ${activeTab === "workExperience" ? "active" : ""}`}
+										onClick={() => setActiveTab("workExperience")}
+									>
+										<FiBriefcase className="tab-btn-icon" />
+										<span className="tab-btn-label">Experience</span>
+									</button>
+								)}
+								{hasCertifications && (
+									<button
+										className={`tab-btn ${activeTab === "certifications" ? "active" : ""}`}
+										onClick={() => setActiveTab("certifications")}
+									>
+										<FiAward className="tab-btn-icon" />
+										<span className="tab-btn-label">Certifications</span>
+									</button>
+								)}
+							</div>
+						</motion.div>
+					)}
 
-					{/* Tab Content - Matching Works */}
+					{/* Tab Content */}
 					<motion.div
 						key={activeTab}
 						variants={contentVariants}
@@ -250,12 +303,21 @@ const Education = () => {
 					>
 						<div className="education-box">
 							{activeTab === "education" &&
+								educationData.education &&
 								educationData.education.map((edu, index) =>
 									renderEducationCard(edu, index, "education")
 								)
 							}
 
+							{activeTab === "workExperience" &&
+								hasWorkExperience &&
+								educationData.workExperience.map((work, index) =>
+									renderEducationCard(work, index, "workExperience")
+								)
+							}
+
 							{activeTab === "certifications" &&
+								hasCertifications &&
 								educationData.certifications.map((cert, index) =>
 									renderEducationCard(cert, index, "certifications")
 								)

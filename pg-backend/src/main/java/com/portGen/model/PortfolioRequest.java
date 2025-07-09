@@ -14,6 +14,7 @@ public class PortfolioRequest {
     private String phone;
     private String location;
     private List<Education> educationList;
+    private List<WorkExperience> workExperience;
     private List<Certification> certifications;
     private List<ProjectGroup> projects;
     private List<SkillGroup> skills;
@@ -58,6 +59,9 @@ public class PortfolioRequest {
 
     public List<Education> getEducationList() { return educationList; }
     public void setEducationList(List<Education> educationList) { this.educationList = educationList; }
+
+    public List<WorkExperience> getWorkExperience() { return workExperience; }
+    public void setWorkExperience(List<WorkExperience> workExperience) { this.workExperience = workExperience; }
 
     public List<Certification> getCertifications() { return certifications; }
     public void setCertifications(List<Certification> certifications) { this.certifications = certifications; }
