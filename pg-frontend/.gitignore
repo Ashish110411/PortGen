@@ -5,6 +5,11 @@
 /.pnp
 .pnp.js
 
+# Ignore all .idea files except code style
+.idea/*
+!.idea/codeStyles
+
+
 # testing
 /coverage
 
