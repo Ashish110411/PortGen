@@ -1,4 +1,4 @@
-# PortGen - Dynamic Portfolio Generator
+# PortGen - The Dynamic Portfolio Generator
 
 A modern, dynamic portfolio generator that creates personalized portfolio websites with customizable content, animations, and responsive design. Built with React frontend form for data collection and Spring Boot backend for portfolio generation.
 
