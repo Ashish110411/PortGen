@@ -150,10 +150,10 @@ button:disabled {
     background: white;
     color: black;
     border: 1px solid #ccc;
-    padding: 8px 16px;
-    border-radius: 4px;
+    padding: 8px 10px;
+    border-radius: 14px;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 18px;
     font-weight: normal;
     z-index: 1000;
     font-family: inherit;
