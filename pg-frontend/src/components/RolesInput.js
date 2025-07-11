@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "../styles/RolesInput.css";
 
 function RolesInput({ roles, setRoles }) {
     const [newRole, setNewRole] = useState("");
@@ -14,7 +15,7 @@ function RolesInput({ roles, setRoles }) {
 
     const addRole = () => {
         if (newRole.trim() === "") return;
-        if (roles.includes(newRole.trim())) return; // avoid duplicates
+        if (roles.includes(newRole.trim())) return;
         setRoles([...roles, newRole.trim()]);
         setNewRole("");
     };
@@ -39,7 +40,7 @@ function RolesInput({ roles, setRoles }) {
                     type="text"
                     value={newRole}
                     onChange={(e) => setNewRole(e.target.value)}
-                    placeholder="e.g. Financial Analyst, Student, Full Stack Developer"
+                    placeholder="Financial Analyst, Web Developer...."
                     onKeyDown={(e) => {
                         if (e.key === "Enter") {
                             e.preventDefault();
@@ -63,7 +64,7 @@ function RolesInput({ roles, setRoles }) {
                 ))}
             </div>
 
-            {error && <p style={{ color: "red", marginTop: "10px" }}>{error}</p>}
+            {error && <p className="error-message">{error}</p>}
         </div>
     );
 }

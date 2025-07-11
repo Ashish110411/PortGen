@@ -1,0 +1,210 @@
+.portfolio-form {
+  max-width: 1000px;
+  margin: 40px auto;
+  background: #0a0a0a;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+  padding: 40px;
+  border: 1px solid #1a1a1a;
+}
+
+.form-title {
+  font-size: 2.8rem;
+  color: #ffffff;
+  text-align: center;
+  font-weight: 700;
+  font-family: 'Unna', serif;
+  margin: 0 0 50px 0;
+  letter-spacing: 1px;
+  padding: 20px 0;
+  border-bottom: 2px solid #333333;
+}
+
+.section {
+  background: #111111;
+  border-radius: 12px;
+  border: 1px solid #222222;
+  padding: 35px 30px;
+  margin-bottom: 40px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.section h2 {
+  margin: 0 0 25px 0;
+  font-size: 2.2rem;
+  font-weight: 700;
+  font-family: 'Unna', serif;
+  color: #f0c35b;
+  text-align: center;
+  border-bottom: 2px solid #333333;
+  padding-bottom: 15px;
+}
+
+.section p {
+  color: #ef4444;
+  font-weight: 600;
+  font-size: 1rem;
+  margin: 8px 0 0 0;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Red asterisk for required fields */
+.required-asterisk {
+  color: #ef4444;
+  margin-left: 2px;
+}
+
+/* Alternative: Target all asterisks in labels */
+label .asterisk,
+label span[style*="color: red"] {
+  color: #ef4444 !important;
+}
+
+.input-field,
+textarea.input-field {
+  width: 100%;
+  padding: 15px 20px;
+  background: #1a1a1a;
+  border: 2px solid #333333;
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-family: 'Inter', sans-serif;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.input-field:focus,
+textarea.input-field:focus {
+  border-color: #f0c35b;
+  background: #222222;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(240, 195, 91, 0.1);
+}
+
+.input-field::placeholder,
+textarea.input-field::placeholder {
+  color: #888888;
+}
+
+textarea.input-field {
+  min-height: 120px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+label {
+  display: block;
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  margin-bottom: 8px;
+}
+
+.flex-row {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+  align-items: flex-end;
+}
+
+.flex-row .input-field {
+  margin-bottom: 0;
+}
+
+.add-btn {
+  background: #22c55e;
+  color: #000000;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 28px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+}
+
+.add-btn:hover {
+  background: #16a34a;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+}
+
+.remove-btn {
+  background: #ef4444;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.remove-btn:hover {
+  background: #dc2626;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+.error-message {
+  color: #ef4444;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin: 10px 0;
+  font-family: 'Inter', sans-serif;
+}
+
+.submit-btn {
+  background: #f0c35b;
+  color: #000000;
+  border: none;
+  border-radius: 12px;
+  padding: 20px 50px;
+  font-size: 1.3rem;
+  font-family: 'Unna', serif;
+  font-weight: 700;
+  cursor: pointer;
+  margin: 50px auto 0;
+  display: block;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.submit-btn:hover {
+  background: #ffffff;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(240, 195, 91, 0.4);
+}
+
+@media (max-width: 768px) {
+  .portfolio-form {
+    margin: 20px;
+    padding: 25px;
+  }
+  
+  .section {
+    padding: 25px 20px;
+  }
+  
+  .flex-row {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .form-title {
+    font-size: 2.2rem;
+  }
+  
+  .section h2 {
+    font-size: 1.8rem;
+  }
+}

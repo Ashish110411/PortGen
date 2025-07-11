@@ -1,5 +1,6 @@
 import React from "react";
 import { skillGroups } from "../utils/skillGroups";
+import "../styles/SkillSelector.css";
 
 function SkillChip({ skill, selected, onClick }) {
     return (

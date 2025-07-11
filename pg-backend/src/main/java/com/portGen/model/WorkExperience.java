@@ -3,21 +3,27 @@ package com.portGen.model;
 public class WorkExperience {
     private String company;
     private String position;
-    private String duration;
+    private String startMonth;
+    private String startYear;
+    private String endMonth;
+    private String endYear;
+    private boolean present; // true if currently working here
     private String location;
     private String description;
-    private String year;
 
-    // Constructors
     public WorkExperience() {}
 
-    public WorkExperience(String company, String position, String duration, String location, String description, String year) {
+    public WorkExperience(String company, String position, String startMonth, String startYear,
+                          String endMonth, String endYear, boolean present, String location, String description) {
         this.company = company;
         this.position = position;
-        this.duration = duration;
+        this.startMonth = startMonth;
+        this.startYear = startYear;
+        this.endMonth = endMonth;
+        this.endYear = endYear;
+        this.present = present;
         this.location = location;
         this.description = description;
-        this.year = year;
     }
 
     // Getters and Setters
@@ -27,15 +33,24 @@ public class WorkExperience {
     public String getPosition() { return position; }
     public void setPosition(String position) { this.position = position; }
 
-    public String getDuration() { return duration; }
-    public void setDuration(String duration) { this.duration = duration; }
+    public String getStartMonth() { return startMonth; }
+    public void setStartMonth(String startMonth) { this.startMonth = startMonth; }
+
+    public String getStartYear() { return startYear; }
+    public void setStartYear(String startYear) { this.startYear = startYear; }
+
+    public String getEndMonth() { return endMonth; }
+    public void setEndMonth(String endMonth) { this.endMonth = endMonth; }
+
+    public String getEndYear() { return endYear; }
+    public void setEndYear(String endYear) { this.endYear = endYear; }
+
+    public boolean isPresent() { return present; }
+    public void setPresent(boolean present) { this.present = present; }
 
     public String getLocation() { return location; }
     public void setLocation(String location) { this.location = location; }
 
     public String getDescription() { return description; }
     public void setDescription(String description) { this.description = description; }
-
-    public String getYear() { return year; }
-    public void setYear(String year) { this.year = year; }
 }

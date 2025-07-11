@@ -8,7 +8,8 @@ const COLOR_PROTOTYPES = [
         theme: "green",
         loadingImg: "green_loading.png",
         webImg: "green_webp.png",
-        description: "Fresh. Bold. Growth-focused."
+        description: "Fresh. Bold. Growth-focused.",
+        accent: "#22c55e"
     },
     {
         value: "teal",
@@ -16,7 +17,8 @@ const COLOR_PROTOTYPES = [
         theme: "teal",
         loadingImg: "teal_loading.png",
         webImg: "teal_webp.png",
-        description: "Crisp. Modern. Tech-forward."
+        description: "Crisp. Modern. Tech-forward.",
+        accent: "#14b8a6"
     },
     {
         value: "purple",
@@ -24,7 +26,8 @@ const COLOR_PROTOTYPES = [
         theme: "purple",
         loadingImg: "purple_loading.png",
         webImg: "purple_webp.png",
-        description: "Creative. Mystical. Visionary."
+        description: "Creative. Mystical. Visionary.",
+        accent: "#a855f7"
     },
     {
         value: "white",
@@ -32,7 +35,8 @@ const COLOR_PROTOTYPES = [
         theme: "white",
         loadingImg: "white_loading.png",
         webImg: "white_webp.png",
-        description: "Clean. Pure. Minimalist."
+        description: "Clean. Pure. Minimalist.",
+        accent: "#f8fafc"
     },
     {
         value: "gold",
@@ -40,7 +44,8 @@ const COLOR_PROTOTYPES = [
         theme: "gold",
         loadingImg: "gold_loading.png",
         webImg: "gold_webp.png",
-        description: "Luxe. Premium. Elite."
+        description: "Luxe. Premium. Elite.",
+        accent: "#f59e0b"
     },
     {
         value: "blue",
@@ -48,7 +53,8 @@ const COLOR_PROTOTYPES = [
         theme: "blue",
         loadingImg: "blue_loading.png",
         webImg: "blue_webp.png",
-        description: "Trusted. Classic. Reliable."
+        description: "Trusted. Classic. Reliable.",
+        accent: "#3b82f6"
     },
     {
         value: "chartreuse",
@@ -56,7 +62,8 @@ const COLOR_PROTOTYPES = [
         theme: "chartreuse",
         loadingImg: "chartreuse_loading.png",
         webImg: "chartreuse_webp.png",
-        description: "Vibrant. Energetic. Innovative."
+        description: "Vibrant. Energetic. Innovative.",
+        accent: "#F1FFC4"
     },
     {
         value: "orange",
@@ -64,7 +71,8 @@ const COLOR_PROTOTYPES = [
         theme: "orange",
         loadingImg: "orange_loading.png",
         webImg: "orange_webp.png",
-        description: "Bold. Dynamic. Creative."
+        description: "Bold. Dynamic. Creative.",
+        accent: "#f97316"
     }
 ];
 
@@ -79,10 +87,21 @@ function PrototypePicker({ value, onChange }) {
             </p>
             <div className="prototype-grid">
                 {COLOR_PROTOTYPES.map((col) => (
-                    <div className="prototype-choice" key={col.value}>
+                    <div
+                        className={`prototype-choice ${value === col.value ? 'selected' : ''}`}
+                        key={col.value}
+                        style={{
+                            '--accent-color': col.accent,
+                            '--accent-color-alpha': col.accent + '20'
+                        }}
+                        onClick={() => onChange(col.value)}
+                    >
                         <div
                             className="prototype-img-preview"
-                            onClick={() => setModalImg(col.webImg)}
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                setModalImg(col.webImg);
+                            }}
                             title={`Click to view full "${col.label}" theme`}
                         >
                             <img
@@ -90,18 +109,19 @@ function PrototypePicker({ value, onChange }) {
                                 alt={`${col.label} Loading`}
                                 className="prototype-loading-img"
                             />
+                            <div className="preview-overlay">
+                                <span className="preview-text">Preview Full Theme</span>
+                            </div>
                         </div>
-                        <label className="prototype-checkbox-label">
-                            <input
-                                type="radio"
-                                name="styleShade"
-                                value={col.value}
-                                checked={value === col.value}
-                                onChange={() => onChange(col.value)}
-                            />
+                        <div className="prototype-info">
                             <span className="prototype-name">{col.label}</span>
-                        </label>
-                        <div className="prototype-desc">{col.description}</div>
+                            <div className="prototype-desc">{col.description}</div>
+                        </div>
+                        {value === col.value && (
+                            <div className="selected-badge">
+                                <span>✓ Selected</span>
+                            </div>
+                        )}
                     </div>
                 ))}
             </div>

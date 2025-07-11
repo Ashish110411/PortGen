@@ -1,14 +1,15 @@
 import React, { useState } from "react";
+import "../styles/SocialLinks.css";
 
 function SocialLinks({ socialLinks, setSocialLinks }) {
     const [errors, setErrors] = useState({});
 
     const placeholders = {
-        linkedin: "https://linkedin.com/in/johndoe or johndoe",
-        github: "https://github.com/johndoe or johndoe",
-        instagram: "https://instagram.com/johndoe or @johndoe",
-        twitter: "https://twitter.com/johndoe or @johndoe",
-        whatsapp: "9876543210 or https://wa.me/919876543210",
+        linkedin: "linkedin.com/in/johndoe",
+        github: "github.com/johndoe",
+        instagram: "instagram.com/johndoe",
+        twitter: "twitter.com/johndoe",
+        whatsapp: "9876543210",
     };
 
     const normalizeValue = (field, value) => {
@@ -76,7 +77,7 @@ function SocialLinks({ socialLinks, setSocialLinks }) {
             <h2>Social Links</h2>
             <div>
                 <label htmlFor="linkedin">
-                    LinkedIn <span style={{ color: "red" }}>*</span>
+                    LinkedIn<span className="required-asterisk">*</span>
                 </label>
                 <input
                     className="input-field"
@@ -88,7 +89,7 @@ function SocialLinks({ socialLinks, setSocialLinks }) {
                     required
                     placeholder={placeholders.linkedin}
                 />
-                {errors.linkedin && <p style={{ color: "red", marginTop: "-10px" }}>{errors.linkedin}</p>}
+                {errors.linkedin && <p className="error-message">{errors.linkedin}</p>}
             </div>
             <div>
                 <label htmlFor="github">GitHub</label>
@@ -128,7 +129,7 @@ function SocialLinks({ socialLinks, setSocialLinks }) {
             </div>
             <div>
                 <label htmlFor="whatsapp">
-                    WhatsApp <span style={{ color: "red" }}>*</span>
+                    WhatsApp<span className="required-asterisk">*</span>
                 </label>
                 <input
                     className="input-field"
@@ -140,7 +141,7 @@ function SocialLinks({ socialLinks, setSocialLinks }) {
                     required
                     placeholder={placeholders.whatsapp}
                 />
-                {errors.whatsapp && <p style={{ color: "red", marginTop: "-10px" }}>{errors.whatsapp}</p>}
+                {errors.whatsapp && <p className="error-message">{errors.whatsapp}</p>}
             </div>
         </div>
     );

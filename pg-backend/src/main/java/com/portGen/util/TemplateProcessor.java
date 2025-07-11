@@ -3,11 +3,14 @@ package com.portGen.util;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.portGen.model.PortfolioRequest;
+import com.portGen.model.WorkExperience;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Map;
+import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -40,17 +43,161 @@ public class TemplateProcessor {
                 .replace("{{roles}}", toJsonSafe(data.getRoles()))
                 .replace("{{skillsData}}", toJsonSafe(data.getSkills()))
                 .replace("{{educationList}}", toJsonSafe(data.getEducationList()))
-                .replace("{{workExperience}}", toJsonSafe(data.getWorkExperience()))
+                .replace("{{workExperience}}", toJsonSafe(processWorkExperienceList(data.getWorkExperience())))
                 .replace("{{certifications}}", toJsonSafe(data.getCertifications()))
                 .replace("{{professionalStats}}", toJsonSafe(data.getProfessionalStats()))
                 .replace("{{tabData}}", toJsonSafe(data.getProjects()))
                 .replace("{{selectedComponents}}", toJsonSafe(data.getSelectedComponents()));
 
         processed = processConditionals(processed, data);
-
         processed = processLoops(processed, data);
 
         return processed;
+    }
+
+    private Object processWorkExperienceList(Object workExperienceObj) {
+        if (workExperienceObj == null) return null;
+
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            String jsonString = mapper.writeValueAsString(workExperienceObj);
+            WorkExperience[] workExperiences = mapper.readValue(jsonString, WorkExperience[].class);
+
+            Map<String, Object>[] processedWorkExperiences = new Map[workExperiences.length];
+
+            for (int i = 0; i < workExperiences.length; i++) {
+                WorkExperience work = workExperiences[i];
+                Map<String, Object> workMap = new HashMap<>();
+
+                // Only include essential fields
+                workMap.put("company", safe(work.getCompany()));
+                workMap.put("position", safe(work.getPosition()));
+                workMap.put("location", safe(work.getLocation()));
+                workMap.put("description", safe(work.getDescription()));
+
+                // Calculate and add formatted date range (year field)
+                String dateRange = formatDateRange(work.getStartMonth(), work.getStartYear(),
+                        work.getEndMonth(), work.getEndYear(), work.isPresent());
+                workMap.put("year", dateRange);
+
+                // Calculate and add duration
+                String duration = calculateDuration(work.getStartMonth(), work.getStartYear(),
+                        work.getEndMonth(), work.getEndYear(), work.isPresent());
+                workMap.put("duration", duration);
+
+                processedWorkExperiences[i] = workMap;
+            }
+
+            return processedWorkExperiences;
+        } catch (Exception e) {
+            return workExperienceObj;
+        }
+    }
+
+    private String formatDateRange(String startMonth, String startYear, String endMonth, String endYear, boolean present) {
+        if (startMonth == null || startYear == null || startMonth.isEmpty() || startYear.isEmpty()) {
+            return "";
+        }
+
+        String startFormatted = formatMonthYear(startMonth, startYear);
+        String endFormatted;
+
+        if (present) {
+            endFormatted = "Present";
+        } else if (endMonth != null && endYear != null && !endMonth.isEmpty() && !endYear.isEmpty()) {
+            endFormatted = formatMonthYear(endMonth, endYear);
+        } else {
+            endFormatted = "Present";
+        }
+
+        return startFormatted + " - " + endFormatted;
+    }
+
+    private String formatMonthYear(String month, String year) {
+        if (month == null || year == null || month.isEmpty() || year.isEmpty()) {
+            return "";
+        }
+
+        // Convert full month name to 3-letter abbreviation
+        String shortMonth = getShortMonth(month);
+        return shortMonth + " " + year;
+    }
+
+    private String getShortMonth(String monthName) {
+        if (monthName == null || monthName.isEmpty()) return "";
+
+        switch (monthName.toLowerCase()) {
+            case "january": return "Jan";
+            case "february": return "Feb";
+            case "march": return "Mar";
+            case "april": return "Apr";
+            case "may": return "May";
+            case "june": return "Jun";
+            case "july": return "Jul";
+            case "august": return "Aug";
+            case "september": return "Sep";
+            case "october": return "Oct";
+            case "november": return "Nov";
+            case "december": return "Dec";
+            default: return monthName.substring(0, Math.min(3, monthName.length()));
+        }
+    }
+
+    private String calculateDuration(String startMonth, String startYear, String endMonth, String endYear, boolean present) {
+        if (startMonth == null || startYear == null || startMonth.isEmpty() || startYear.isEmpty()) {
+            return "";
+        }
+
+        try {
+            int startMonthNum = getMonthNumber(startMonth);
+            int startYearNum = Integer.parseInt(startYear);
+
+            int endMonthNum, endYearNum;
+            if (present) {
+                java.time.LocalDate now = java.time.LocalDate.now();
+                endMonthNum = now.getMonthValue();
+                endYearNum = now.getYear();
+            } else {
+                if (endMonth == null || endYear == null || endMonth.isEmpty() || endYear.isEmpty()) {
+                    return "";
+                }
+                endMonthNum = getMonthNumber(endMonth);
+                endYearNum = Integer.parseInt(endYear);
+            }
+
+            int totalMonths = (endYearNum - startYearNum) * 12 + (endMonthNum - startMonthNum);
+
+            if (totalMonths < 0) return "";
+
+            int years = totalMonths / 12;
+            int months = totalMonths % 12;
+
+            StringBuilder result = new StringBuilder();
+            if (years > 0) {
+                result.append(years).append(" year").append(years > 1 ? "s" : "");
+            }
+            if (months > 0) {
+                if (years > 0) result.append(" ");
+                result.append(months).append(" month").append(months > 1 ? "s" : "");
+            }
+
+            return result.toString().trim();
+        } catch (Exception e) {
+            return "";
+        }
+    }
+
+    private int getMonthNumber(String monthName) {
+        if (monthName == null || monthName.isEmpty()) return 1;
+
+        String[] months = {"January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"};
+        for (int i = 0; i < months.length; i++) {
+            if (months[i].equalsIgnoreCase(monthName)) {
+                return i + 1;
+            }
+        }
+        return 1;
     }
 
     private String processConditionals(String content, PortfolioRequest data) {
@@ -176,27 +323,27 @@ public class TemplateProcessor {
     }
 
     private String processSkillGroup(String template, Object skillGroup) {
-        return template; // Placeholder
+        return template;
     }
 
     private String processEducation(String template, Object education) {
-        return template; // Placeholder
+        return template;
     }
 
     private String processWorkExperience(String template, Object workExperience) {
-        return template; // Placeholder - can be expanded to handle individual work experience field replacements
+        return template;
     }
 
     private String processCertification(String template, Object certification) {
-        return template; // Placeholder
+        return template;
     }
 
     private String processStat(String template, Object stat) {
-        return template; // Placeholder
+        return template;
     }
 
     private String processProject(String template, Object project) {
-        return template; // Placeholder
+        return template;
     }
 
     public void processTemplate(Path inputPath, Path outputPath, PortfolioRequest data) {

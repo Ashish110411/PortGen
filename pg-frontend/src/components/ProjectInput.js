@@ -1,4 +1,5 @@
 import React from "react";
+import "../styles/ProjectInput.css";
 
 function ProjectInput({ projects, setProjects }) {
     const slugify = (str) =>
@@ -9,17 +10,10 @@ function ProjectInput({ projects, setProjects }) {
 
     const handleDomainNameChange = (index, value) => {
         const updated = [...projects];
-
-        // Generate the ID from the new value
         const generatedId = slugify(value);
-
-        // Check if the generated ID would exceed 35 characters
         if (generatedId.length > 35) {
-            // If it would exceed, don't update the state
             return;
         }
-
-        // Update both label and id if within limit
         updated[index].label = value;
         updated[index].id = generatedId;
         setProjects(updated);
@@ -31,12 +25,9 @@ function ProjectInput({ projects, setProjects }) {
         setProjects(updated);
     };
 
-    // Updated tech change handler to preserve raw input
     const handleTechChange = (domainIndex, projectIndex, value) => {
         const updated = [...projects];
-        // Store the raw string value for display
         updated[domainIndex].data[projectIndex].techString = value;
-        // Parse and store the tech array for data processing
         const techList = value.split(",").map((t) => t.trim()).filter(Boolean);
         updated[domainIndex].data[projectIndex].tech = techList;
         setProjects(updated);
@@ -79,11 +70,10 @@ function ProjectInput({ projects, setProjects }) {
     };
 
     return (
-        <div className="section">
+        <div className="projects-section-container">
             <h2>Projects</h2>
             <p className="section-description">
                 Organize your projects by domains or categories. Each domain can contain multiple projects.
-                For example, you might have domains like "Web Development", "Mobile Apps", "Data Science", etc.
             </p>
 
             <div className="project-input-container">
@@ -92,7 +82,7 @@ function ProjectInput({ projects, setProjects }) {
                         <div className="domain-header">
                             <div className="domain-input-wrapper">
                                 <label className="form-label">
-                                    Project Domain:
+                                    Project Domain<span className="required-asterisk">*</span>
                                 </label>
                                 <input
                                     type="text"
@@ -101,8 +91,8 @@ function ProjectInput({ projects, setProjects }) {
                                         handleDomainNameChange(domainIndex, e.target.value)
                                     }
                                     required
-                                    className="input-field domain-input"
-                                    placeholder="Web Development, Game Dev, ML & AI..."
+                                    className="domain-input"
+                                    placeholder="Web Development"
                                 />
                                 <div className="character-info">
                                     <span className="character-limit">Domain ID max 35 characters</span>
@@ -118,7 +108,7 @@ function ProjectInput({ projects, setProjects }) {
                             <button
                                 type="button"
                                 onClick={() => removeDomain(domainIndex)}
-                                className="remove-btn domain-remove"
+                                className="domain-remove"
                             >
                                 Remove Domain
                             </button>
@@ -135,25 +125,25 @@ function ProjectInput({ projects, setProjects }) {
                                         <div className="form-group">
                                             <input
                                                 type="text"
-                                                placeholder="Enter your amazing project title here..."
+                                                placeholder="Project Title"
                                                 value={proj.title}
                                                 onChange={(e) =>
                                                     handleProjectChange(domainIndex, projIndex, "title", e.target.value)
                                                 }
                                                 required
-                                                className="input-field project-title-input"
+                                                className="project-title-input"
                                             />
                                         </div>
 
                                         <div className="form-group">
                                             <textarea
-                                                placeholder="Describe your project in detail - what it does, key features, impact..."
+                                                placeholder="Project Description"
                                                 value={proj.description}
                                                 onChange={(e) =>
                                                     handleProjectChange(domainIndex, projIndex, "description", e.target.value)
                                                 }
                                                 required
-                                                className="textarea-field project-description-input"
+                                                className="project-description-input"
                                                 rows="3"
                                             />
                                         </div>
@@ -162,25 +152,25 @@ function ProjectInput({ projects, setProjects }) {
                                             <div className="tech-input-group">
                                                 <input
                                                     type="text"
-                                                    placeholder="React, Node.js, Python, MongoDB..."
+                                                    placeholder="Tech Stack (React, Node.js)"
                                                     value={proj.techString || proj.tech.join(", ")}
                                                     onChange={(e) =>
                                                         handleTechChange(domainIndex, projIndex, e.target.value)
                                                     }
-                                                    className="input-field tech-stack-input"
+                                                    className="tech-stack-input"
                                                 />
                                             </div>
 
-                                            <div className="github-link-input">
+                                            <div className="github-link-wrapper">
                                                 <input
                                                     type="text"
-                                                    placeholder="GitHub Repo URL or Live Demo URL"
+                                                    placeholder="GitHub/Demo URL"
                                                     value={proj.link}
                                                     onChange={(e) =>
                                                         handleProjectChange(domainIndex, projIndex, "link", e.target.value)
                                                     }
                                                     required
-                                                    className="input-field github-link-input"
+                                                    className="github-link-input"
                                                 />
                                             </div>
                                         </div>
@@ -189,7 +179,7 @@ function ProjectInput({ projects, setProjects }) {
                                     <button
                                         type="button"
                                         onClick={() => removeProject(domainIndex, projIndex)}
-                                        className="remove-btn project-remove"
+                                        className="project-remove"
                                     >
                                         Remove Project
                                     </button>

@@ -1,0 +1,190 @@
+.education-main-section {
+  background: #111111;
+  border-radius: 12px;
+  border: 1px solid #222222;
+  padding: 35px 30px;
+  margin-bottom: 40px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.edu-subsection {
+  margin-bottom: 50px;
+}
+
+.edu-subsection:last-child {
+  margin-bottom: 0;
+}
+
+.edu-subsection h2 {
+  margin: 0 0 25px 0;
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: 'Unna', serif;
+  color: #f0c35b;
+  text-align: center;
+  border-bottom: 2px solid #333333;
+  padding-bottom: 15px;
+}
+
+.edu-section-description {
+  color: #cccccc;
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+}
+
+.education-row,
+.work-experience-row,
+.certification-row {
+  background: #1a1a1a;
+  border: 1px solid #333333;
+  border-radius: 12px;
+  padding: 30px;
+  margin-bottom: 25px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.edu-form-group {
+  margin-bottom: 20px;
+}
+
+.edu-form-label {
+  display: block;
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  margin-bottom: 8px;
+}
+
+.edu-input-field,
+.edu-textarea-field {
+  width: 100%;
+  padding: 15px 20px;
+  background: #222222;
+  border: 2px solid #333333;
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.edu-input-field:focus,
+.edu-textarea-field:focus {
+  border-color: #f0c35b;
+  background: #2a2a2a;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(240, 195, 91, 0.1);
+}
+
+.edu-input-field::placeholder,
+.edu-textarea-field::placeholder {
+  color: #888888;
+}
+
+.edu-textarea-field {
+  min-height: 100px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.work-date-row {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.work-date-col {
+  flex: 1;
+}
+
+.work-present-checkbox {
+  display: flex;
+  align-items: center;
+  padding-top: 35px;
+}
+
+.present-label {
+  display: flex;
+  align-items: center;
+  color: #ffffff;
+  font-size: 1.1rem;
+  cursor: pointer;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+}
+
+.present-label input[type="checkbox"] {
+  margin-right: 10px;
+  width: 18px;
+  height: 18px;
+  accent-color: #f0c35b;
+}
+
+.edu-remove-btn {
+  background: #ef4444;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+}
+
+.edu-remove-btn:hover {
+  background: #dc2626;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+.edu-add-btn {
+  background: #22c55e;
+  color: #000000;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 28px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.edu-add-btn:hover {
+  background: #16a34a;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+}
+
+@media (max-width: 768px) {
+  .education-row,
+  .work-experience-row,
+  .certification-row {
+    padding: 20px;
+  }
+
+  .work-date-row {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .work-present-checkbox {
+    padding-top: 0;
+  }
+
+  .edu-remove-btn,
+  .edu-add-btn {
+    width: 100%;
+  }
+}
