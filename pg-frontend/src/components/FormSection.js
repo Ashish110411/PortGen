@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SocialLinks from "./SocialLinks";
 import RolesInput from "./RolesInput";
 import PrototypePicker from "./PrototypePicker";
@@ -8,34 +8,50 @@ import ProjectInput from "./ProjectInput";
 import { skillGroups } from "../utils/skillGroups";
 import "../styles/FormSection.css"
 
+const FORM_STORAGE_KEY = "portfolioFormData";
+
 function FormSection() {
-    const [formData, setFormData] = useState({
-        name: "",
-        about: "",
-        aboutParagraph1: "",
-        aboutParagraph2: "",
-        aboutParagraph3: "",
-        aboutParagraph4: "",
-        email: "",
-        altEmail: "",
-        phone: "",
-        location: "",
-        socialLinks: {
-            linkedin: "",
-            github: "",
-            website: "",
-            instagram: "",
-            whatsapp: ""
-        },
-        roles: [],
-        professionalStats: [{ number: "", label: "" }],
-        styleShade: "purple",
-        skills: [],
-        educationList: [{ institution: "", degree: "", year: "" }],
-        workExperience: [],
-        certifications: [],
-        projects: []
-    });
+    // Load saved data from localStorage or use defaults
+    const loadSavedData = () => {
+        try {
+            const saved = localStorage.getItem(FORM_STORAGE_KEY);
+            if (saved) {
+                return JSON.parse(saved);
+            }
+        } catch (error) {
+            console.warn("Failed to load saved form data:", error);
+        }
+
+        return {
+            name: "",
+            about: "",
+            aboutParagraph1: "",
+            aboutParagraph2: "",
+            aboutParagraph3: "",
+            aboutParagraph4: "",
+            email: "",
+            altEmail: "",
+            phone: "",
+            location: "",
+            socialLinks: {
+                linkedin: "",
+                github: "",
+                website: "",
+                instagram: "",
+                whatsapp: ""
+            },
+            roles: [],
+            professionalStats: [{ number: "", label: "" }],
+            styleShade: "purple",
+            skills: [],
+            educationList: [{ institution: "", degree: "", year: "" }],
+            workExperience: [],
+            certifications: [],
+            projects: []
+        };
+    };
+
+    const [formData, setFormData] = useState(loadSavedData);
 
     const [files, setFiles] = useState({
         profileImage: null,
@@ -43,6 +59,14 @@ function FormSection() {
     });
 
     const [statError, setStatError] = useState("");
+
+    useEffect(() => {
+        try {
+            localStorage.setItem(FORM_STORAGE_KEY, JSON.stringify(formData));
+        } catch (error) {
+            console.warn("Failed to save form data:", error);
+        }
+    }, [formData]);
 
     const handleFileChange = (e) => {
         const { name, files: fileList } = e.target;
