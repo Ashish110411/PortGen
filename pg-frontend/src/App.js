@@ -1,4 +1,6 @@
 import React from 'react';
+import LandingPage from './components/LandingPage';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import FormSection from './components/FormSection';
 
 const FORM_STORAGE_KEY = "portfolioFormData";
@@ -12,12 +14,27 @@ function App() {
     };
 
     return (
-        <div className="App">
-            <button className="reset-btn-corner" onClick={resetFormData}>
-                Reset
-            </button>
-            <FormSection />
-        </div>
+        <Router>
+            <div className="App">
+                <Routes>
+                    {/* Landing Page Route */}
+                    <Route path="/" element={<LandingPage />} />
+
+                    {/* Portfolio Generator Form Route */}
+                    <Route
+                        path="/generator"
+                        element={
+                            <>
+                                <button className="reset-btn-corner" onClick={resetFormData}>
+                                    Reset
+                                </button>
+                                <FormSection />
+                            </>
+                        }
+                    />
+                </Routes>
+            </div>
+        </Router>
     );
 }
 
