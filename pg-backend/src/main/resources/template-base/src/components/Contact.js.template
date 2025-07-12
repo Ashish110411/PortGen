@@ -121,7 +121,7 @@ const Contact = ({
             icon: <FiMapPin />,
             title: "Location",
             value: isValidValue(location) ? location : "Not Provided",
-            link: null,
+            link: isValidValue(location) ? `https://www.google.com/maps/place/${encodeURIComponent(location)}` : null,
             disabled: !isValidValue(location),
         }
     ];

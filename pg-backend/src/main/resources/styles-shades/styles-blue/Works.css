@@ -155,11 +155,10 @@
 }
 
 .works-box {
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
 	gap: 30px;
-	justify-items: center;
-	align-items: start;
 	max-width: 1400px;
 	margin: 0 auto;
 	width: 100%;
