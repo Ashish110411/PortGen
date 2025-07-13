@@ -33,6 +33,17 @@ const LandingPage = () => {
         }
     ];
 
+    const themes = [
+        { name: "Royal Emerald", color: "#33e58a" },
+        { name: "Imperial Teal", color: "#2dd4bf" },
+        { name: "Regal Amethyst", color: "#8b5cf6" },
+        { name: "Platinum Glow", color: "#f0f6fc" },
+        { name: "Majestic Gold", color: "#fbbf24" },
+        { name: "Sapphire Elite", color: "#1f6feb" },
+        { name: "Electric Chartreuse", color: "#F1FFC4" },
+        { name: "Blazing Sunset", color: "#ff6b6b" }
+    ];
+
     return (
         <div className="landing-page">
             {/* Header */}
@@ -50,6 +61,7 @@ const LandingPage = () => {
 
                         <nav className="nav">
                             <a href="#features" className="nav-link">Features</a>
+                            <a href="#themes" className="nav-link">Themes</a>
                             <a href="#how-it-works" className="nav-link">How it Works</a>
                             <a
                                 href="https://github.com/Ashish110411/PortGen"
@@ -207,13 +219,36 @@ const LandingPage = () => {
                 </div>
             </section>
 
+            {/* Theme Showcase Section - NEW */}
+            <section id="themes" className="themes">
+                <div className="container">
+                    <div className="section-header">
+                        <h2 className="section-title">Choose Your Perfect Theme</h2>
+                        <p className="section-description">
+                            8 beautifully crafted themes to match your personal brand and style.
+                        </p>
+                    </div>
+                    <div className="themes-showcase">
+                        {themes.map((theme, index) => (
+                            <div key={index} className="theme-card">
+                                <div
+                                    className="theme-color"
+                                    style={{ backgroundColor: theme.color }}
+                                ></div>
+                                <h4 className="theme-name">{theme.name}</h4>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
             {/* How It Works Section */}
             <section id="how-it-works" className="how-it-works">
                 <div className="container">
                     <div className="section-header">
                         <h2 className="section-title">How It Works</h2>
                         <p className="section-description">
-                            Create your professional portfolio in four simple steps.
+                            Create your professional portfolio in three simple steps.
                         </p>
                     </div>
                     <div className="steps-grid">
@@ -230,11 +265,6 @@ const LandingPage = () => {
                             },
                             {
                                 step: "03",
-                                title: "Preview & Perfect",
-                                description: "See your portfolio come to life with real-time preview and make any final adjustments."
-                            },
-                            {
-                                step: "04",
                                 title: "Download & Deploy",
                                 description: "Get your complete website package as a ZIP file, ready for hosting on any platform."
                             }
