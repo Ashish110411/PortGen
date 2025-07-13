@@ -4,162 +4,102 @@ A modern, dynamic portfolio generator that creates personalized portfolio websit
 
 ## Features
 
-The system is built with a scalable architecture that provides the following features:
-
 #### Frontend Form Interface (React)
-- **Data Collection Form**:
-  - Personal information capture.
-  - Role and skills selection with dynamic categories
-  - Project details input with links and descriptions
-  - Education and certification entries
-  - Resume upload functionality
-- **Interactive UI**:
-  - Real-time form validation
-  - Progress indicators for multi-step forms
-  - Preview capabilities before generation
-  - Responsive design for all devices
-  - Dark mode interface with smooth animations
+- **Data Collection Form**: Personal information, skills, projects, education, and certifications
+- **Interactive UI**: Real-time validation, progress indicators, localStorage persistence
+- **Theme Selection**: 8 professional color themes with live preview
+- **Responsive Design**: Optimized for all devices with dark mode interface
 
 #### Backend Services (Spring Boot)
-- **Portfolio Generation Engine**:
-  - Template-based React portfolio creation
-  - Dynamic content injection from form data
-  - Icon and asset management system
-  - ZIP file generation with complete portfolio structure
-- **Template Processing**:
-  - Resource bundling and optimization
-  - Automated file structure creation
-  - Cross-platform compatibility
+- **Portfolio Generation Engine**: Template-based React portfolio creation with dynamic content injection
+- **Asset Management**: Icon repository and resource bundling system
+- **ZIP Generation**: Complete portfolio structure with cross-platform compatibility
 
 #### Generated Portfolio Output
-- **Complete React Application**:
-  - Hero section with personalized roles and introduction
-  - About section with bio and contact information
-  - Skills showcase with categorized technology stacks
-  - Projects gallery with live links and descriptions
-  - Education timeline with certifications
-  - Resume download functionality
-- **Professional Design**:
-  - Modern dark theme with elegant animations
-  - Fully responsive across all devices
-  - SEO-optimized structure
-  - Fast loading with optimized assets
+- **Complete React Application**: Hero section, skills showcase, projects gallery, education timeline
+- **Professional Design**: Modern themes, responsive layout, SEO-optimized structure
+- **Real-time Theme Switching**: Dynamic color customization in generated portfolios
+
+## User Journey & Experience
+
+### Landing Page Experience
+Navigate to `http://localhost:3000` to access the professional landing page featuring inspirational content, interactive demo preview, and clear call-to-action buttons.
+
+![Landing Page](samples/sample1.png)
+*Professional landing page with hero section, theme showcase, and navigation options*
+
+### Portfolio Generation Workflow
+
+#### Step 1: Personal Information Collection
+Click "Start Building Now" to access the form at `http://localhost:3000/generator`. The intelligent **localStorage persistence** automatically saves your progress.
+
+![Personal Information Form](samples/sample2.png)
+*Comprehensive personal details form with auto-save functionality*
+
+#### Step 2: Skills & Technologies Selection
+Choose from categorized technology stacks with proficiency indicators and custom skill additions.
+
+![Skills Selection](samples/sample3.png)
+*Interactive skills selection with technology categories and proficiency levels*
+
+#### Step 3: Education & Experience Documentation
+Input academic background, work experience, and professional certifications in a streamlined interface.
+
+![Education & Experience](samples/sample4.png)
+*Education, work experience, and certifications input sections*
+
+#### Step 4: Projects Portfolio Showcase
+Add project details, technology stacks, descriptions, and live demo links.
+
+![Projects Portfolio](samples/sample5.png)
+*Project details input with technology stack and link management*
+
+#### Step 5: Theme Customization
+Select from 8 professionally designed color themes to match your personal brand.
+
+![Theme Selection](samples/sample6.png)
+*Professional theme selection with real-time preview options*
+
+#### Step 6: Generated Portfolio Output
+The system generates a complete, production-ready React application. View live demo with real-time theme switching at: **https://portgen-prototype.netlify.app/**
+
+*Visit the live demo to see the professional quality and dynamic theme switching capabilities of generated portfolios*
 
 ### System Architecture
 
 #### High-Level Architecture Overview
 
 ```
-┌─────────────────────┐    Form Data    ┌─────────────────────┐
-│   pg-frontend/      │ ──────────────► │   pg-backend/       │
-│                     │                 │                     │
-│ • Data Collection   │                 │ • Template Engine   │
-│ • Form Validation   │                 │ • Asset Management  │
-│ • User Interface    │                 │ • ZIP Generation    │
-│ • Progress Tracking │                 │ • API Processing    │
-└─────────────────────┘                 └─────────────────────┘
-                                                   │
-                                                   ▼
-                                        ┌─────────────────────┐
-                                        │   Generated ZIP     │
-                                        │                     │
-                                        │ portfolio/          │
-                                        │ ├── public/         │
-                                        │ ├── src/            │
-                                        │ │   ├── components/ │
-                                        │ │   ├── styles/     │
-                                        │ │   ├── images/     │
-                                        │ │   ├── data/       │
-                                        │ │   └── App.js      │
-                                        │ ├── package.json    │
-                                        │ └── README.md       │
-                                        └─────────────────────┘
-```
-
-#### Detailed Technical Architecture
-
-```
-                    ┌───────────────────────────────────────────┐
-                    │              USER INTERFACE               │
-                    │          (Browser - Port 3000)            │
-                    └─────────────────┬─────────────────────────┘
-                                      │
-                                      ▼
-                    ┌───────────────────────────────────────────┐
-                    │            FRONTEND LAYER                 │
-                    │          pg-frontend/ (React)             │
-                    ├───────────────────────────────────────────┤
-                    │ • Multi-step Form Components              │
-                    │ • State Management (React Hooks)          │
-                    │ • Form Validation (Real-time)             │
-                    │ • File Upload Handler                     │
-                    │ • API Integration Layer                   │
-                    │ • Responsive UI Components                │
-                    └─────────────────┬─────────────────────────┘
-                                      │ HTTP/REST API
-                                      │ POST /api/portfolio/generate
-                                      ▼
-                    ┌───────────────────────────────────────────┐
-                    │             BACKEND LAYER                 │
-                    │        pg-backend/ (Spring Boot)          │
-                    ├───────────────────────────────────────────┤
-                    │ ┌─────────────────────────────────────┐   │
-                    │ │        REST Controller              │   │
-                    │ │   • @PostMapping /generate          │   │
-                    │ │   • Request Validation              │   │
-                    │ │   • Error Handling                  │   │
-                    │ └─────────────────────────────────────┘   │
-                    │                    │                      │
-                    │                    ▼                      │
-                    │ ┌─────────────────────────────────────┐   │
-                    │ │      Portfolio Service              │   │
-                    │ │   • Data Processing                 │   │
-                    │ │   • Template Coordination           │   │
-                    │ │   • Business Logic                  │   │
-                    │ └─────────────────────────────────────┘   │
-                    │                    │                      │
-                    │                    ▼                      │
-                    │ ┌─────────────────────────────────────┐   │
-                    │ │     Template Engine                 │   │
-                    │ │   • Variable Injection              │   │
-                    │ │   • File Processing                 │   │
-                    │ │   • Resource Management             │   │
-                    │ └─────────────────────────────────────┘   │
-                    │                    │                      │
-                    │                    ▼                      │
-                    │ ┌─────────────────────────────────────┐   │
-                    │ │      Asset Manager                  │   │
-                    │ │   • Icon Repository                 │   │
-                    │ │   • Image Processing                │   │
-                    │ │   • Static Resources                │   │
-                    │ └─────────────────────────────────────┘   │
-                    │                    │                      │
-                    │                    ▼                      │
-                    │ ┌─────────────────────────────────────┐   │
-                    │ │       ZIP Generator                 │   │
-                    │ │   • File Structure Creation         │   │
-                    │ │   • Archive Compression             │   │
-                    │ │   • Download Response               │   │
-                    │ └─────────────────────────────────────┘   │
-                    └─────────────────┬─────────────────────────┘
-                                      │
-                                      ▼
-                    ┌───────────────────────────────────────────┐
-                    │            OUTPUT LAYER                   │
-                    │        Generated Portfolio ZIP            │
-                    ├───────────────────────────────────────────┤
-                    │   ↓ User Downloads & Deploys              │
-                    │                                           │
-                    │  ┌─────────────────────────────────────┐  │
-                    │  │     Deployed Portfolio Website      │  │
-                    │  │                                     │  │
-                    │  │ • Fully Functional React App        │  │
-                    │  │ • Ready for Production              │  │
-                    │  │ • Customized Content                │  │
-                    │  │ • Professional Design               │  │
-                    │  │ • SEO Optimized                     │  │
-                    │  └─────────────────────────────────────┘  │
-                    └───────────────────────────────────────────┘
+┌─────────────────────┐                    ┌─────────────────────┐
+│   Landing Page      │    Navigation      │   Form Generator    │
+│   (localhost:3000)  │ ─────────────────► │   (/generator)      │
+│                     │                    │                     │
+│ • Hero Section      │                    │ • Multi-step Form   │
+│ • Theme Preview     │                    │ • localStorage      │
+│ • Live Demo Link    │                    │ • Real-time Valid.  │
+│ • Call-to-Action    │                    │ • Progress Tracking │
+└─────────────────────┘                    └─────────────────────┘
+                                                      │
+                                                      │ Form Data
+                                                      ▼
+                                           ┌─────────────────────┐
+                                           │   pg-backend/       │
+                                           │                     │
+                                           │ • Template Engine   │
+                                           │ • Asset Management  │
+                                           │ • ZIP Generation    │
+                                           │ • API Processing    │
+                                           └─────────────────────┘
+                                                      │
+                                                      ▼
+                                           ┌─────────────────────┐
+                                           │   Generated ZIP     │
+                                           │                     │
+                                           │ Complete Portfolio  │
+                                           │ • React Application │
+                                           │ • Theme System      │
+                                           │ • Production Ready  │
+                                           └─────────────────────┘
 ```
 
 #### Container Architecture (Docker)
@@ -174,39 +114,20 @@ Docker Environment
 │  │                         │      │                             │   │
 │  │ • Node.js 22-alpine     │◄────►│ • OpenJDK 21-jdk-slim       │   │
 │  │ • React App (Port 3000) │      │ • Spring Boot (Port 8080)   │   │
-│  │ • Nginx/Serve           │      │ • Maven Build               │   │
-│  │ • Form Components       │      │ • Template Engine           │   │
+│  │ • Landing Page          │      │ • Maven Build               │   │
+│  │ • Form Generator        │      │ • Template Engine           │   │
 │  │ • State Management      │      │ • ZIP Generation            │   │
 │  └─────────────────────────┘      └─────────────────────────────┘   │
 │              │                                    │                 │
 │              └────────────────────────────────────┘                 │
 │                        Docker Network                               │
 │                     (portgen-network)                               │
-│                                                                     │
-│  ┌─────────────────────────────────────────────────────────────┐    │
-│  │                    Volume Mounts                            │    │
-│  │                                                             │    │
-│  │ • Backend Templates   /app/src/main/resources/templates/    │    │
-│  │ • Asset Repository    /app/src/main/resources/static/       │    │
-│  │ • Generated Files     /tmp/portfolios/                      │    │
-│  └─────────────────────────────────────────────────────────────┘    │
-│                                                                     │
 └─────────────────────────────────────────────────────────────────────┘
 
 External Access:
 • Frontend: http://localhost:3000
 • Backend API: http://localhost:8080
-• Health Check: http://localhost:8080/actuator/health
 ```
-
-### Application Flow
-
-1. **User Input**: Fill out the comprehensive form with personal and professional details
-2. **Data Validation**: Real-time validation ensures complete and accurate information
-3. **Template Processing**: Backend processes form data and injects into React templates
-4. **Asset Integration**: Icons, images, and resources are bundled automatically
-5. **Portfolio Generation**: Complete React application is generated and packaged
-6. **ZIP Download**: User receives a ready-to-deploy portfolio website
 
 ## Prerequisites
 
@@ -215,7 +136,7 @@ External Access:
 - **Java 21+** (for local backend development)
 - **Maven** (for backend build)
 
-## Running on Docker
+## Quick Start with Docker
 
 ### 1. Clone the repository
 ```bash
@@ -223,130 +144,76 @@ git clone https://github.com/Ashish110411/PortGen.git
 cd PortGen
 ```
 
-### 2. Build Image for backend service
+### 2. Build backend service
 ```bash
 cd pg-backend
 mvn compile jib:dockerBuild
 ```
 
-### 3. Build Image for Frontend
+### 3. Build frontend service
 ```bash
 cd ../pg-frontend
 docker build --no-cache -t ashish110411/portgen-frontend .
 ```
 
-### 4. Start the docker services
+### 4. Start all services
 ```bash
 cd ..
 docker-compose up -d
 ```
 
-### 5. Access the Application
-- **Frontend Form**: http://localhost:3000
+### 5. Access the application
+- **Landing Page**: http://localhost:3000
+- **Portfolio Generator**: http://localhost:3000/generator
 - **Backend API**: http://localhost:8080
-- **Portfolio Generation**: http://localhost:8080/api/portfolio/generate
 
-## Alternative Docker Setup
+## Alternative Setup
 
-If you prefer to use docker-compose for the entire build process:
+Use docker-compose for complete build process:
 
 ```bash
-# Build and start all services in one command
 docker-compose up --build -d
-
-# View logs
-docker-compose logs -f
-
-# Stop services
-docker-compose down
 ```
 
 ## API Documentation
 
-The system provides a RESTful API for portfolio generation:
-
-### Portfolio Generation
-
-- `POST /api/portfolio/generate` - Generate a complete portfolio ZIP file.
-
-**Response:** ZIP file containing complete React portfolio application
-
-### Generated Portfolio Structure
-For the complete generated portfolio details, see the [Generated README](./pg-backend/src/main/resources/template-base/README.md)
-
-## Form Features
-
-### Multi-Step Form Process
-
-1. **Personal Information**
-  - Name, email, phone, location
-  - Professional bio and summary
-  - Profile picture upload
-
-2. **Skills & Technologies**
-  - Categorized skill selection
-  - Proficiency levels
-  - Custom skill additions
-
-3. **Projects Portfolio**
-  - Project title and description
-  - Technology stack used
-  - Multiple Project domains
-  - Live demo or GitHub links
-
-4. **Education & Certifications**
-  - Academic background
-  - Professional certifications
-  - Training and courses
-
-5. **Resume & Final Review**
-  - Resume file upload
-  - Generate portfolio
-
-## Customization Options
-
-### Template Modifications
-- Color scheme customization
-- Layout variations
-- Component additions/removals
-
-### Skill Categories
-- Add new technology categories
-- Custom skill icons
-- Proficiency indicators
-- Skill grouping options
+### Portfolio Generation Endpoint
+- `POST /api/portfolio/generate` - Generate complete portfolio ZIP file
+- **Response**: ZIP file containing production-ready React portfolio application
 
 ## Development Setup
-
-For local development without Docker:
 
 ### Frontend Development
 ```bash
 cd pg-frontend
 npm install
 npm start
-# Runs on http://localhost:3000
 ```
 
 ### Backend Development
 ```bash
 cd pg-backend
 mvn spring-boot:run
-# Runs on http://localhost:8080
 ```
 
-## Deployment Options
+## Key Features
 
-### Production Deployment
-- **Netlify/Vercel**: Deploy generated portfolio directly (preferred)
-- **AWS S3**: Static website hosting for portfolios
-- **GitHub Pages**: Free hosting for generated sites
-- **Docker Hub**: Push images for easy deployment
+### Smart Form System
+- **localStorage Persistence**: Auto-save functionality prevents data loss
+- **Real-time Validation**: Immediate feedback on input requirements
+- **Multi-step Progress**: Visual indicators for completion tracking
+- **Reset Capability**: Clear all data with single button action
 
-### Environment Configuration
-- Development: `docker-compose.yml`
-- Production: `docker-compose.prod.yml`
-- Custom environment variables support
+### Professional Output
+- **8 Premium Themes**: Carefully designed color schemes
+- **Dynamic Theme Switching**: Real-time customization in generated portfolios
+- **SEO Optimization**: Production-ready structure and meta tags
+- **Responsive Design**: Mobile-first approach for all devices
+
+### Template System
+- **Component-based Architecture**: Modular React components
+- **Asset Management**: Automated icon and image integration
+- **Cross-platform Compatibility**: Works across all hosting platforms
 
 ## Contributing
 
@@ -363,11 +230,11 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## Support
 
 For support and questions:
-- 📧 Email: ashish110411@example.com
+- 📧 Email: ashishchaudhary110411@gmail.com
 - 🐛 Issues: [GitHub Issues](https://github.com/Ashish110411/PortGen/issues)
-- 📚 Documentation: [Wiki](https://github.com/Ashish110411/PortGen/wiki)
+- 🌐 Live Demo: [Portfolio Sample](https://portgen-prototype.netlify.app/)
 
 ---
 
-**Version**: 1.0.0  
+**Version**: 1.7.0  
 Built with ❤️ by [Ashish110411](https://github.com/Ashish110411)
