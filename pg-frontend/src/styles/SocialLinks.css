@@ -4,7 +4,7 @@
   border: 1px solid #222222;
   padding: 35px 30px;
   margin-bottom: 40px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 16px rgba(240, 195, 91, 0.09);
 }
 
 .section h2 {
@@ -24,7 +24,7 @@
 
 .section label {
   display: block;
-  color: #ffffff;
+  color: #fff;
   font-size: 1.2rem;
   font-weight: 600;
   font-family: 'Inter', sans-serif;
@@ -37,18 +37,18 @@
   background: #1a1a1a;
   border: 2px solid #333333;
   border-radius: 8px;
-  color: #ffffff;
+  color: #fff;
   font-size: 1.1rem;
   font-family: 'Inter', sans-serif;
-  transition: all 0.3s ease;
+  transition: all 0.3s;
   box-sizing: border-box;
 }
 
 .input-field:focus {
   border-color: #f0c35b;
-  background: #222222;
+  background: #23221f;
   outline: none;
-  box-shadow: 0 0 0 3px rgba(240, 195, 91, 0.1);
+  box-shadow: 0 0 0 2.5px #f0c35b40;
 }
 
 .input-field::placeholder {
@@ -67,12 +67,12 @@
   .section {
     padding: 25px 20px;
   }
-  
+
   .input-field {
     font-size: 1rem;
     padding: 12px 16px;
   }
-  
+
   .section label {
     font-size: 1.1rem;
   }

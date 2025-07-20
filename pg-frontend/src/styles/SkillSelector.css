@@ -1,4 +1,3 @@
-/* DON'T CHANGE - Keep existing skill selection behavior */
 .section {
   background: #111111;
   border-radius: 12px;
@@ -26,11 +25,15 @@
 .skill-group h3 {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #22c55e;
+  color: #f0c35b;
   margin-bottom: 15px;
   font-family: 'Unna', serif;
   letter-spacing: 0.5px;
   text-align: center;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #fff 10%, #f0c35b 90%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .skills-chip-list {
@@ -60,31 +63,33 @@
   letter-spacing: 0.3px;
   text-transform: capitalize;
   user-select: none;
+  box-shadow: 0 2px 8px rgba(240,195,91,0.08);
 }
 
 .skill-chip:focus {
   outline: none;
 }
 
-/* Normal hover - white background with black text */
+/* Hover - yellow background, black text */
 .skill-chip:hover {
   background: #ffffff;
   color: #000000;
-  border-color: #ffffff;
+  border-color: #000000;
 }
 
-/* Selected state - green background with white text */
+/* Selected state - yellow background, black text */
 .skill-chip.selected {
-  background: #22c55e;
+  background: #f0c35b;
   color: #000000;
-  border-color: #22c55e;
+  border-color: #f0c35b;
 }
 
-/* Selected hover - red background with black text */
+/* Selected hover - white background, black text with yellow glow */
 .skill-chip.selected:hover {
-  background: #ef4444;
+  background: #ff0000;
   color: #ffffff;
-  border-color: #ef4444;
+  border-color: #ff0000;
+  box-shadow: 0 0 10px #f0c35b88;
 }
 
 @media (max-width: 768px) {
@@ -99,7 +104,7 @@
   }
 
   .skill-group h3 {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     text-align: center;
   }
 }

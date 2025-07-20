@@ -36,7 +36,7 @@
   border-radius: 12px;
   padding: 30px;
   margin-bottom: 30px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 8px rgba(240, 195, 91, 0.09);
 }
 
 .domain-header {
@@ -49,9 +49,9 @@
 
 .form-label {
   display: block;
-  color: #ffffff;
+  color: #fff;
   font-size: 1.2rem;
-  font-weight: 600;
+  font-weight: 700;
   font-family: 'Inter', sans-serif;
   margin-bottom: 8px;
 }
@@ -62,7 +62,7 @@
   background: #222222;
   border: 2px solid #333333;
   border-radius: 8px;
-  color: #ffffff;
+  color: #fff;
   font-size: 1.1rem;
   font-family: 'Inter', sans-serif;
   transition: all 0.3s ease;
@@ -71,20 +71,20 @@
 
 .domain-input:focus {
   border-color: #f0c35b;
-  background: #2a2a2a;
+  background: #191919;
   outline: none;
-  box-shadow: 0 0 0 3px rgba(240, 195, 91, 0.1);
+  box-shadow: 0 0 0 2.5px #f0c35b40;
 }
 
 .character-info {
   margin-top: 8px;
   font-size: 0.9rem;
-  color: #888888;
+  color: #cccccc;
   font-family: 'Inter', sans-serif;
 }
 
 .character-count {
-  color: #22c55e;
+  color: #f0c35b;
   font-weight: 600;
 }
 
@@ -103,14 +103,14 @@
 }
 
 .domain-id-value {
-  color: #22c55e;
+  color: #f0c35b;
   font-weight: 600;
   margin-left: 8px;
 }
 
 .domain-remove {
   background: #ef4444;
-  color: #ffffff;
+  color: #fff;
   border: none;
   border-radius: 8px;
   padding: 12px 20px;
@@ -123,9 +123,8 @@
 }
 
 .domain-remove:hover {
-  background: #dc2626;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+  background: #fff;
+  color: #ef4444;
 }
 
 .projects-section {
@@ -134,7 +133,7 @@
 
 .projects-title {
   font-size: 1.4rem;
-  color: #ffffff;
+  color: #fff;
   margin-bottom: 20px;
   font-weight: 600;
   font-family: 'Unna', serif;
@@ -143,7 +142,7 @@
 }
 
 .domain-name-highlight {
-  color: #22c55e;
+  color: #f0c35b;
   font-weight: 700;
   font-style: italic;
 }
@@ -154,7 +153,7 @@
   border-radius: 10px;
   padding: 25px;
   margin-bottom: 20px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 6px rgba(240,195,91,0.08);
 }
 
 .project-fields {
@@ -171,10 +170,10 @@
 .github-link-input {
   width: 100%;
   padding: 15px 20px;
-  background: #2a2a2a;
+  background: #191919;
   border: 2px solid #333333;
   border-radius: 8px;
-  color: #ffffff;
+  color: #fff;
   font-size: 1.1rem;
   font-family: 'Inter', sans-serif;
   transition: all 0.3s ease;
@@ -186,9 +185,9 @@
 .tech-stack-input:focus,
 .github-link-input:focus {
   border-color: #f0c35b;
-  background: #333333;
+  background: #23221f;
   outline: none;
-  box-shadow: 0 0 0 3px rgba(240, 195, 91, 0.1);
+  box-shadow: 0 0 0 2.5px #f0c35b40;
 }
 
 .project-description-input {
@@ -210,7 +209,7 @@
 
 .project-remove {
   background: #ef4444;
-  color: #ffffff;
+  color: #fff;
   border: none;
   border-radius: 8px;
   padding: 12px 20px;
@@ -223,19 +222,18 @@
 }
 
 .project-remove:hover {
-  background: #dc2626;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+  background: #fff;
+  color: #ef4444;
 }
 
 .add-btn {
-  background: #22c55e;
-  color: #000000;
+  background: #f0c35b;
+  color: #191919;
   border: none;
   border-radius: 8px;
   padding: 12px 28px;
   font-size: 1.1rem;
-  font-weight: 600;
+  font-weight: 700;
   font-family: 'Inter', sans-serif;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -243,12 +241,12 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
+  box-shadow: 0 2px 10px #f0c35b22;
 }
 
 .add-btn:hover {
-  background: #16a34a;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+  background: #fff;
+  color: #191919;
 }
 
 .domain-add {
@@ -259,6 +257,7 @@
 
 .domain-add:hover {
   background: #ffffff;
+  color: #191919;
 }
 
 @media (max-width: 768px) {
