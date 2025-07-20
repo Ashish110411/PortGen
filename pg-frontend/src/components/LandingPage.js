@@ -1,337 +1,319 @@
 import React from 'react';
-import { Globe, Zap, Download, Star, ArrowRight, Code, Palette, ExternalLink } from 'lucide-react';
+import {
+    Star,
+    ArrowRight,
+    ExternalLink,
+    ArrowDownLeft,
+    ArrowLeft,
+    ArrowRight as LucideArrowRight,
+    User,
+    Link,
+    File,
+    List,
+    Book,
+    Briefcase,
+    Palette
+} from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/LandingPage.css';
 
-const LandingPage = () => {
+const FEATURES = [
+    {
+        icon: <svg width="28" height="28" fill="none"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke="#f0c35b" strokeWidth="2" strokeLinejoin="round" /></svg>,
+        title: "Lightning Fast",
+        desc: "Generate portfolio websites in minutes with our optimized build system."
+    },
+    {
+        icon: <svg width="28" height="28" fill="none"><circle cx="12" cy="12" r="10" stroke="#f0c35b" strokeWidth="2" /><path d="M8 12a4 4 0 0 1 8 0" stroke="#f0c35b" strokeWidth="2" /></svg>,
+        title: "Beautiful Themes",
+        desc: "Choose from 8 stunning color themes to make your portfolio stand out."
+    },
+    {
+        icon: <svg width="28" height="28" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="#f0c35b" strokeWidth="2" /><path d="M8 12l4 4 4-4" stroke="#f0c35b" strokeWidth="2" /><path d="M12 8v8" stroke="#f0c35b" strokeWidth="2" /></svg>,
+        title: "Complete Package",
+        desc: "Download your full portfolio as a ZIP file with all assets ready for deployment."
+    },
+    {
+        icon: <svg width="28" height="28" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="#f0c35b" strokeWidth="2" /><path d="M8 8h8M8 12h8M8 16h4" stroke="#f0c35b" strokeWidth="2" /></svg>,
+        title: "Modern Tech Stack",
+        desc: "Built with React, responsive design, and modern web technologies for optimal performance."
+    }
+];
+
+const THEMES = [
+    { name: "Royal Emerald", color: "#33e58a" },
+    { name: "Imperial Teal", color: "#2dd4bf" },
+    { name: "Regal Amethyst", color: "#8b5cf6" },
+    { name: "Platinum Glow", color: "#f0f6fc" },
+    { name: "Majestic Gold", color: "#fbbf24" },
+    { name: "Sapphire Elite", color: "#1f6feb" },
+    { name: "Electric Chartreuse", color: "#F1FFC4" },
+    { name: "Blazing Sunset", color: "#ff6b6b" }
+];
+
+// How it works steps: 7 steps, split as [0,1,2,3] in first row, [4,5,6] in second row (reversed)
+const journeySteps = [
+    {
+        icon: <User size={30} />,
+        title: "Fill Your Information",
+        desc: "Enter your personal and professional basics."
+    },
+    {
+        icon: <Link size={30} />,
+        title: "Social Links",
+        desc: "Add your LinkedIn, GitHub, and other social handles."
+    },
+    {
+        icon: <File size={30} />,
+        title: "Resume & Pic Upload",
+        desc: "Upload your latest resume and profile/photo."
+    },
+    {
+        icon: <List size={30} />,
+        title: "Select Skills",
+        desc: "Pick relevant skills from multiple domains."
+    },
+    {
+        icon: <Book size={30} />,
+        title: "Add Education/Exp/Certs",
+        desc: "Add your academics, work experience & certifications."
+    },
+    {
+        icon: <Briefcase size={30} />,
+        title: "Domain Projects",
+        desc: "Showcase your projects, by domain."
+    },
+    {
+        icon: <Palette size={30} />,
+        title: "Choose Your Style",
+        desc: <>Pick a theme.<br />
+            <a href="https://portgen-prototype.netlify.app/" target="_blank" rel="noopener noreferrer" className="how-proto-link">Visit prototype</a>
+        </>
+    }
+];
+const journeyStepsFirstRow = journeySteps.slice(0, 4);
+const journeyStepsSecondRow = journeySteps.slice(4, 7).reverse();
+
+function highlightLastWord(str) {
+    const words = str.trim().split(" ");
+    if (words.length === 0) return str;
+    const last = words.pop();
+    return (
+        <span>
+            {words.join(" ")}{" "}
+            <span className="lp-title-highlight">{last}</span>
+        </span>
+    );
+}
+
+export default function LandingPage() {
     const navigate = useNavigate();
+    const goToGenerator = () => navigate('/generator');
 
-    const handleGetStarted = () => {
-        navigate('/generator');
-    };
-
-    const features = [
-        {
-            icon: <Zap size={24} />,
-            title: "Lightning Fast",
-            description: "Generate professional portfolio websites in minutes with our optimized build system."
-        },
-        {
-            icon: <Palette size={24} />,
-            title: "Beautiful Themes",
-            description: "Choose from 8 stunning color themes designed to make your portfolio stand out."
-        },
-        {
-            icon: <Download size={24} />,
-            title: "Complete Package",
-            description: "Download your full portfolio as a ZIP file with all assets ready for deployment."
-        },
-        {
-            icon: <Code size={24} />,
-            title: "Modern Tech Stack",
-            description: "Built with React, responsive design, and modern web technologies for optimal performance."
-        }
-    ];
-
-    const themes = [
-        { name: "Royal Emerald", color: "#33e58a" },
-        { name: "Imperial Teal", color: "#2dd4bf" },
-        { name: "Regal Amethyst", color: "#8b5cf6" },
-        { name: "Platinum Glow", color: "#f0f6fc" },
-        { name: "Majestic Gold", color: "#fbbf24" },
-        { name: "Sapphire Elite", color: "#1f6feb" },
-        { name: "Electric Chartreuse", color: "#F1FFC4" },
-        { name: "Blazing Sunset", color: "#ff6b6b" }
+    // For themes (3,3,2) layout
+    const themeRows = [
+        THEMES.slice(0, 3),
+        THEMES.slice(3, 6),
+        THEMES.slice(6, 8)
     ];
 
     return (
-        <div className="landing-page">
+        <div className="lp-root">
             {/* Header */}
-            <header className="header">
-                <div className="container">
-                    <div className="header-content">
-                        <div className="logo">
-                            <img
-                                src="/pglogo.png"
-                                alt="PortGen Logo"
-                                className="logo-icon"
-                            />
-                            <h1 className="logo-text">PortGen</h1>
-                        </div>
-
-                        <nav className="nav">
-                            <a href="#features" className="nav-link">Features</a>
-                            <a href="#themes" className="nav-link">Themes</a>
-                            <a href="#how-it-works" className="nav-link">How it Works</a>
-                            <a
-                                href="https://github.com/Ashish110411/PortGen"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="nav-link star-repo"
-                            >
-                                <Star size={16} />
-                                Star Repo
-                            </a>
-                            <button onClick={handleGetStarted} className="btn-primary">
-                                Get Started
-                                <ArrowRight size={16} />
-                            </button>
-                        </nav>
+            <header className="lp-header">
+                <div className="lp-header-inner">
+                    <div className="lp-logo-row">
+                        <img src="/pglogo.png" alt="PortGen Logo" className="lp-logo-img" />
+                        <span className="lp-logo-text">PortGen</span>
                     </div>
+                    <nav className="lp-nav">
+                        <a
+                            href="https://github.com/Ashish110411/PortGen"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="lp-btn lp-btn-outline"
+                        >
+                            <Star size={16} /> Star Repo
+                        </a>
+                        <button className="lp-btn lp-btn-main" onClick={goToGenerator}>
+                            Get Started <ArrowRight size={16} />
+                        </button>
+                    </nav>
                 </div>
             </header>
 
-            {/* Hero Section */}
-            <section className="hero">
-                <div className="container">
-                    <div className="hero-content">
-                        <blockquote className="hero-quote">
-                            "An introduction is not a song you sing alone; it's the echo others choose to carry your name upon."
-                        </blockquote>
-                        <div className="hero-author">
-                            <a
-                                href="https://www.linkedin.com/in/ashish110411/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="author-link"
-                            >
-                                - Ashish Choudhary
-                            </a>
-                        </div>
+            {/* Main Heading */}
+            <section className="lp-hero-center">
+                <h1 className="main-hero-title">
+                    Create Stunning Portfolio Websites with
+                    <br />
+                    <span className="main-hero-highlight">Zero Coding</span>
+                </h1>
+                <blockquote className="lp-hero-quote">
+                    "An introduction is not a song you sing alone; it's the echo others choose to carry your name upon."
+                </blockquote>
+                <div className="lp-hero-author">- Ashish Choudhary</div>
+            </section>
 
-                        <h1 className="hero-title">
-                            Create Stunning Portfolio Websites with
-                            <span className="hero-highlight">Zero Coding</span>
-                        </h1>
-                        <p className="hero-description">
-                            Transform your career story into a beautiful, professional portfolio website.
-                            My intuitive builder generates complete, responsive websites ready for deployment
-                            in minutes, not hours.
-                        </p>
-                        <div className="hero-actions">
-                            <button onClick={handleGetStarted} className="btn-primary btn-large">
-                                Start Building Now
-                                <ArrowRight size={20} />
-                            </button>
+            {/* Main Section: LHS Prototype, RHS Themes */}
+            <section className="lp-main-split">
+                <div className="lp-main-lhs">
+                    <div className="lp-proto-preview">
+                        <div className="lp-proto-frame">
                             <a
                                 href="https://portgen-prototype.netlify.app/"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="btn-secondary btn-large"
+                                className="lp-proto-link"
                             >
-                                <ExternalLink size={20} />
-                                View Live Demo
+                                <iframe
+                                    src="https://portgen-prototype.netlify.app/"
+                                    title="Live Portfolio Preview"
+                                    className="lp-proto-iframe"
+                                    loading="lazy"
+                                />
                             </a>
                         </div>
-                        {/* Live Preview - UPDATED with full clickable frame */}
-                        <div className="hero-preview">
-                            <div className="device-frame">
-                                <a
-                                    href="https://portgen-prototype.netlify.app/"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="device-screen-link"
-                                >
-                                    <iframe
-                                        src="https://portgen-prototype.netlify.app/"
-                                        title="Live Portfolio Preview"
-                                        className="device-screen"
-                                        loading="lazy"
-                                    />
-                                </a>
-                            </div>
-                            <div className="preview-controls">
-                                <a
-                                    href="https://portgen-prototype.netlify.app/"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="btn-secondary"
-                                >
-                                    <ExternalLink size={16} />
-                                    View Full Site
-                                </a>
-                            </div>
-                        </div>
-
-                        {/* Social Links */}
-                        <div className="social-links">
+                        <div className="lp-proto-controls">
                             <a
-                                href="https://www.linkedin.com/in/ashish110411/"
+                                href="https://portgen-prototype.netlify.app/"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                title="LinkedIn Profile"
+                                className="lp-btn lp-btn-outline"
                             >
-                                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                                </svg>
-                            </a>
-                            <a
-                                href="https://github.com/Ashish110411"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                title="GitHub Profile"
-                            >
-                                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.30.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                                </svg>
-                            </a>
-                            <a
-                                href="https://ashish110411.netlify.app/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                title="Portfolio Website"
-                            >
-                                <Globe size={28} />
-                            </a>
-                            <a
-                                href="mailto:ashishchaudhary110411@gmail.com"
-                                title="Email"
-                            >
-                                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M12 12.713l-11.985-9.713h23.97l-11.985 9.713zm0 2.574l-12-9.725v15.438h24v-15.438l-12 9.725z"/>
-                                </svg>
+                                <ExternalLink size={16} /> View Full Site
                             </a>
                         </div>
                     </div>
                 </div>
-            </section>
-
-            {/* Features Section */}
-            <section id="features" className="features">
-                <div className="container">
-                    <div className="section-header">
-                        <h2 className="section-title">Powerful Features for Perfect Portfolios</h2>
-                        <p className="section-description">
-                            Everything you need to create, customize, and deploy professional portfolio websites.
-                        </p>
-                    </div>
-                    <div className="features-grid">
-                        {features.map((feature, index) => (
-                            <div key={index} className="feature-card">
-                                <div className="feature-icon">
-                                    {feature.icon}
+                <div className="lp-main-rhs">
+                    <div className="lp-themes-section">
+                        <h2 className="lp-section-title lp-title-center">
+                            {highlightLastWord("Themes Showcase")}
+                        </h2>
+                        <div className="lp-themes-matrix">
+                            {themeRows.map((row, rowIdx) => (
+                                <div className="lp-themes-matrix-row" key={rowIdx}>
+                                    {row.map((theme, idx) => (
+                                        <div
+                                            key={idx}
+                                            className="lp-theme-card"
+                                            style={{
+                                                "--theme-main": theme.color
+                                            }}
+                                        >
+                                            <div className="lp-theme-color" style={{ backgroundColor: theme.color }}></div>
+                                            <div className="lp-theme-name">{theme.name}</div>
+                                        </div>
+                                    ))}
                                 </div>
-                                <h3 className="feature-title">{feature.title}</h3>
-                                <p className="feature-description">{feature.description}</p>
-                            </div>
-                        ))}
+                            ))}
+                        </div>
                     </div>
                 </div>
             </section>
 
-            {/* Theme Showcase Section - NEW */}
-            <section id="themes" className="themes">
-                <div className="container">
-                    <div className="section-header">
-                        <h2 className="section-title">Choose Your Perfect Theme</h2>
-                        <p className="section-description">
-                            8 beautifully crafted themes to match your personal brand and style.
-                        </p>
-                    </div>
-                    <div className="themes-showcase">
-                        {themes.map((theme, index) => (
-                            <div key={index} className="theme-card">
-                                <div
-                                    className="theme-color"
-                                    style={{ backgroundColor: theme.color }}
-                                ></div>
-                                <h4 className="theme-name">{theme.name}</h4>
-                            </div>
-                        ))}
-                    </div>
+            {/* Key Features - 1 row */}
+            <section className="lp-features-section">
+                <h2 className="lp-section-title lp-title-center">
+                    {highlightLastWord("Key Features")}
+                </h2>
+                <div className="lp-features-grid-1row">
+                    {FEATURES.map((f, idx) => (
+                        <div key={idx} className="lp-feature-card">
+                            <div className="lp-feature-icon">{f.icon}</div>
+                            <div className="lp-feature-title">{f.title}</div>
+                            <div className="lp-feature-desc">{f.desc}</div>
+                        </div>
+                    ))}
                 </div>
             </section>
 
-            {/* How It Works Section */}
-            <section id="how-it-works" className="how-it-works">
-                <div className="container">
-                    <div className="section-header">
-                        <h2 className="section-title">How It Works</h2>
-                        <p className="section-description">
-                            Create your professional portfolio in three simple steps.
-                        </p>
+            {/* Journey Steps (How it Works) */}
+            <div className="journey-steps-center">
+                <div className="journey-steps-title">
+                    {highlightLastWord("How it Works")}
+                </div>
+                <div className="journey-steps-flow">
+                    {/* Top Row: 1 -> 2 -> 3 -> 4 */}
+                    <div className="journey-steps-row journey-steps-row-top">
+                        {journeyStepsFirstRow.map((step, idx) => (
+                            <React.Fragment key={idx}>
+                                <div className="journey-step-box">
+                                    <span className="journey-step-icon yellow-icon">{step.icon}</span>
+                                    <div className="journey-step-title yellow-text">{step.title}</div>
+                                    <div className="journey-step-desc">{step.desc}</div>
+                                </div>
+                                {idx < journeyStepsFirstRow.length - 1 && (
+                                    <span className="journey-step-arrow"><LucideArrowRight size={32} /></span>
+                                )}
+                            </React.Fragment>
+                        ))}
                     </div>
-                    <div className="steps-grid">
-                        {[
-                            {
-                                step: "01",
-                                title: "Fill Your Information",
-                                description: "Enter your personal details, skills, education, work experience, and projects through our intuitive form."
-                            },
-                            {
-                                step: "02",
-                                title: "Choose Your Style",
-                                description: "Select from 8 beautiful themes and customize colors to match your personal brand."
-                            },
-                            {
-                                step: "03",
-                                title: "Download & Deploy",
-                                description: "Get your complete website package as a ZIP file, ready for hosting on any platform."
-                            }
-                        ].map((step, index) => (
-                            <div key={index} className="step-card">
-                                <div className="step-number">{step.step}</div>
-                                <h3 className="step-title">{step.title}</h3>
-                                <p className="step-description">{step.description}</p>
-                            </div>
+                    <div className="journey-steps-down-arrow">
+                        <ArrowDownLeft size={32} />
+                    </div>
+                    {/* Bottom Row: 7 <- 6 <- 5 */}
+                    <div className="journey-steps-row journey-steps-row-bottom">
+                        {journeyStepsSecondRow.map((step, idx) => (
+                            <React.Fragment key={idx}>
+                                <div className="journey-step-box">
+                                    <span className="journey-step-icon yellow-icon">{step.icon}</span>
+                                    <div className="journey-step-title yellow-text">{step.title}</div>
+                                    <div className="journey-step-desc">{step.desc}</div>
+                                </div>
+                                {idx < journeyStepsSecondRow.length - 1 && (
+                                    <span className="journey-step-arrow"><ArrowLeft size={32} /></span>
+                                )}
+                            </React.Fragment>
                         ))}
                     </div>
                 </div>
-            </section>
+            </div>
 
-            {/* CTA Section */}
-            <section className="cta">
-                <div className="container">
-                    <div className="cta-content">
-                        <h2 className="cta-title">Ready to Build Your Perfect Portfolio?</h2>
-                        <p className="cta-description">
-                            Transform your professional story into a stunning website that stands out.
-                        </p>
-                        <button onClick={handleGetStarted} className="btn-primary btn-large">
-                            Start Creating Your Portfolio
-                            <ArrowRight size={20} />
-                        </button>
-                    </div>
+            {/* CTA */}
+            <section className="lp-cta-section">
+                <div className="lp-cta-inner">
+                    <h2 className="lp-cta-title lp-title-center">
+                        {highlightLastWord("Ready to Build Your Portfolio?")}
+                    </h2>
+                    <p className="lp-cta-desc">
+                        Transform your professional story into a stunning website that stands out.
+                    </p>
+                    <button onClick={goToGenerator} className="lp-btn lp-btn-main lp-btn-large">
+                        Start Creating Your Portfolio
+                        <ArrowRight size={20} />
+                    </button>
                 </div>
             </section>
 
             {/* Footer */}
-            <footer className="footer">
-                <div className="container">
-                    <div className="footer-content">
-                        <div className="footer-brand">
-                            <div className="footer-logo">
-                                <div className="logo">
-                                    <img
-                                        src="/pglogo.png"
-                                        alt="PortGen Logo"
-                                        className="logo-icon"
-                                    />
-                                    <span className="logo-text">PortGen</span>
-                                </div>
-                            </div>
-                            <p className="footer-description">
-                                Professional portfolio website generator for modern developers and creators.
-                            </p>
+            <footer className="lp-footer">
+                <div className="lp-footer-inner">
+                    <div className="lp-footer-brand">
+                        <div className="lp-logo-row">
+                            <img src="/pglogo.png" alt="PortGen Logo" className="lp-logo-img" />
+                            <span className="lp-logo-text">PortGen</span>
                         </div>
-                        <div className="footer-links">
-                            <div className="footer-column">
-                                <h4 className="footer-heading">Connect</h4>
-                                <ul className="footer-list">
-                                    <li><a href="https://github.com/Ashish110411/PortGen" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-                                    <li><a href="https://www.linkedin.com/in/ashish110411/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-                                    <li><a href="mailto:ashishchaudhary110411@gmail.com">Contact</a></li>
-                                </ul>
-                            </div>
+                        <div className="lp-footer-desc">
+                            Professional portfolio website generator for modern developers and creators.
                         </div>
                     </div>
-                    <div className="footer-bottom">
-                        <p>© 2025 PortGen. Built with ❤️ by Ashish Choudhary</p>
+                    <div className="lp-footer-links">
+                        <div className="lp-footer-col">
+                            <div className="lp-footer-heading">Connect</div>
+                            <ul className="lp-footer-list">
+                                <li><a href="https://github.com/Ashish110411/PortGen" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                                <li><a href="https://www.linkedin.com/in/ashish110411/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                                <li><a href="mailto:ashishchaudhary110411@gmail.com">Contact</a></li>
+                            </ul>
+                        </div>
                     </div>
+                </div>
+                <div className="lp-footer-bottom">
+                    © 2025 PortGen. Built with ❤️ by Ashish Choudhary
                 </div>
             </footer>
         </div>
     );
-};
-
-export default LandingPage;
+}
