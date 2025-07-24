@@ -51,7 +51,6 @@ const THEMES = [
     { name: "Blazing Sunset", color: "#ff6b6b" }
 ];
 
-// How it works steps: 7 steps, split as [0,1,2,3] in first row, [4,5,6] in second row (reversed)
 const journeySteps = [
     {
         icon: <User size={30} />,
@@ -110,7 +109,6 @@ export default function LandingPage() {
     const navigate = useNavigate();
     const goToGenerator = () => navigate('/generator');
 
-    // For themes (3,3,2) layout
     const themeRows = [
         THEMES.slice(0, 3),
         THEMES.slice(3, 6),
@@ -119,7 +117,6 @@ export default function LandingPage() {
 
     return (
         <div className="lp-root">
-            {/* Header */}
             <header className="lp-header">
                 <div className="lp-header-inner">
                     <div className="lp-logo-row">
@@ -142,7 +139,6 @@ export default function LandingPage() {
                 </div>
             </header>
 
-            {/* Main Heading */}
             <section className="lp-hero-center">
                 <h1 className="main-hero-title">
                     Create Stunning Portfolio Websites with
@@ -155,65 +151,65 @@ export default function LandingPage() {
                 <div className="lp-hero-author">- Ashish Choudhary</div>
             </section>
 
-            {/* Main Section: LHS Prototype, RHS Themes */}
-            <section className="lp-main-split">
-                <div className="lp-main-lhs">
-                    <div className="lp-proto-preview">
-                        <div className="lp-proto-frame">
-                            <a
-                                href="https://portgen-prototype.netlify.app/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="lp-proto-link"
-                            >
-                                <iframe
-                                    src="https://portgen-prototype.netlify.app/"
-                                    title="Live Portfolio Preview"
-                                    className="lp-proto-iframe"
-                                    loading="lazy"
-                                />
-                            </a>
-                        </div>
-                        <div className="lp-proto-controls">
-                            <a
-                                href="https://portgen-prototype.netlify.app/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="lp-btn lp-btn-outline"
-                            >
-                                <ExternalLink size={16} /> View Full Site
-                            </a>
-                        </div>
+            <section className="lp-theme-proto-section">
+                <div className="lp-theme-showcase">
+                    <h2 className="lp-theme-showcase-title">
+                        {highlightLastWord("Available Themes")}
+                    </h2>
+                    <div className="lp-theme-palette">
+                        {themeRows.map((row, rowIdx) => (
+                            <div className="lp-theme-row" key={rowIdx}>
+                                {row.map((theme, idx) => (
+                                    <div key={idx} className="lp-theme-card">
+                                        <div className="lp-theme-color-preview">
+                                            <div
+                                                className="lp-theme-primary"
+                                                style={{ backgroundColor: theme.color }}
+                                            ></div>
+                                            <div className="lp-theme-gradient" style={{
+                                                background: `linear-gradient(135deg, ${theme.color}22 0%, ${theme.color}08 100%)`
+                                            }}></div>
+                                        </div>
+                                        <div className="lp-theme-info">
+                                            <div className="lp-theme-name">{theme.name}</div>
+                                            <div className="lp-theme-accent" style={{ backgroundColor: theme.color }}></div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        ))}
                     </div>
                 </div>
-                <div className="lp-main-rhs">
-                    <div className="lp-themes-section">
-                        <h2 className="lp-section-title lp-title-center">
-                            {highlightLastWord("Themes Showcase")}
-                        </h2>
-                        <div className="lp-themes-matrix">
-                            {themeRows.map((row, rowIdx) => (
-                                <div className="lp-themes-matrix-row" key={rowIdx}>
-                                    {row.map((theme, idx) => (
-                                        <div
-                                            key={idx}
-                                            className="lp-theme-card"
-                                            style={{
-                                                "--theme-main": theme.color
-                                            }}
-                                        >
-                                            <div className="lp-theme-color" style={{ backgroundColor: theme.color }}></div>
-                                            <div className="lp-theme-name">{theme.name}</div>
-                                        </div>
-                                    ))}
-                                </div>
-                            ))}
-                        </div>
+                <div className="lp-proto-viewer">
+                    <div className="lp-proto-frame">
+                        <iframe
+                            src="https://portgen-prototype.netlify.app/"
+                            title="Live Portfolio Preview"
+                            className="lp-proto-iframe"
+                            loading="lazy"
+                            scrolling="no"
+                            style={{
+                                width: "100%",
+                                height: "100%",
+                                zoom: 1,
+                                transform: "none",
+                                overflow: "hidden"
+                            }}
+                        />
+                    </div>
+                    <div className="lp-proto-controls">
+                        <a
+                            href="https://portgen-prototype.netlify.app/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="lp-btn lp-btn-outline"
+                        >
+                            <ExternalLink size={16} /> View Full Site
+                        </a>
                     </div>
                 </div>
             </section>
 
-            {/* Key Features - 1 row */}
             <section className="lp-features-section">
                 <h2 className="lp-section-title lp-title-center">
                     {highlightLastWord("Key Features")}
@@ -229,13 +225,11 @@ export default function LandingPage() {
                 </div>
             </section>
 
-            {/* Journey Steps (How it Works) */}
             <div className="journey-steps-center">
                 <div className="journey-steps-title">
                     {highlightLastWord("How it Works")}
                 </div>
                 <div className="journey-steps-flow">
-                    {/* Top Row: 1 -> 2 -> 3 -> 4 */}
                     <div className="journey-steps-row journey-steps-row-top">
                         {journeyStepsFirstRow.map((step, idx) => (
                             <React.Fragment key={idx}>
@@ -253,7 +247,6 @@ export default function LandingPage() {
                     <div className="journey-steps-down-arrow">
                         <ArrowDownLeft size={32} />
                     </div>
-                    {/* Bottom Row: 7 <- 6 <- 5 */}
                     <div className="journey-steps-row journey-steps-row-bottom">
                         {journeyStepsSecondRow.map((step, idx) => (
                             <React.Fragment key={idx}>
@@ -271,7 +264,6 @@ export default function LandingPage() {
                 </div>
             </div>
 
-            {/* CTA */}
             <section className="lp-cta-section">
                 <div className="lp-cta-inner">
                     <h2 className="lp-cta-title lp-title-center">
@@ -287,7 +279,6 @@ export default function LandingPage() {
                 </div>
             </section>
 
-            {/* Footer */}
             <footer className="lp-footer">
                 <div className="lp-footer-inner">
                     <div className="lp-footer-brand">
