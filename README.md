@@ -20,6 +20,10 @@ A modern, dynamic portfolio generator that creates personalized portfolio websit
 - **Professional Design**: Modern themes, responsive layout, SEO-optimized structure
 - **Real-time Theme Switching**: Dynamic color customization in generated portfolios
 
+## UML Diagram
+![UML DIAGRAM](samples/UML.png)
+*UML diagram to understand the workflow of the project
+
 ## User Journey & Experience
 
 ### Landing Page Experience
